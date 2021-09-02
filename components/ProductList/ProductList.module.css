@@ -1,0 +1,38 @@
+.cardclass {
+  padding-top: 15px !important;
+}
+.productimg {
+  height: 200px !important;
+}
+.producttitle {
+  font-weight: bold !important;
+}
+.productprice {
+  color: #333333 !important;
+}
+.rectangle {
+  color: white !important;
+  width: 234.03px !important;
+  height: 18px !important;
+  background: #ca0303;
+  padding-left: 5px !important;
+  padding-top: 3px !important;
+}
+
+.starcolor {
+  color: #facb54 !important;
+  width: 17.7px !important;
+  height: 18px !important;
+}
+
+.filtertab {
+  padding: 20px 0px !important;
+  background-color: #f0eee7;
+}
+
+.headerimg {
+  height: 200px !important;
+  width: 100%;
+  background-image: url("https://t.ly/UcsX");
+  background-size: contain;
+}
