@@ -57,7 +57,8 @@ export async function getStaticProps(context){
         categories,
         products
 
-      }
+      },
+      revalidate: 10  // todo: will change to more seconds later
     }
 
   

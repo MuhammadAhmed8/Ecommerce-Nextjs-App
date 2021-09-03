@@ -1,4 +1,6 @@
 import React from 'react';
+import NextLink from 'next/link';
+import { Link } from '@material-ui/core';
 
 export default function Navbar(props){
     return (
@@ -13,9 +15,9 @@ export default function Navbar(props){
             </div>
 
             <div className="navTop__logo">
-                <a href="index.html">
+                <NextLink href="index.html">
                     <img src="img/logo_header.png" alt="LOGO"/>
-                </a>
+                </NextLink>
             </div>
 
             <div className="navTop__item">
@@ -30,10 +32,13 @@ export default function Navbar(props){
                 <div className="cartBox">
 
                     <button className="cartBtn">
-                        <a href="#">
-                            <i className="uil uil-shopping-basket"></i>
-                            <span>Cart</span>
-                        </a>
+                        <NextLink href="/cart">
+                            <Link>
+                                <i className="uil uil-shopping-basket"></i>
+                                <span>Cart</span>
+                            </Link>
+                            
+                        </NextLink>
                     </button>
 
                     <div className="cartOverlay">
@@ -124,7 +129,11 @@ export default function Navbar(props){
 
             <ul>
                 <li><a href="trustRB.html">why trust us</a></li>
-                <li><a href="product.html">products</a></li>
+                <li>
+                    <NextLink href="/products">
+                    <Link>products</Link>
+                    </NextLink>
+                    </li>
                 <li><a href="ingredients.html">ingredients</a></li>
                 <li><a href="contact.html">contact us</a></li>
             </ul>

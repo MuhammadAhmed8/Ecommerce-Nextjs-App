@@ -14,7 +14,7 @@ import {
   Button,
 } from "@material-ui/core";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Gallery from "../../components/SingleProduct/Gallery";
 // import ProductDescription from "../../components/singleProduct/productDescription";
@@ -52,6 +52,9 @@ const useStyles = makeStyles(()=>(
 export default function ProductView({product}){
 
   const classes = useStyles();
+
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState(null);
   
   const onChange = (e) => {
     //this.setState({ ...this.state, [e.target.name]: e.target.value });
@@ -88,16 +91,23 @@ export default function ProductView({product}){
                     fullWidth
                   >
                     <InputLabel>Select</InputLabel>
+
                     <Select
-                      name="option"
-                      label="Select"
-                      value={5}
-                      onChange={(e) => this.onChange(e)}
+                      name="size"
+                      id="size"
+                      label="Size"
+                      value={size}
+                      required
+                      onChange={(e) => setSize(e.target.value)}
                     >
-                      <MenuItem value={"null"}>-- Please Select --</MenuItem>
-                      <MenuItem value={"10"}>10 Pads</MenuItem>
-                      <MenuItem value={"20"}>20 Pads</MenuItem>
-                      <MenuItem value={"50"}>50 Pads</MenuItem>
+                      {
+                        product.options[0].values.map(value => {
+                            return <MenuItem key={value.id} value={value.id}>{value.name}</MenuItem>
+                        })
+                        
+                      }
+            
+                      
                     </Select>
                   </FormControl>
                 </Grid>
@@ -110,8 +120,8 @@ export default function ProductView({product}){
                     label="Qty"
                     variant="outlined"
                     color="secondary"
-                    value={1}
-                    onChange={(e) => this.onChange(e)}
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
                     inputProps={{ min: 1, style: { textAlign: "center" } }}
                   />
                 </Grid>
@@ -135,7 +145,7 @@ export default function ProductView({product}){
 }
 
 
-export async function getServerSideProps(context){
+export async function getStaticProps(context){
 
     const {slug} = context.params;
 
@@ -146,15 +156,61 @@ export async function getServerSideProps(context){
 
     const product = productResponse.json;
 
-    console.log(product)
+    console.log(product, "Hii")
 
     return {
 
       props: {
         product: product.data[0]
-      }
+      },
+
+      revalidate: 1
 
     }   
+
+
+}
+
+export async function getStaticPaths(){
+
+  // const productsResponse = await api.ajax.products.list({
+  //   fields:'slug'
+  // })
+
+  // const products = productsResponse.json;
+
+  // console.log(products, "hhh")
+
+  // const paths = [];
+
+  // products.data.map(product => {
+  //   if(product.slug && product.slug !== ""){
+  //     paths.push({
+  //       params:{
+  //         slug: product.slug
+  //       }
+  //     })
+  //   }
+  // })
+
+  // console.log(paths, "paths")
+
+  return {
+    fallback:true,
+    paths: [
+      {
+        params: {
+          slug:'epidermal-growth-factor-serum'
+        }
+      },
+      {
+        params:{
+          slug:'daily-polypeptide-moisturizer'
+        }
+      }
+    ],
+    
+  }   
 
 
 }

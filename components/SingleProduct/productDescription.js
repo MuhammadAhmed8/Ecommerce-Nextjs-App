@@ -11,7 +11,11 @@ const useStyles = makeStyles(()=>(
             fontSize:"2.6rem"
         },
         detail: {
-            fontSize: '18px'
+            fontSize: '1rem',
+            color:"#575757",
+            lineHeight:1.5,
+            fontWeight: 400,
+            fontFamily: "'Helvetica', sans-serif"
         }
     }
 ))
@@ -25,20 +29,13 @@ export default function ProductDescription({product}){
         <>
         <Typography variant="h3">
                 {product.name}
-              </Typography>
-              <Typography variant="h3" className={classes.price}>
-                <b>${product.price.toFixed(2)}</b>
-              </Typography>
-              <Typography variant="body1" className={classes.detail} color="textSecondary">
-                Detoxify the skin with Rénova’s Professional Exfoliating Peeling
-                Pads. Skin Renewal Promised, New Found Confidence Guaranteed.
-                These Clinically Proven Professional Peel Pads gently promote
-                exfoliation, skin renewal, and boost the skins all over texture
-                and glow. A pH balanced, alcohol-free, Fragrance-free, and
-                Paraben-free solution to dull and tired skin. Banish skin
-                discoloration, acne, and dry skin flakes with Rénova’s 50 Pack
-                Professional Exfoliating Peel Pads
         </Typography>
+        <Typography variant="h3" className={classes.price}>
+            <b>${product.price.toFixed(2)}</b>
+        </Typography>
+             
+        <div className={classes.detail}
+            dangerouslySetInnerHTML={{ __html: (product?.description)}}/>
         </>
 
     )
