@@ -5,8 +5,12 @@ import CartItem from '../components/Cart/CartItem/CartItem';
 import OrderSummary from '../components/Cart/OrderSummary/OrderSummary';
 import CartStepper from '../components/Cart/CartStepper';
 import ShippingForm from '../components/Shipping/ShippingForm';
+import { useCartContext } from '../components/context/CartProvider';
 
 function Cart(props){
+
+    const [cart, setCart] = useCartContext();
+
 
     return (
         <>
@@ -28,9 +32,15 @@ function Cart(props){
                     
                 </Box>
                 <div>
-                    <CartItem></CartItem>
-                    <CartItem></CartItem>
-                    <CartItem></CartItem>
+                    {
+                        cart ? cart.items.map((item)=>{
+                            return <CartItem key={item.id} item={item} ></CartItem>
+                        }) :
+                        <p style={{marginBottom: 50, textAlign:'center'}} >
+                                No Items in your cart. Please add some!
+                        </p>
+                    }
+                 
                 </div>
 
                 <div>

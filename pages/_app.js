@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../utils/theme';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
+import {CartProvider} from '../components/context/CartProvider';
 
 
 export default function MyApp(props) {
@@ -25,10 +26,12 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-
-        </Layout>
+        <CartProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </CartProvider>
+        
       </ThemeProvider>
     </React.Fragment>
   );

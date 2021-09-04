@@ -22,6 +22,7 @@ import apiClient from "../../utils/api-client";
 import axios from 'axios';
 import config from '../../utils/config';
 import dynamic from 'next/dynamic'
+import AddToCart from "../../components/Cart/AddToCart";
 
 const ProductDescription = dynamic(
   () => import("../../components/singleProduct/productDescription"),
@@ -59,6 +60,17 @@ export default function ProductView({product}){
   const onChange = (e) => {
     //this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
+
+  useEffect(()=>{
+    async function fetchVariants(){
+     const variantsResponse = await api.products.variants.list(product.id);
+     const variants = variantsResponse.json;
+
+     console.log(variants, "variants");
+    }
+
+    fetchVariants();
+  })
 
   console.log(product)
 
@@ -101,8 +113,10 @@ export default function ProductView({product}){
                       onChange={(e) => setSize(e.target.value)}
                     >
                       {
-                        product.options[0].values.map(value => {
-                            return <MenuItem key={value.id} value={value.id}>{value.name}</MenuItem>
+                        product.variants.map(variant => {
+                            return <MenuItem key={variant.id} value={variant.id}>
+                              {product.options[0].values.find(v => v.id === variant.options[0].value_id).name}
+                              </MenuItem>
                         })
                         
                       }
@@ -127,13 +141,11 @@ export default function ProductView({product}){
                 </Grid>
               </Grid>
               <Box mb={5} />
-              <Button variant="contained" color="primary" size="large">
-                Add to cart
-              </Button>
+                  <AddToCart product={product} variantId={size} quantity={quantity}></AddToCart>
               <Box mb={5} />
-              <Button color="secondary" startIcon={<EqualizerIcon />}>
-                ADD TO COMPARE
-              </Button>
+                <Button color="secondary" startIcon={<EqualizerIcon />}>
+                  ADD TO COMPARE
+                </Button>
               <Box mb={5} />
             </Grid>
           </Grid>

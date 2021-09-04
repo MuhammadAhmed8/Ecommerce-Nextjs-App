@@ -11,8 +11,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import Image from 'next/image';
 // const useStyles = makeStyles((theme)=>({}))
 
-function CartItem(){
-
+function CartItem({item}){
 
     return (
         <>
@@ -21,11 +20,14 @@ function CartItem(){
             <CardContent className={styles.cartBagItem}>
                <div className={styles.cartItemContent}>
                     <div className = {styles.cartItemImage}>
-                        <img src="/img/wishList.png" alt="cart-item" />
+                        <img src={item.product_image[0].url} alt="cart-item" />
                     </div>
                     <div className={styles.cartBagItemText}>
-                        <Typography variant="h2" 
-                            className={styles.cartBagItemTextHeading}>Epidermal Growth Factor Serum</Typography>
+                        <Typography 
+                        variant="h2" 
+                        className={styles.cartBagItemTextHeading}>
+                            {item.name}
+                        </Typography>
                         <p>Cell Renewal Award-Winning</p>
                         <p>Anti-Aging Treatment for Timeless Skin</p>
                         <p>1.6 Oz. / 160 ml</p>
@@ -37,12 +39,12 @@ function CartItem(){
                 <div className={styles.cartBagItemCount}>
                 
                     <ExpandMoreIcon></ExpandMoreIcon>
-                    <input></input>
+                    <input value={item.quantity}></input>
                     <ExpandLessIcon></ExpandLessIcon>
                     
                 </div>
 
-                 <Typography>$120.00</Typography>   
+                 <Typography>{`$${item.price_total}`}</Typography>   
                  <ClearIcon></ClearIcon>
 
                </div>
