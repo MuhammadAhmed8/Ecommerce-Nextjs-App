@@ -1,36 +1,24 @@
 import React, { useEffect } from "react";
 import { Container, Grid, Box, Link } from "@material-ui/core";
-import ProductCard from "../components/ProductList/ProductCard";
 import FilterList from "../components/ProductList/FilterList";
 import apiClient from "../utils/api-client";
 import axios from 'axios';
 import config from '../utils/config';
 import NextLink from 'next/link';
+import ProductList from "../components/ProductList/ProductList";
 
 const api = apiClient();
 
 export default function Products(props){
 
     const {categories, products} = props;
-    console.log(products, categories)
+    console.log(categories, "Cat")
     return (
       <>
-        <FilterList />
+        <FilterList categories={categories}/>
         <Box mb={4} />
-        <Container maxWidth="md">
-          <Grid container spacing={1}>
-            {products.data.map((item,index)=>(
-               <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
-                 <NextLink href={`/products/${item.slug}`} key={item.id} passHref>
-                   <Link>
-                      <ProductCard product={item}/>
-                   </Link>
-
-                 </NextLink>
-             </Grid>
-            ))}
-           
-          </Grid>
+        <Container maxWidth="md">  
+          <ProductList products={products}></ProductList>   
         </Container>
         <Box mb={3} />
       </>

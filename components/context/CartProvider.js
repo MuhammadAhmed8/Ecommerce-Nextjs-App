@@ -7,7 +7,12 @@ export const CartContext = React.createContext([
 
 export function CartProvider(props){
 
-    const [cart, setCart] = useState(null);
+    const [cart, changeCart] = useState(null);
+
+    const setCart = (data)=>{
+        changeCart(data);
+        localStorage.setItem('reno-cart', JSON.stringify(data));
+    }
 
     useEffect(() => {
         

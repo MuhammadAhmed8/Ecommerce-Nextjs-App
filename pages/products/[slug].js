@@ -170,13 +170,20 @@ export async function getStaticProps(context){
 
     console.log(product, "Hii")
 
+    if(product.data.length < 1){
+      return {
+        notFound: true
+      }
+    }
+
     return {
 
       props: {
         product: product.data[0]
       },
 
-      revalidate: 1
+      revalidate: 1,
+
 
     }   
 
@@ -208,7 +215,7 @@ export async function getStaticPaths(){
   // console.log(paths, "paths")
 
   return {
-    fallback:true,
+    fallback:'blocking',
     paths: [
       {
         params: {

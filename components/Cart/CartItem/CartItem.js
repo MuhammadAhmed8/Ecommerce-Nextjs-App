@@ -9,9 +9,39 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ClearIcon from '@material-ui/icons/Clear';
 import Image from 'next/image';
-// const useStyles = makeStyles((theme)=>({}))
+import { useCartContext } from '../../context/CartProvider';
+import apiClient from "../../../utils/api-client";
+
+const api = apiClient();
 
 function CartItem({item}){
+
+    const [cart, setCart] = useCartContext();
+    const [quantity, setQuantity] = useState(item.quantity);
+
+    const updateCart = async (value)=>{
+        setQuantity(value);
+        const response = await api.ajax.cart.updateItem(item.id, {
+            quantity: value
+        });
+        const updatedCartData = response.json;
+        setCart(updatedCartData);
+    }
+
+    const incrementItem = async ()=>{
+        await updateCart(quantity + 1);
+    }
+
+    const decrementItem = async ()=>{
+        
+        await updateCart(quantity-1);
+    }
+
+    const deleteCartItem = async () => {
+        const response = await api.ajax.cart.deleteItem(item.id);
+        const updatedCart = response.json;
+        setCart(updatedCart);
+    };
 
     return (
         <>
@@ -38,14 +68,14 @@ function CartItem({item}){
                <div className={styles.cartItemActions}>
                 <div className={styles.cartBagItemCount}>
                 
-                    <ExpandMoreIcon></ExpandMoreIcon>
-                    <input value={item.quantity}></input>
-                    <ExpandLessIcon></ExpandLessIcon>
+                    <ExpandMoreIcon onClick={decrementItem} style={{cursor:'pointer'}}></ExpandMoreIcon>
+                    <input value={quantity} readOnly ></input>
+                    <ExpandLessIcon onClick={incrementItem} style={{cursor:'pointer'}}></ExpandLessIcon>
                     
                 </div>
 
                  <Typography>{`$${item.price_total}`}</Typography>   
-                 <ClearIcon></ClearIcon>
+                 <ClearIcon onClick={deleteCartItem} style={{cursor:'pointer'}}></ClearIcon>
 
                </div>
 

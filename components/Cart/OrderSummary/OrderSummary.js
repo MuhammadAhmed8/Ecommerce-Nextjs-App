@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Button, Card, CardContent, TextField, Typography} from '@material-ui/core';
 import useStyles from './orderSummaryStyles';
+import ApplyCoupon from '../../Discount/ApplyCoupon';
 
 
 function OrderSummary(){
@@ -11,7 +12,7 @@ function OrderSummary(){
         <>
         <Card style={{boxShadow:"none",marginBottom:18}}>
 
-            <CardContent className={styles.orderSummary} style={{padding: "25px 15px"}}>
+            <CardContent className={styles.orderSummary} style={{padding: "25px 0px"}}>
                 
                 <div className={styles.orderSummaryItem}>
                     <Typography variant="h5">Items</Typography>
@@ -29,26 +30,12 @@ function OrderSummary(){
 
                 <div className={styles.orderSummaryItem}>
                     <Typography variant="body1">Tax:</Typography>
-                    <Typography variant="body1" style={{textAlign:'end'}}>Tax will be calculated during checkout</Typography>
+                    <Typography variant="body2" style={{textAlign:'end'}}>Tax will be calculated during checkout</Typography>
 
                 </div>
 
                 <div className={styles.orderSummaryItem} style={{justifyContent:'flexStart', borderBottom:"none"}}>
-                    <TextField
-                        name="couponCode"
-                        style={{width:'74%', marginRight:"10px"}}
-                        variant="outlined"
-                        placeholder="RB20OFF"
-                        label="Promo Code"
-                    
-                    >
-                    </TextField>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                     >
-                        APPLY
-                    </Button>
+                    <ApplyCoupon/>
                 </div>
 
                 <div className={styles.orderSummaryItem}>
@@ -56,18 +43,7 @@ function OrderSummary(){
                     <Typography variant="h5">$140.00</Typography>
                 </div>
 
-                <Button
-                variant="contained"
-                color="secondary"
-                >
-                CHECKOUT
-                </Button>
-                <Button
-                variant="contained"
-                >
-                CONTINUE SHOPPING
-                </Button>
-
+                
 
             </CardContent>
         </Card>

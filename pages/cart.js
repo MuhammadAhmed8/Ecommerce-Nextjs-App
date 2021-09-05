@@ -6,11 +6,23 @@ import OrderSummary from '../components/Cart/OrderSummary/OrderSummary';
 import CartStepper from '../components/Cart/CartStepper';
 import ShippingForm from '../components/Shipping/ShippingForm';
 import { useCartContext } from '../components/context/CartProvider';
+import { useRouter } from 'next/dist/client/router';
 
 function Cart(props){
 
     const [cart, setCart] = useCartContext();
+    const router = useRouter();
 
+    const handleContinueShopping = (e)=>{
+        e.preventDefault();
+        router.push('/products')
+    }
+
+    const proceedToCheckout = (e)=>{
+        e.preventDefault();
+        router.push('/checkout/shipping');
+
+    }
 
     return (
         <>
@@ -24,7 +36,7 @@ function Cart(props){
                 <br></br>
             </Grid>
 
-            <Grid item xs={12} sm={8} md={8}> 
+            <Grid item xs={12} sm={12} md={8}> 
                 <Box style={{marginBottom:20, background:"#fff", padding:"8px 15px"}}>
                     <Typography variant="body1" style={{color:"#333"}}>
                             YOUR CART
@@ -43,13 +55,10 @@ function Cart(props){
                  
                 </div>
 
-                <div>
-                    <ShippingForm></ShippingForm>
-                </div>
 
             </Grid>
 
-            <Grid item xs={12} sm={4} md={4}>
+            <Grid item xs={12} sm={12} md={4}>
                 <Box style={{marginBottom:20, background:"#fff", padding:"8px 15px"}}>
                     <Typography variant="body1" style={{color:"#333"}}>
                             ORDER SUMMARY
@@ -58,6 +67,24 @@ function Cart(props){
                 </Box>
 
                 <OrderSummary></OrderSummary>
+                
+                <div style={{display:'flex', flexDirection:'column', padding:'0 15px',gap:"10px"}}>
+                    <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={proceedToCheckout}
+                    >
+                    CHECKOUT
+                    </Button>
+                    <Button
+                    variant="contained"
+                    onClick={handleContinueShopping}
+                    >
+                    CONTINUE SHOPPING
+                    </Button>
+                </div>
+                
+
             </Grid>
         </Grid>
         </Container>

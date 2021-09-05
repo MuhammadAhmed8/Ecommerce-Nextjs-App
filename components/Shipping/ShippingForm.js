@@ -1,6 +1,5 @@
 import React from 'react';
 import InputField from '../Ui/InputField';
-import {Form, Formik} from 'formik';
 import { Grid, makeStyles} from '@material-ui/core';
 
 const useStyles = makeStyles(()=>({
@@ -16,19 +15,13 @@ const useStyles = makeStyles(()=>({
 }),
 {index:1})
 
-export default function ShippingForm(props){
+export default function ShippingForm({formik}){
 
-    const classes = useStyles();
-
-    const handleSubmit = (values,action) => {
-
-    }   
+    const classes = useStyles(); 
 
     return (
         <>
-        <Formik onSubmit={handleSubmit}>
-        
-        <Form>
+    
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
                 <InputField
@@ -37,6 +30,10 @@ export default function ShippingForm(props){
                     label="First Name"
                     name="first_name"
                     id="first_name"
+                    value={formik.values.first_name}
+                    onChange={formik.handleChange}
+                    error={formik.touched.first_name && Boolean(formik.errors.first_name)}
+                    helperText={formik.touched.first_name && formik.errors.first_name}
                 />
             </Grid>
             
@@ -47,17 +44,38 @@ export default function ShippingForm(props){
                     label="Last Name"
                     name="last_name"
                     id="last_name"
+                    value={formik.values.last_name}
+                    onChange={formik.handleChange}
+                    error={formik.touched.last_name && Boolean(formik.errors.last_name)}
+                    helperText={formik.touched.last_name && formik.errors.last_name}
                 />
             </Grid>
             
+            <Grid item xs={12} md={12}>
+                <InputField
+                    className={classes.textField} 
+                    fullWidth
+                    label="Email"
+                    name="email"
+                    id="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                />
+            </Grid>
         
             <Grid item xs={12}>
                 <InputField 
                     className={classes.textField}
                     style={{width:"100%"}}
-                    label="Street Address"
-                    name="street_address"
-                    id="street_address"
+                    label="Address Line 1"
+                    name="address_line_1"
+                    id="address_line_1"
+                    value={formik.values.street_address}
+                    onChange={formik.handleChange}
+                    error={formik.touched.street_address && Boolean(formik.errors.street_address)}
+                    helperText={formik.touched.street_address && formik.errors.street_address}
                 />
             </Grid>
 
@@ -65,9 +83,13 @@ export default function ShippingForm(props){
                 <InputField 
                     className={classes.textField}
                     style={{width:"100%"}}
-                    label="Street Address"
-                    name="street_address"
-                    id="street_address"
+                    label="Address Line 2"
+                    name="address_line_2"
+                    id="address_line_2"
+                    value={formik.values.address_line_2}
+                    onChange={formik.handleChange}
+                    error={formik.touched.address_line_2 && Boolean(formik.errors.address_line_2)}
+                    helperText={formik.touched.address_line_2 && formik.errors.address_line_2}
                 />
             </Grid>
 
@@ -79,6 +101,10 @@ export default function ShippingForm(props){
                     label="City"
                     name="city"
                     id="city"
+                    value={formik.values.city}
+                    onChange={formik.handleChange}
+                    error={formik.touched.city && Boolean(formik.errors.city)}
+                    helperText={formik.touched.city && formik.errors.city}
                 />
             </Grid>
 
@@ -89,6 +115,10 @@ export default function ShippingForm(props){
                 label="Zip Code"
                 name="zip_code"
                 id="zip_code"
+                value={formik.values.zip_code}
+                onChange={formik.handleChange}
+                error={formik.touched.zip_code && Boolean(formik.errors.zip_code)}
+                helperText={formik.touched.zip_code && formik.errors.zip_code}
             />
             </Grid>
 
@@ -96,9 +126,13 @@ export default function ShippingForm(props){
             <InputField 
                 className={classes.textField}
                 fullWidth
-                label="Province"
-                name="province"
-                id="province"
+                label="State/Province"
+                name="state"
+                id="state"
+                value={formik.values.state}
+                onChange={formik.handleChange}
+                error={formik.touched.state && Boolean(formik.errors.state)}
+                helperText={formik.touched.state && formik.errors.state}
             />
             </Grid>
 
@@ -109,14 +143,15 @@ export default function ShippingForm(props){
                 label="Phone Number"
                 name="phone"
                 id="phone"
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                error={formik.touched.phone && Boolean(formik.errors.phone)}
+                helperText={formik.touched.phone && formik.errors.phone}
             />
             </Grid>
 
         </Grid>
 
-        </Form>
-
-        </Formik>
         </>
         
 

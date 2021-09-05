@@ -19,9 +19,7 @@ export default function AddToCart({product, variantId, quantity}){
 
         let cartJson = cartResponse.json;
         setCart(cartJson);
-        localStorage.setItem("reno-cart", JSON.stringify(cartJson));
 
-        console.log(cart);
     }
 
     return (
