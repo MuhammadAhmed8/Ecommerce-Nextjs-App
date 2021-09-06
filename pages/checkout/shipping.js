@@ -5,10 +5,15 @@ import OrderSummary from '../../components/Cart/OrderSummary/OrderSummary';
 import CartStepper from '../../components/Cart/CartStepper';
 import ShippingForm from '../../components/Shipping/ShippingForm';
 import {Form, Formik, useFormik} from 'formik';
+import apiClient from '../../utils/api-client';
+import { useRouter } from 'next/dist/client/router';
+
+const api = apiClient();
 
 function ShippingPage(props){
 
-    
+    const router = useRouter();
+
     const formik = useFormik({
         initialValues: {
             first_name: '',
@@ -19,10 +24,44 @@ function ShippingPage(props){
             city: '',
             zip_code: '',
             state: '',
-            phone: ''
+            phone: '',
+            billing_first_name: '',
+            billing_last_name: '',
+            billing_email: '',
+            billing_address_line_1: '',
+            billing_address_line_2: '',
+            billing_city: '',
+            billing_zip_code: '',
+            billing_state: '',
+            billing_phone: '',
         },
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: async (values) => {
+            try{
+                const response = await api.ajax.cart.update({
+                    email: values.email,
+                    first_name: values.first_name,
+                    last_name: values.last_name,
+                    mobile: values.phone,
+                    shipping_address:{
+                        address1: values.address_line_1,
+                        address2: values.address_line_2,
+                        city: values.city,
+                        phone: values.phone,
+                        postal_code: values.zip_code,
+                        state: values.state,
+                        full_name: `${values.first_name} ${values.last_name}`
+                    }
+                });
+
+                router.push('/checkout/payment');
+    
+            }
+            catch(e){
+                console.log('Shipping form update Error!')
+            }
+            
+            
+
         },
     });
       
