@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Grid, Paper, Card, Box, CardContent} from '@material-ui/core';
+import {Container, Grid, Paper, Card, Box, CardContent, Checkbox, FormControlLabel} from '@material-ui/core';
 import { IconButton, Typography, Button } from '@material-ui/core';
 import OrderSummary from '../../components/Cart/OrderSummary/OrderSummary';
 import CartStepper from '../../components/Cart/CartStepper';
@@ -7,6 +7,7 @@ import ShippingForm from '../../components/Shipping/ShippingForm';
 import {Form, Formik, useFormik} from 'formik';
 import apiClient from '../../utils/api-client';
 import { useRouter } from 'next/dist/client/router';
+import BillingForm from '../../components/Shipping/BillingForm';
 
 const api = apiClient();
 
@@ -34,6 +35,10 @@ function ShippingPage(props){
             billing_zip_code: '',
             billing_state: '',
             billing_phone: '',
+            password: '',
+            confirm_password:'',
+            create_account: false,
+            different_billing: false
         },
         onSubmit: async (values) => {
             try{
@@ -42,6 +47,10 @@ function ShippingPage(props){
                     first_name: values.first_name,
                     last_name: values.last_name,
                     mobile: values.phone,
+                    create_account: values.create_account,
+                    password: values.password,
+                    confirm_password: values.password,
+                    different_billing: values.different_billing,
                     shipping_address:{
                         address1: values.address_line_1,
                         address2: values.address_line_2,
@@ -50,6 +59,15 @@ function ShippingPage(props){
                         postal_code: values.zip_code,
                         state: values.state,
                         full_name: `${values.first_name} ${values.last_name}`
+                    },
+                    billing_address:{
+                        address1: values.billing_address_line_1,
+                        address2: values.billing_address_line_2,
+                        city: values.billing_city,
+                        phone: values.billing_phone,
+                        postal_code: values.billing_zip_code,
+                        state: values.billing_state,
+                        full_name: `${values.billing_first_name} ${values.billing_last_name}`
                     }
                 });
 
@@ -57,7 +75,7 @@ function ShippingPage(props){
     
             }
             catch(e){
-                console.log('Shipping form update Error!')
+                console.log('Shipping form update Error!',e)
             }
             
             
@@ -92,6 +110,28 @@ function ShippingPage(props){
                 <div style={{maxWidth:'730px'}}>
 
                     <ShippingForm formik={formik} ></ShippingForm>
+
+                    <Grid item xs={12}>
+
+                        <FormControlLabel
+                        control={
+                        <Checkbox
+                        value={formik.values.different_billing}
+                        onChange={formik.handleChange}
+                        error={formik.touched.different_billing && Boolean(formik.errors.different_billing)}
+                        helperText={formik.touched.different_billing && formik.errors.different_billing}
+                        name="different_billing"
+                        color="primary"
+                        />
+                        }
+                        label="Use a different billing address"
+                        />
+                    </Grid>
+                    <br></br>
+
+                    {formik.values.different_billing &&
+                         <BillingForm formik={formik}></BillingForm>
+                    }
                 </div>
 
             </Grid>

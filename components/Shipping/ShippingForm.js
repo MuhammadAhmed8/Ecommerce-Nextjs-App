@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from '../Ui/InputField';
-import { Grid, makeStyles} from '@material-ui/core';
+import { Grid, makeStyles, Checkbox, FormControlLabel} from '@material-ui/core';
 
 const useStyles = makeStyles(()=>({
 
@@ -72,10 +72,10 @@ export default function ShippingForm({formik}){
                     label="Address Line 1"
                     name="address_line_1"
                     id="address_line_1"
-                    value={formik.values.street_address}
+                    value={formik.values.address_line_1}
                     onChange={formik.handleChange}
-                    error={formik.touched.street_address && Boolean(formik.errors.street_address)}
-                    helperText={formik.touched.street_address && formik.errors.street_address}
+                    error={formik.touched.address_line_1 && Boolean(formik.errors.address_line_1)}
+                    helperText={formik.touched.address_line_1 && formik.errors.address_line_1}
                 />
             </Grid>
 
@@ -149,6 +149,57 @@ export default function ShippingForm({formik}){
                 helperText={formik.touched.phone && formik.errors.phone}
             />
             </Grid>
+
+            <Grid item xs={12}>
+
+            <FormControlLabel
+            control={
+            <Checkbox
+            value={formik.values.create_account}
+            onChange={formik.handleChange}
+            error={formik.touched.create_account && Boolean(formik.errors.create_account)}
+            helperText={formik.touched.create_account && formik.errors.create_account}
+            name="create_account"
+            color="primary"
+            />
+            }
+            label="Create Account (Optional)"
+            />
+            </Grid>
+            {                console.log(formik.values.create_account)
+}
+            {
+                formik.values.create_account &&
+            <>
+            <Grid item xs={12} md={6}>
+            <InputField 
+                className={classes.textField}
+                fullWidth
+                label="Password"
+                name="password"
+                id="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={formik.touched.password && Boolean(formik.errors.password)}
+                helperText={formik.touched.password && formik.errors.password}
+            />
+            </Grid>
+            <Grid item xs={12} md={6}>
+            <InputField 
+                className={classes.textField}
+                fullWidth
+                label="Confirm Password"
+                name="confirm_password"
+                id="confirm_password"
+                value={formik.values.confirm_password}
+                onChange={formik.handleChange}
+                error={formik.touched.confirm_assword && Boolean(formik.errors.confirm_password)}
+                helperText={formik.touched.confirm_password && formik.errors.confirm_password}
+            />
+            </Grid>
+            </>
+            }
+            
 
         </Grid>
 
