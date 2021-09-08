@@ -5,7 +5,7 @@ import { useCartContext } from '../context/CartProvider';
 
 const api = apiClient();
 
-export default function AddToCart({product, variantId, quantity}){
+export default function AddToCart({product, variantId, quantity, ...props}){
 
     const [cart, setCart] = useCartContext();
 
@@ -25,7 +25,7 @@ export default function AddToCart({product, variantId, quantity}){
     return (
         <Button 
             variant="contained"
-            color="primary" 
+            color= {props.color? props.color: "primary"} 
             size="large"
             onClick= {cartHandler}
             >

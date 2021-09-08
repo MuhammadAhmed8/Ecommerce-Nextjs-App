@@ -49,8 +49,7 @@ export default function YourPoints(props){
     return(
     <>
             <Card>
-                <CardHeader title="Your Points">
-                </CardHeader>
+                
                 <CardContent>
                     
                     <div className={styles.pointsContainer}>

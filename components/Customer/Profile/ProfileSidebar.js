@@ -1,4 +1,5 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid, Link, makeStyles } from "@material-ui/core";
+import NextLink from 'next/link';
 
 const useStyles = makeStyles(()=>(
     {
@@ -13,14 +14,11 @@ const useStyles = makeStyles(()=>(
             justifyContent:'center',
             alignItems: 'center',
             flexDirection:'column',
-            textAlign:'center'
-        },
-    
-        profile:{
+            textAlign:'center',
             padding: "20px",
             marginBottom: "30px"
-    
         },
+    
     
         portalSidebarList:{
             textAlign:'center',
@@ -38,13 +36,13 @@ const useStyles = makeStyles(()=>(
             }
         }
     }), {
-        index: 1
+        index: 2
     })
 
 export default function ProfileSidebar(){
     const styles = useStyles();
     return(
-    <>
+    <div style={{maxWidth:"400px"}}>
             <div className={styles.profile}>
                 <div style={{textAlign:"center"}}>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"
@@ -54,11 +52,43 @@ export default function ProfileSidebar(){
 
             </div>
             <ul className={styles.portalSidebarList}>
-                <li className={styles.active}><button>My Account</button></li>
-                <li><button>Order History</button></li>
-                <li><button>Points</button></li>
-                <li><button>Wishlist</button></li>
-                <li><button>Edit Profile</button></li>
+                <NextLink href="/customer/my-account">
+                    <Link>
+                        <li>
+                            My Account
+
+                        </li>
+                    </Link>
+                </NextLink>
+
+                <NextLink href="/customer/order-history">
+                    <Link>
+                        <li>
+                            Order History
+
+                        </li>
+                    </Link>
+                </NextLink>
+
+                <NextLink href="/customer/points">
+                    <Link>
+                        <li>
+                            Points
+
+                        </li>
+                    </Link>
+                </NextLink>
+
+                <NextLink href="/customer/wishlist">
+                    <Link>
+                        <li>
+                            Wishlist
+
+                        </li>
+                    </Link>
+                </NextLink>
+
+                
             </ul>
-    </>)
+    </div>)
 }
