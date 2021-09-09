@@ -3,6 +3,10 @@ import InputField from '../Ui/InputField';
 import { Button, Grid, makeStyles} from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
 import { useFormik } from 'formik';
+import config from "../../utils/config";
+import axios from 'axios';
+import { useAuth } from '../context/AuthProvider';
+import AuthService from './auth.service';
 
 const useStyles = makeStyles(()=>({
 
@@ -22,6 +26,7 @@ export default function LoginForm(){
     const classes = useStyles(); 
 
     const router = useRouter();
+    const [auth, authDispatch] = useAuth();
 
     const formik = useFormik({
         initialValues: {
@@ -31,8 +36,28 @@ export default function LoginForm(){
         onSubmit: async (values) => {
             try{
                 // call login api
+
+                axios.post(config.ajaxBase + "login", {
+                    email: values.email,
+                    password:values.password
+                })
+                .then(({data})=>{
+                    if(data.authenticated){
+                        
+                        AuthService.saveToken(data.jwtToken);
+                        authDispatch({
+                            type:"setAuthDetails",
+                            payload: {
+                                ...data.customer_settings
+                            }
+                        })
+
+                        router.push('/customer/my-account');
+
+                    }
+                    console.log(data)
+                })
                 
-                router.push('/checkout/payment');
     
             }
             catch(e){
@@ -47,6 +72,7 @@ export default function LoginForm(){
     return (
         <>
     
+        <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
             <Grid item xs={12}>
                 <InputField
@@ -88,6 +114,7 @@ export default function LoginForm(){
             </Grid>
 
         </Grid>
+        </form>
 
         
 

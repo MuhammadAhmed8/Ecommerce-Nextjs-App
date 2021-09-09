@@ -1,8 +1,12 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { Link } from '@material-ui/core';
+import { useAuth } from '../context/AuthProvider';
 
 export default function Navbar(props){
+
+    const [auth, authDispatch] = useAuth();
+
     return (
     
     <nav className="nav">
@@ -105,10 +109,22 @@ export default function Navbar(props){
                 </div>
 
                 <button>
-                    <a href="update_login.html">
-                        <i className="uil uil-user-circle"></i>
-                        <span>Login</span>
-                    </a>
+                    {auth.user === null ? (
+                    <NextLink href="/login">
+                        <Link>
+                            <i className="uil uil-user-circle"></i>
+                            <span>Login</span>
+                        </Link>
+                    </NextLink>)
+                    :
+                    (<NextLink href="/logout">
+                        <Link>
+                            <i className="uil uil-user-circle"></i>
+                            <span>Logout</span>
+                        </Link>
+                    </NextLink>)
+                }       
+                    
                 </button>
 
                 <button className="searchToggle">

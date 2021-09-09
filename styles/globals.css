@@ -235,7 +235,7 @@ img {
 
 .navTop__item .cartBox > button a i,
 .navTop__item > button a i {
-  font-size: 3rem;
+  font-size: 1rem;
 }
 
 .navTop__item .cartBox > button a span,
@@ -770,11 +770,11 @@ img {
 }
 
 .cartOverlay__content {
-  padding: 2.7rem 1.6rem 0 2rem;
+  padding: 18px;
 }
 
 .cartOverlay__heading {
-  font-size: 2.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 2.1rem;
 }
@@ -789,23 +789,23 @@ img {
 .cartOverlay__item--info {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 10px;
 }
 
 .cartOverlay__item--info img {
-  width: 6.5rem;
-  height: 6.9rem;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
 }
 
 .cartOverlay__item--name h3 a {
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 700;
   margin-bottom: 5px;
 }
 
 .cartOverlay__item--name p {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -823,29 +823,29 @@ img {
 }
 
 .cartOverlay__total h3 {
-  font-size: 2.2rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .cartOverlay__btn {
-  margin-top: 3.4rem;
-  margin-bottom: 3rem;
+  margin-top: 16px;
+  margin-bottom: 20px;
 }
 
 .cartOverlay__btn button {
   width: 100%;
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .cartOverlay__ship {
-  height: 5.8rem;
+  height: 70px;
   display: flex;
   align-items: center;
   gap: 2rem;
   background-color: #333;
   justify-content: center;
-  padding: 0 1.2rem;
+  padding: 1.2rem;
 }
 
 .cartOverlay__ship img {
@@ -855,7 +855,7 @@ img {
 }
 
 .cartOverlay__ship p {
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #fff;
   line-height: 1.8rem;

@@ -5,7 +5,9 @@ import OrderSummary from '../../components/Cart/OrderSummary/OrderSummary';
 import CartStepper from '../../components/Cart/CartStepper';
 import PaymentForm from '../../components/Payment/PaymentForm';
 import apiClient from '../../utils/api-client';
+import config from '../../utils/config';
 import { useRouter } from 'next/dist/client/router';
+import axios from 'axios';
 
 const api = apiClient();
 
@@ -21,8 +23,18 @@ export default function PaymentPage(props){
 
     const placeOrder = async (e)=>{
         e.preventDefault();
-        const response = await api.ajax.cart.checkout();
-        const order = response.json;
+        axios.defaults.withCredentials = true;
+        const response = await axios.put(config.ajaxBase + 'cart/checkout',null, {
+            headers:{
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("rht")}`,
+            },
+           
+        });
+
+        console.log(response, "thanks ")
+        
+        const order = response.data;
 
         if(!order.draft){
             alert("thanks for ur order")

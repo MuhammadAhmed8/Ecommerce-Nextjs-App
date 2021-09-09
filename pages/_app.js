@@ -7,6 +7,7 @@ import theme from '../utils/theme';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
 import {CartProvider} from '../components/context/CartProvider';
+import { AuthProvider } from '../components/context/AuthProvider';
 
 
 export default function MyApp(props) {
@@ -26,11 +27,13 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <CartProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </CartProvider>
+        </AuthProvider>
         
       </ThemeProvider>
     </React.Fragment>
