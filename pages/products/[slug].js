@@ -23,6 +23,11 @@ import axios from 'axios';
 import config from '../../utils/config';
 import dynamic from 'next/dynamic'
 import AddToCart from "../../components/Cart/AddToCart";
+import AttributeButton from "../../components/SingleProduct/AttributeButton";
+import Attribute from "../../components/SingleProduct/Attribute";
+import ReviewsContainer from "../../components/Reviews/ReviewsContainer";
+import MoreProducts from "../../components/MoreProducts/MoreProducts";
+import MoreProductsContainer from "../../components/MoreProducts/MoreProductsContainer";
 
 const ProductDescription = dynamic(
   () => import("../../components/singleProduct/productDescription"),
@@ -49,29 +54,30 @@ const useStyles = makeStyles(()=>(
     }
 ))
 
+const TABS = {
+  "BENEFITS": 1,
+  "USAGE": 2,
+  "INGREDIENTS": 3,
+  "REVIEWS": 4
+}
 
 export default function ProductView({product}){
 
   const classes = useStyles();
 
   const [quantity, setQuantity] = useState(1);
+  const [currentAttributeTab, setCurrentAttributeTab] = useState(TABS.INGREDIENTS)
   const [size, setSize] = useState(null);
   
   const onChange = (e) => {
     //this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
-  useEffect(()=>{
-    async function fetchVariants(){
-     const variantsResponse = await api.products.variants.list(product.id);
-     const variants = variantsResponse.json;
+  const changeAttributeTab = (tab) => {
+    setCurrentAttributeTab(tab);
+  }
 
-     console.log(variants, "variants");
-    }
-
-    fetchVariants();
-  })
-
+  
   console.log(product)
 
     return (
@@ -148,6 +154,84 @@ export default function ProductView({product}){
                 </Button>
               <Box mb={5} />
             </Grid>
+          </Grid>
+
+          <Grid container spacing={5}>
+            <Grid item xs={12}>
+              <div style={{display:'flex', justifyContent:'center', gap:"20px", alignItems:'center', flexWrap:'wrap'}}>
+                <AttributeButton onClick={()=>changeAttributeTab(TABS.BENEFITS)} active={currentAttributeTab === TABS.BENEFITS}> 
+                  Benefits 
+              </AttributeButton>
+                <AttributeButton onClick={()=>changeAttributeTab(TABS.USAGE)} active={currentAttributeTab === TABS.USAGE} >
+                  Usage 
+                </AttributeButton>
+                <AttributeButton onClick={()=>changeAttributeTab(TABS.INGREDIENTS)} active={currentAttributeTab === TABS.INGREDIENTS}> 
+                 Ingredients
+                </AttributeButton>
+                <AttributeButton onClick={()=>changeAttributeTab(TABS.REVIEWS)} active={currentAttributeTab === TABS.REVIEWS}>
+                  Reviews
+                </AttributeButton>
+              </div>
+                              
+            </Grid>
+
+            <Grid item xs={12} >
+              <div>
+
+                 {
+                  currentAttributeTab === TABS.BENEFITS && 
+                    <Attribute>
+                    <p>
+                    The powerful Rénova’s EGF Serum with Hyaluronic Acid & Alpha Arbin stimulates cells in the skin called fibroblasts, which produce collagen and elastin to thicken and tighten skin. Additionally, Reduces the Appearance of Fine Lines and Wrinkles. Improves Hydration and Prevents Hyperpigmentation.
+                    </p>
+                  </Attribute>
+                 
+                }
+
+                {
+                 currentAttributeTab === TABS.INGREDIENTS && 
+                  <Attribute>
+                  <p>
+                  <b>INGREDIENTS*:</b>
+                   AQUA/WATER/EAU, CETEARYL ISONONANOATE, GLYCERIN, ISONONYL ISONONANOATE, CAPRYLIC/CAPRIC TRIGLYCERIDE, PENTYLENE GLYCOL, PPG-3 MYRISTYL ETHER, ETHYLENE/PROPYLENE/STYRENE COPOLYMER, DIPSACUS SYLVESTRIS EXTRACT, BUTYLENE GLYCOL, PARFUM/FRAGRANCE, PHENOXYETHANOL, PROPANEDIOL, TROMETHAMINE, SILYBUM MARIANUM SEED OIL, CARBOMER, TOCOPHERYL ACETATE, ESCIN, CHENOPODIUM QUINOA SEED EXTRACT, ETHYLHEXYLGLYCERIN. SQUALANE. AVENA SATIVA (OAT) KERNEL EXTRACT. THEOBROMA CACAO (COCOA) EXTRACT. BUTYLENE/ETHYLENE...
+                  </p>
+
+                </Attribute>
+               
+                }
+
+                {
+                 currentAttributeTab === TABS.REVIEWS && 
+                  <Attribute>
+                    <ReviewsContainer/>
+                  </Attribute>
+               
+                } 
+
+                {
+                 currentAttributeTab === TABS.USAGE && 
+                  <Attribute>
+                 <p>
+                 Gently apply to the entire face, neck and décollete before bedtime. No need to avoid the eye area, this product is soothing enough to tackle crow’s feet and under-eye bags.
+
+                 For best results, give yourself a little love and apply twice daily.
+                 </p>
+                </Attribute>
+               
+                }
+                   
+
+
+              </div>
+              
+            </Grid>
+
+            <Grid item xs={12}>
+              
+              <MoreProductsContainer></MoreProductsContainer>
+
+            </Grid>
+            
           </Grid>
         </Container>
         <Box className={classes.bottommargin} />

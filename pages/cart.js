@@ -7,6 +7,7 @@ import CartStepper from '../components/Cart/CartStepper';
 import ShippingForm from '../components/Shipping/ShippingForm';
 import { useCartContext } from '../components/context/CartProvider';
 import { useRouter } from 'next/dist/client/router';
+import PopularProductsContainer from '../components/MoreProducts/PopularProductsContainer';
 
 function Cart(props){
 
@@ -85,6 +86,10 @@ function Cart(props){
                 </div>
                 
 
+            </Grid>
+
+            <Grid item xs={12}>
+                <PopularProductsContainer></PopularProductsContainer>
             </Grid>
         </Grid>
         </Container>

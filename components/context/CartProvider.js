@@ -18,7 +18,7 @@ export function CartProvider(props){
         
         if ( process.browser ) {
 
-			let cartData = localStorage.getItem( 'reno-cart' );
+			let cartData = localStorage.getItem('reno-cart');
             console.log('cart', cartData);
 			cartData = null !== cartData ? JSON.parse(cartData) : null;
 			setCart( cartData );

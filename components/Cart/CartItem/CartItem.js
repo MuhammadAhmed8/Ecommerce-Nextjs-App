@@ -2,7 +2,7 @@ import * as styles from './cartItem.module.css';
 
 import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card, CardContent, CardHeader, Typography} from '@material-ui/core';
+import {Card, CardContent, CardHeader, CircularProgress, LinearProgress, Typography} from '@material-ui/core';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
@@ -18,14 +18,17 @@ function CartItem({item}){
 
     const [cart, setCart] = useCartContext();
     const [quantity, setQuantity] = useState(item.quantity);
+    const [loading, setLoading] = useState(false);
 
     const updateCart = async (value)=>{
+        setLoading(true);
         setQuantity(value);
         const response = await api.ajax.cart.updateItem(item.id, {
             quantity: value
         });
-        const updatedCartData = response.json;
+        const updatedCartData = response.json.json;
         setCart(updatedCartData);
+        setLoading(false);
     }
 
     const incrementItem = async ()=>{
@@ -38,16 +41,19 @@ function CartItem({item}){
     }
 
     const deleteCartItem = async () => {
+        setLoading(true);
         const response = await api.ajax.cart.deleteItem(item.id);
-        const updatedCart = response.json;
+        const updatedCart = response.json.json;
         setCart(updatedCart);
+        setLoading(false);
     };
 
     return (
         <>
         <Card style={{boxShadow:"none",marginBottom:18}}>
-
+        {loading && <LinearProgress />}
             <CardContent className={styles.cartBagItem}>
+            
                <div className={styles.cartItemContent}>
                     <div className = {styles.cartItemImage}>
                         <img src={item.product_image[0].url} alt="cart-item" />
@@ -80,9 +86,11 @@ function CartItem({item}){
                </div>
 
 
-
+               
             </CardContent>
+            
         </Card>
+        
 
         </>
 

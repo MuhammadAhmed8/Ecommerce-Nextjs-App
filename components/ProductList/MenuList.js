@@ -34,11 +34,11 @@ function MenuList(props){
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          {
-            props.list.map((item) => {
+          {/* {
+            props.list && props.list.map((item) => {
               return <MenuItem id={item.id} key={item.id}>{item.name}</MenuItem>
             })
-          }
+          } */}
           
         </Menu>
       </>
