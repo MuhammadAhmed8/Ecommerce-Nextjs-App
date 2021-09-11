@@ -1,6 +1,7 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
 import YourPoints from "../../components/Customer/points/YourPoints";
+import useCustomer from "./hooks/useCustomer";
 
 
 const useStyles = makeStyles(()=>(
@@ -13,6 +14,8 @@ const useStyles = makeStyles(()=>(
 export default function MyAccount(props){
 
     const styles = useStyles();
+
+    useEffect()
 
     return (
         <div>

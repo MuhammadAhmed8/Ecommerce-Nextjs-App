@@ -1,5 +1,6 @@
 import { Grid, Link, makeStyles } from "@material-ui/core";
 import NextLink from 'next/link';
+import { useAuth } from "../../context/AuthProvider";
 
 const useStyles = makeStyles(()=>(
     {
@@ -41,6 +42,9 @@ const useStyles = makeStyles(()=>(
 
 export default function ProfileSidebar(){
     const styles = useStyles();
+
+    const [auth] = useAuth();
+
     return(
     <div style={{maxWidth:"400px"}}>
             <div className={styles.profile}>
@@ -48,7 +52,7 @@ export default function ProfileSidebar(){
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"
                         className={styles.image}></img>
                 </div>
-                <p style={{textAlign:'center'}}>JohnDoe</p>
+                <p style={{textAlign:'center'}}>{auth.user.full_name}</p>
 
             </div>
             <ul className={styles.portalSidebarList}>
