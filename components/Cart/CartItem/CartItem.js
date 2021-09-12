@@ -66,7 +66,7 @@ function CartItem({item}){
                         </Typography>
                         <p>Cell Renewal Award-Winning</p>
                         <p>Anti-Aging Treatment for Timeless Skin</p>
-                        <p>1.6 Oz. / 160 ml</p>
+                        <p>{item.variant_name}</p>
                     </div>
 
                </div>

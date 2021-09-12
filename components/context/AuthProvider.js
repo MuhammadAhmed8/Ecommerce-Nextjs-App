@@ -1,7 +1,7 @@
 import React, { useReducer, useContext, useEffect } from "react"
 
 // create the context
-export const AuthStateContext = React.createContext({})
+export const AuthStateContext = React.createContext([{}, ()=>{}])
 
 // set up initial state which is used in the below `AuthProvider` function
 const initialState = { user: null }
@@ -27,15 +27,23 @@ const reducer = (state, action) => {
 // and wrapped around the whole app, providing context to the whole app, and
 // is called each time this specific context is accessed (updated or retrieved)
 export const AuthProvider = ({ children }) => {
-  
-  let localState = null
-  if (typeof localStorage !== "undefined" && localStorage.getItem("user")) {
-    localState = JSON.parse(localStorage.getItem("user") || "")
-  }
-  const [state, dispatch] = useReducer(reducer, localState || initialState)
+    
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+
+    if (typeof localStorage !== "undefined" && localStorage.getItem("user")) {
+      let localState = JSON.parse(localStorage.getItem("user") || null)
+      dispatch({
+        type: 'setAuthDetails',
+        payload: localState
+      })
+    }
+
+  }, [])
 
    useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(state))
+        localStorage.setItem("user", JSON.stringify(state.user))
    }, [state])
   
 

@@ -15,7 +15,7 @@ export function CartProvider(props){
     }
 
     useEffect(() => {
-        
+        console.log("cart")
         if ( process.browser ) {
 
 			let cartData = localStorage.getItem('reno-cart');

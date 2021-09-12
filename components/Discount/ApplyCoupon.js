@@ -4,12 +4,18 @@ import InputField from "../Ui/InputField";
 import axios from 'axios';
 import config from '../../utils/config';
 import discounts from "cezerin-client/lib/api/orders/discounts";
+import apiClient from "../../utils/api-client";
+import { useCartContext } from "../context/CartProvider";
+
+const api = apiClient();
 
 export default function ApplyCoupon(props){
 
     const [coupon, setCoupon] = useState(null);
+    const [couponApplied, setCouponApplied] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [cart, setCart] = useCartContext();
 
     const handleClick = async ()=>{
         if(!coupon || coupon === ""){
@@ -18,14 +24,23 @@ export default function ApplyCoupon(props){
         setError(null);
         setLoading(true);
         try{
-            const response = await axios.post(config.ajaxBase + 'discounts/apply',{
+            const response = await axios.post(config.ajaxBase + 'discounts/check',{
                 couponCode: coupon,
             },{
                 withCredentials:true
             });
 
-            console.log(response)
-            
+            api.ajax.cart.update({
+                coupon
+            })
+            .then(({status,json})=>{
+                if(json.status === 200){
+                    setCart(json.json)
+                }
+                
+            })
+            .catch(e=>{})
+
         }
         catch(e){
             setError("Sorry, the coupon is invalid,or your order doesn't qualify for the discounts.");
@@ -37,14 +52,15 @@ export default function ApplyCoupon(props){
 
     return (
         <>
+        {!(cart && cart.coupon !== "") ? 
+        <div>
         <InputField
         name="couponCode"
-        style={{width:'70%', marginRight:"10px"}}
+        style={{width:'66%', marginRight:"10px"}}
         variant="outlined"
         placeholder="RB20OFF"
         label="Promo Code"
         value={coupon}
-        required
         onChange={(e)=>setCoupon(e.target.value)}
         helperText={error}
         />
@@ -59,10 +75,12 @@ export default function ApplyCoupon(props){
             height:54,
             letterSpacing: 3
            
-        }}
-        >
+        }}>
         {loading ? <CircularProgress style={{color:"white", width:20, height:20}} /> : "Apply" }
         </Button>
+        </div>:
+        <h3><b>Promo Applied: {cart.coupon}</b></h3>
+        }
 
         </>
     )

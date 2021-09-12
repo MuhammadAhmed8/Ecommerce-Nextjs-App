@@ -69,8 +69,9 @@ function Cart(props){
 
                 <OrderSummary></OrderSummary>
                 
-                <div style={{display:'flex', flexDirection:'column', padding:'0 15px',gap:"10px"}}>
+                <div style={{display:'flex', flexDirection:'column', padding:'0',gap:"10px"}}>
                     <Button
+                    size="large"
                     variant="contained"
                     color="secondary"
                     onClick={proceedToCheckout}
@@ -78,6 +79,7 @@ function Cart(props){
                     CHECKOUT
                     </Button>
                     <Button
+                    size="large"
                     variant="contained"
                     onClick={handleContinueShopping}
                     >

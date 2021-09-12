@@ -117,10 +117,10 @@ export default function Navbar(props){
                         </Link>
                     </NextLink>)
                     :
-                    (<NextLink href="/logout">
+                    (<NextLink href="/customer/my-account">
                         <Link>
                             <i className="uil uil-user-circle"></i>
-                            <span>Logout</span>
+                            <span>Account</span>
                         </Link>
                     </NextLink>)
                 }       

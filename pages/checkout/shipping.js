@@ -146,8 +146,9 @@ function ShippingPage(props){
 
                 <OrderSummary></OrderSummary>
 
-                <div style={{display:'flex', flexDirection:'column', padding:'0 15px',gap:"10px"}}>
+                <div style={{display:'flex', flexDirection:'column', padding:'0',gap:"10px"}}>
                     <Button
+                    size="large"
                     variant="contained"
                     color="secondary"
                     type="submit"

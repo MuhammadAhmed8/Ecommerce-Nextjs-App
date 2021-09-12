@@ -55,10 +55,10 @@ const useStyles = makeStyles(()=>(
 ))
 
 const TABS = {
-  "BENEFITS": 1,
-  "USAGE": 2,
-  "INGREDIENTS": 3,
-  "REVIEWS": 4
+  "BENEFITS": "Benefits",
+  "USAGE": 'Usage',
+  "INGREDIENTS": 'Ingredients',
+  "REVIEWS": 'Reviews'
 }
 
 export default function ProductView({product}){
@@ -95,7 +95,7 @@ export default function ProductView({product}){
 
             <Grid item xs={12} sm={6}>
 
-                <ProductDescription product={product}/>
+              <ProductDescription product={product}/>
               <Box mb={5} />
 
               <Grid container spacing={2}>
@@ -147,7 +147,7 @@ export default function ProductView({product}){
                 </Grid>
               </Grid>
               <Box mb={5} />
-                  <AddToCart product={product} variantId={size} quantity={quantity}></AddToCart>
+                  <AddToCart productId={product.id} variantId={size} quantity={quantity}></AddToCart>
               <Box mb={5} />
                 <Button color="secondary" startIcon={<EqualizerIcon />}>
                   ADD TO COMPARE
@@ -179,47 +179,22 @@ export default function ProductView({product}){
               <div>
 
                  {
-                  currentAttributeTab === TABS.BENEFITS && 
-                    <Attribute>
-                    <p>
-                    The powerful Rénova’s EGF Serum with Hyaluronic Acid & Alpha Arbin stimulates cells in the skin called fibroblasts, which produce collagen and elastin to thicken and tighten skin. Additionally, Reduces the Appearance of Fine Lines and Wrinkles. Improves Hydration and Prevents Hyperpigmentation.
-                    </p>
-                  </Attribute>
+                   product.attributes.map((attr, index)=>{
+                     return <Attribute active={currentAttributeTab === attr.name} key={index}>
+                              <p>
+                                {attr.value}
+                              </p>
+                            </Attribute>
+                   })
+                   
+                    
                  
                 }
 
-                {
-                 currentAttributeTab === TABS.INGREDIENTS && 
-                  <Attribute>
-                  <p>
-                  <b>INGREDIENTS*:</b>
-                   AQUA/WATER/EAU, CETEARYL ISONONANOATE, GLYCERIN, ISONONYL ISONONANOATE, CAPRYLIC/CAPRIC TRIGLYCERIDE, PENTYLENE GLYCOL, PPG-3 MYRISTYL ETHER, ETHYLENE/PROPYLENE/STYRENE COPOLYMER, DIPSACUS SYLVESTRIS EXTRACT, BUTYLENE GLYCOL, PARFUM/FRAGRANCE, PHENOXYETHANOL, PROPANEDIOL, TROMETHAMINE, SILYBUM MARIANUM SEED OIL, CARBOMER, TOCOPHERYL ACETATE, ESCIN, CHENOPODIUM QUINOA SEED EXTRACT, ETHYLHEXYLGLYCERIN. SQUALANE. AVENA SATIVA (OAT) KERNEL EXTRACT. THEOBROMA CACAO (COCOA) EXTRACT. BUTYLENE/ETHYLENE...
-                  </p>
-
+                <Attribute active={currentAttributeTab === TABS.REVIEWS}>
+                  <ReviewsContainer/>
                 </Attribute>
-               
-                }
-
-                {
-                 currentAttributeTab === TABS.REVIEWS && 
-                  <Attribute>
-                    <ReviewsContainer/>
-                  </Attribute>
-               
-                } 
-
-                {
-                 currentAttributeTab === TABS.USAGE && 
-                  <Attribute>
-                 <p>
-                 Gently apply to the entire face, neck and décollete before bedtime. No need to avoid the eye area, this product is soothing enough to tackle crow’s feet and under-eye bags.
-
-                 For best results, give yourself a little love and apply twice daily.
-                 </p>
-                </Attribute>
-               
-                }
-                   
+              
 
 
               </div>

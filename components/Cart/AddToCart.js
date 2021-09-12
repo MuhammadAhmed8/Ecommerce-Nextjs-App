@@ -5,7 +5,7 @@ import { useCartContext } from '../context/CartProvider';
 
 const api = apiClient();
 
-export default function AddToCart({product, variantId, quantity, ...props}){
+export default function AddToCart({productId, variantId, quantity, ...props}){
 
     const [cart, setCart] = useCartContext();
     const [loading, setLoading] = useState(false);
@@ -13,8 +13,9 @@ export default function AddToCart({product, variantId, quantity, ...props}){
     const cartHandler = async (e) => {
         
         setLoading(true);
+        try{
         const cartResponse = await api.ajax.cart.addItem({
-            product_id: product.id,
+            product_id: productId,
             variant_id: variantId,
             quantity: +quantity
         })
@@ -26,6 +27,10 @@ export default function AddToCart({product, variantId, quantity, ...props}){
         let cartJson = cartResponse.json.json;
         console.log(cartJson)
         setCart(cartJson);
+        }
+        catch(e){
+            console.log("Error: Failed to add to cart")
+        }
 
     }
 
@@ -34,16 +39,15 @@ export default function AddToCart({product, variantId, quantity, ...props}){
         
 
         <Button 
-            variant="contained"
+            variant="outlined"
             color= {props.color? props.color: "primary"} 
-            size="large"
-            style={{width: 150}}
+            style={{ boxShadow:'none', width:140}}
             onClick= {cartHandler}
             >
 
             
             {loading ? 
-                <CircularProgress style={{color:"white", width:20, height:20}} /> : "Add to cart"}
+                <CircularProgress style={{color:"#333", width:20, height:20}} /> : "Add to cart"}
         </Button>
         </>
     )

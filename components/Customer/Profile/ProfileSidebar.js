@@ -43,7 +43,7 @@ const useStyles = makeStyles(()=>(
 export default function ProfileSidebar(){
     const styles = useStyles();
 
-    const [auth] = useAuth();
+    const [auth, authDispatch] = useAuth();
 
     return(
     <div style={{maxWidth:"400px"}}>
@@ -52,7 +52,7 @@ export default function ProfileSidebar(){
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"
                         className={styles.image}></img>
                 </div>
-                <p style={{textAlign:'center'}}>{auth.user.full_name}</p>
+                <p style={{textAlign:'center'}}>{auth.user && auth.user.full_name}</p>
 
             </div>
             <ul className={styles.portalSidebarList}>
