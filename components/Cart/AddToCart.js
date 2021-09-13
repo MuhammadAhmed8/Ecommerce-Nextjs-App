@@ -43,11 +43,12 @@ export default function AddToCart({productId, variantId, quantity, ...props}){
             color= {props.color? props.color: "primary"} 
             style={{ boxShadow:'none', width:140}}
             onClick= {cartHandler}
+            {...props}
             >
 
             
             {loading ? 
-                <CircularProgress style={{color:"#333", width:20, height:20}} /> : "Add to cart"}
+                <CircularProgress style={{color:"#fff", width:20, height:20}} /> : "Add to cart"}
         </Button>
         </>
     )

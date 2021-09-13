@@ -18,7 +18,7 @@ function WishlistItem({item}){
             <CardContent className={styles.cartBagItem}>
                <div className={styles.cartItemContent}>
                     <div className = {styles.cartItemImage}>
-                        <img src={item.product_image[0].url} alt="cart-item" />
+                        <img src={`/images/products/${item._id}/${item.images[0].filename}`} alt="cart-item" />
                     </div>
                     <div className={styles.cartBagItemText}>
                         <Typography 
@@ -29,7 +29,7 @@ function WishlistItem({item}){
                         <p>Cell Renewal Award-Winning</p>
                         <p>Anti-Aging Treatment for Timeless Skin</p>
                         <p>1.6 Oz. / 160 ml</p>
-                        <Typography><b>{`$${item.price_total.toFixed(2)}`}</b></Typography>   
+                        <Typography><b>{`$${item.regular_price.toFixed(2)}`}</b></Typography>   
 
                     </div>
 
@@ -37,7 +37,7 @@ function WishlistItem({item}){
 
                <div className={styles.cartItemActions}>
                 
-                <AddToCart color="secondary"/>
+                <AddToCart color="secondary" productId={item._id} quantity={1}/>
                 <ClearIcon  style={{cursor:'pointer'}}></ClearIcon>
 
                </div>

@@ -28,6 +28,7 @@ import Attribute from "../../components/SingleProduct/Attribute";
 import ReviewsContainer from "../../components/Reviews/ReviewsContainer";
 import MoreProducts from "../../components/MoreProducts/MoreProducts";
 import MoreProductsContainer from "../../components/MoreProducts/MoreProductsContainer";
+import AddToWishlist from "../../components/Customer/Wishlist/AddtoWishlist";
 
 const ProductDescription = dynamic(
   () => import("../../components/singleProduct/productDescription"),
@@ -147,7 +148,8 @@ export default function ProductView({product}){
                 </Grid>
               </Grid>
               <Box mb={5} />
-                  <AddToCart productId={product.id} variantId={size} quantity={quantity}></AddToCart>
+                  <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained"></AddToCart>
+                  <AddToWishlist productId={product.id} style={{marginLeft:12}}></AddToWishlist>
               <Box mb={5} />
                 <Button color="secondary" startIcon={<EqualizerIcon />}>
                   ADD TO COMPARE
