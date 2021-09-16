@@ -13,7 +13,12 @@ export default function MoreProducts(props){
 
 MoreProducts.Title = function({children, ...props}){
     return (
-        <h2 style={{textAlign:'center', margin:"30px", fontSize:"1.7rem"}} {...props}>
+        <h2 style={{textAlign:'center', 
+                    margin:"30px", 
+                    fontSize:"2rem", 
+                    fontWeight: '300', 
+                    fontFamily: 'Times'}} 
+            {...props}>
             {children}
         </h2>
     )
