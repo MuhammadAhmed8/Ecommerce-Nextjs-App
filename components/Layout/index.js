@@ -4,9 +4,9 @@ import Navbar from './navbar';
 
 export default function Layout({children, ...props}){
     return (
-        <Container id="main" mx='auto' style={{maxWidth:"1200px"}}>
+        <Container id="main" mx='auto' style={{maxWidth:"100%",padding: '0px', margin: '0'}}>
             <Navbar/>
-            {children}
+                {children}
         </Container>
             
     )

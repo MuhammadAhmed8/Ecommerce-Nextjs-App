@@ -1,11 +1,11 @@
 import { Grid } from "@material-ui/core";
-import MoreProducts from "./MoreProducts";
+import MoreProducts from "../../MoreProducts/MoreProducts";
 
-export default function MoreProductsContainer(){
+export default function FavouriteProductsContainer(){
     return (
         <MoreProducts>
                 <MoreProducts.Title>
-                  RELATED PRODUCTS
+                  Favourite Products
                 </MoreProducts.Title>
                 
                 <MoreProducts.Body>
@@ -26,6 +26,6 @@ export default function MoreProductsContainer(){
                   
                 </MoreProducts.Body>
 
-        </MoreProducts> 
+              </MoreProducts> 
     )
 }
