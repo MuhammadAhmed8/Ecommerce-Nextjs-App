@@ -1,6 +1,7 @@
 
 export default function HistoryItem(props){
 
+    const {number, grand_total, tracking_number, date_placed} = props.data
 
     return (
         <div>
@@ -12,10 +13,10 @@ export default function HistoryItem(props){
             flexWrap:'wrap',
             padding:10
             }}>
-                <p><b>Order#:</b> 12345474</p>
-                <p><b>Order Placed:</b> 12345474</p>
-                <p><b>Total: </b> $12345474</p>
-                <p><b>Tracking#: </b> 12345474</p>
+                <p><b>Order#:</b> {number}</p>
+                <p><b>Order Placed:</b> {date_placed}</p>
+                <p><b>Total: </b> {`${grand_total}`}</p>
+                <p><b>Tracking#: </b> {tracking_number}</p>
             </div>
             <hr></hr>
             {props.children}

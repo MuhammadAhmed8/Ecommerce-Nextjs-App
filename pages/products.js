@@ -27,16 +27,18 @@ export default function Products(props){
 }
 
 
-export async function getStaticProps(context){
+export async function getServerSideProps(context){
 
     const response = await api.productCategories.list();
     const categories = response.json;
-
+    const {query} = context;
+  console.log(query,"query")
     const productsResponse = await api.ajax.products.list({
       limit: 10,
       offset:0,
       active:true,
-      discontinued:false
+      discontinued:false,
+      ...query
     });
     const products = productsResponse.json;
 
@@ -46,7 +48,6 @@ export async function getStaticProps(context){
         products
 
       },
-      revalidate: 10  // todo: will change to more seconds later
     }
 
   

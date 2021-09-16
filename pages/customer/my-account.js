@@ -1,6 +1,7 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
 import YourPoints from "../../components/Customer/points/YourPoints";
+import { useAuth } from "../../components/context/AuthProvider";
 
 
 const useStyles = makeStyles(()=>(
@@ -13,6 +14,7 @@ const useStyles = makeStyles(()=>(
 export default function MyAccount(props){
 
     const styles = useStyles();
+    const [auth, authDispatch] = useAuth();
 
     return (
         <div>

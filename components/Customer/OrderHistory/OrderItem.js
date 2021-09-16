@@ -25,9 +25,9 @@ function OrderItem({item}){
                         className={styles.cartBagItemTextHeading}>
                             {item.name}
                         </Typography>
-                        <p>Cell Renewal Award-Winning</p>
-                        <p>Anti-Aging Treatment for Timeless Skin</p>
-                        <p>1.6 Oz. / 160 ml</p>
+                        <p>
+                            {item.variant_name}
+                        </p>
                         <Typography><b>{`$${item.price_total.toFixed(2)}`}</b></Typography>   
 
                     </div>
@@ -36,7 +36,7 @@ function OrderItem({item}){
 
                <div className={styles.cartItemActions}>
                 
-                <AddToCart color="secondary"/>
+                <AddToCart color="secondary" productId={item.product_id} variantId={item.variant_id} quantity={item.quantity}/>
                 <ClearIcon  style={{cursor:'pointer'}}></ClearIcon>
 
                </div>

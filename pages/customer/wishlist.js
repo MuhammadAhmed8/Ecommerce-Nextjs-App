@@ -1,7 +1,9 @@
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Box, Grid, makeStyles, Typography,CircularProgress } from "@material-ui/core";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
 import WishlistItem from "../../components/Customer/Wishlist/WishlistItem";
-
+import config from "../../utils/config";
 
 const useStyles = makeStyles(()=>(
 {
@@ -13,6 +15,34 @@ const useStyles = makeStyles(()=>(
 export default function Wishlist(props){
 
     const styles = useStyles();
+    const [error, setError] = useState(null);
+    const [wishlist, setWishlist] = useState(null);
+
+    useEffect(()=>{
+
+        async function fetchWishList(){
+            try{
+                const {data} = await axios.get(config.ajaxBase + "customer/wishlist", {
+                    headers:{
+                        Authorization: "Bearer " + localStorage.getItem("rht")
+                    },
+                    withCredentials: true
+                });
+
+                if(data){
+                    setWishlist(data.wishlist);
+                }
+            }
+            catch(e){
+                setError("Error");
+            }
+            
+
+        }
+
+        fetchWishList();
+
+    }, [])
 
     return (
         <div>
@@ -25,26 +55,26 @@ export default function Wishlist(props){
                         <h2 style={{padding:"0 5px"}}>YOUR WISHLIST</h2>
                     </Box>
                     <br></br>
-                    <WishlistItem item={{
-                        name: 'Episoda Mosituerizer Gel',
-                        price_total: 150,
-                        product_image:[
-                            {
-                                url: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1576095586-tc-lrp-hydra-1576095580.jpg?crop=1xw:1xh;center,top&resize=480:*'
-                            }
-                        ]
-                    }}></WishlistItem>
+
+                    {
+                        <div style={{display:'flex', justifyContent:'center', alignItems:"center"}}>
+                        {!wishlist && <CircularProgress ></CircularProgress>}
+                        </div>
+                    }
+
+                    {
+                        
+                         
+                        wishlist && wishlist.length > 0 ? wishlist.map((item, index)=>{
+                            return <WishlistItem key={index} item={item}></WishlistItem>
+                        })
+                        : 
+                        <p>No Items in your wishlist</p>
+                    }
+                    
 
                     
-                    <WishlistItem item={{
-                        name: 'Episoda Mosituerizer Gel',
-                        price_total: 150,
-                        product_image:[
-                            {
-                                url: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1576095586-tc-lrp-hydra-1576095580.jpg?crop=1xw:1xh;center,top&resize=480:*'
-                            }
-                        ]
-                    }}></WishlistItem>
+                    
                 </Grid>
             </Grid>
                 
