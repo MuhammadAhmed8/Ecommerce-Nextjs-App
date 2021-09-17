@@ -1,6 +1,6 @@
 import HistoryItem from "../../components/Customer/OrderHistory/HistoryItem";
 import OrderItem from "../../components/Customer/OrderHistory/OrderItem";
-import { CircularProgress, Grid, makeStyles } from "@material-ui/core";
+import { Box, CircularProgress, Container, Grid, makeStyles } from "@material-ui/core";
 import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
 import axios from "axios";
 import config from "../../utils/config";
@@ -31,12 +31,16 @@ export default function History(props){
     }, [])
 
     return (
-        <div>
+        <Container spacing={100} style={{marginTop:60}}>
             <Grid container spacing={5}>
                 <Grid item xs={12} sm={4} md={3}>
                     <ProfileSidebar></ProfileSidebar>
                 </Grid>
                 <Grid item xs={12} sm={8} md={9} style={{minHeight:400}}>
+                
+                <Box style={{padding:10, marginBottom: 20, background:"#fff"}}>
+                        <h2 style={{padding:"0 5px"}}>Your Orders</h2>
+                </Box>
                 <div style={{display:'flex', justifyContent:'center', alignItems:"center"}}>
                     {loading && <CircularProgress ></CircularProgress>}
                 </div>
@@ -58,6 +62,6 @@ export default function History(props){
             </Grid>
                 
                 
-        </div>
+        </Container>
     )    
 }

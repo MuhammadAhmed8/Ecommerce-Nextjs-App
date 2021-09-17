@@ -1525,3 +1525,91 @@ img {
   margin: auto;
   margin-top: 0;
 }
+
+.progressBar {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.progressBar ul {
+  max-width: 650px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 5;
+}
+.progressBar ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressBar ul li.active span:first-child {
+  background: #333333;
+}
+
+.progressBar ul li span:first-child {
+  border-right: 9px solid #F0EEE7;
+  border-left: 9px solid #F0EEE7;
+  box-sizing: content-box;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #C4C4C4;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  font-family: "Helvetica", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progressBar ul li.active span:last-child {
+  font-weight: 700;
+}
+
+.progressBar ul li span:last-child {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+.progressBar ul li span {
+  display: block;
+}
+
+.progressBar ul::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  border-top: 1px dashed #333333;
+  width: calc(100% - 7rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+@media only screen and (max-width: 700px){
+  .progressBar {
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .progressBar ul li span:first-child {
+    width: 50px;
+    height: 50px;
+  }
+  .progressBar ul li span:last-child{
+    font-size: 16px;
+  }
+
+  .progressBar ul::before {
+    top: 1.9rem;
+}
+}

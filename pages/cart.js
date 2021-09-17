@@ -33,7 +33,7 @@ function Cart(props){
 
             <Grid item xs={12}> 
                 <br></br>
-                <CartStepper></CartStepper>
+                <CartStepper step={1}></CartStepper>
                 <br></br>
             </Grid>
 
@@ -69,7 +69,7 @@ function Cart(props){
 
                 <OrderSummary></OrderSummary>
                 
-                <div style={{display:'flex', flexDirection:'column', padding:'0',gap:"10px"}}>
+                <div style={{display:'flex', flexDirection:'column', padding:'18px',gap:"10px", background:"#fff"}}>
                     <Button
                     size="large"
                     variant="contained"

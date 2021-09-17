@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from '../Ui/InputField';
-import { Grid, makeStyles, Checkbox, FormControlLabel} from '@material-ui/core';
+import { Grid, makeStyles, Checkbox, FormControlLabel, MenuItem} from '@material-ui/core';
 
 const useStyles = makeStyles(()=>({
 
@@ -15,14 +15,14 @@ const useStyles = makeStyles(()=>({
 }),
 {index:1})
 
-export default function ShippingForm({formik}){
+export default function ShippingForm({formik, data}){
 
     const classes = useStyles(); 
 
     return (
         <>
     
-        <Grid container spacing={2}>
+        <Grid container spacing={2} >
             <Grid item xs={12} md={6}>
                 <InputField
                     className={classes.textField} 
@@ -150,7 +150,27 @@ export default function ShippingForm({formik}){
             />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item xs={12} md={6}>
+                <InputField
+                fullWidth
+                id="shipping_method"
+                select
+                label="Shipping Method"
+                name="shipping_method_id"
+                value={formik.values.shipping_method_id}
+                onChange={formik.handleChange}
+                helperText={formik.touched.shipping_method_id && formik.errors.shipping_method_id}
+            
+                >
+                {data.shippingMethods.map((option) => (
+                    <MenuItem key={option.id} value={option.id}>
+                    {option.name}
+                    </MenuItem>
+                ))}
+                </InputField>
+            </Grid>
+
+            {/* <Grid item xs={12}>
 
             <FormControlLabel
             control={
@@ -196,9 +216,11 @@ export default function ShippingForm({formik}){
                 error={formik.touched.confirm_assword && Boolean(formik.errors.confirm_password)}
                 helperText={formik.touched.confirm_password && formik.errors.confirm_password}
             />
-            </Grid>
-            </>
-            }
+            </Grid> */}
+
+           
+            
+            
             
 
         </Grid>

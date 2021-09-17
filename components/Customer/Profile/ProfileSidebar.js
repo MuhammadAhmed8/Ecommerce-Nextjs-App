@@ -46,7 +46,7 @@ export default function ProfileSidebar(){
     const [auth, authDispatch] = useAuth();
 
     return(
-    <div style={{maxWidth:"400px"}}>
+    <div style={{maxWidth:"450px", background:"#fff", padding:20}}>
             <div className={styles.profile}>
                 <div style={{textAlign:"center"}}>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png"

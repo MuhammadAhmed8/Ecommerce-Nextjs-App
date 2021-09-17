@@ -83,9 +83,8 @@ export default function ProductView({product}){
 
     return (
       <>
-        <Container>
-          <Box mb={5} />
-          <Typography variant="body1">
+        <div style={{background:"#fff", padding:"20px 5%"}}>
+          <Typography variant="body1" style={{padding: "30px 0 0 0"}}>
             Home -- {product.name}
           </Typography>
           <Box mb={5} />
@@ -210,7 +209,7 @@ export default function ProductView({product}){
             </Grid>
             
           </Grid>
-        </Container>
+        </div>
         <Box className={classes.bottommargin} />
       </>
     );

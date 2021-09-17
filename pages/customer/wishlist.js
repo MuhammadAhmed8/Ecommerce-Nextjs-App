@@ -1,4 +1,4 @@
-import { Box, Grid, makeStyles, Typography,CircularProgress } from "@material-ui/core";
+import { Box, Grid, makeStyles, Typography,CircularProgress, Container } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
@@ -45,14 +45,14 @@ export default function Wishlist(props){
     }, [])
 
     return (
-        <div>
+        <Container spacing={100} style={{marginTop:60}}>
             <Grid container spacing={5}>
                 <Grid item xs={12} sm={4} md={3}>
                     <ProfileSidebar></ProfileSidebar>
                 </Grid>
                 <Grid item xs={12} sm={8} md={9}>
-                    <Box>
-                        <h2 style={{padding:"0 5px"}}>YOUR WISHLIST</h2>
+                    <Box style={{padding:10, marginBottom: 20, background:"#fff"}}>
+                        <h2 style={{padding:"0 5px"}}>Your Wishlist</h2>
                     </Box>
                     <br></br>
 
@@ -79,6 +79,6 @@ export default function Wishlist(props){
             </Grid>
                 
                 
-        </div>
+        </Container>
     )    
 }

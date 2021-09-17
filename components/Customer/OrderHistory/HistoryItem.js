@@ -4,14 +4,14 @@ export default function HistoryItem(props){
     const {number, grand_total, tracking_number, date_placed} = props.data
 
     return (
-        <div>
+        <div style={{background:"#fff"}}>
             <div style={
             {
             display:'flex', 
             justifyContent:"space-around",
             alignItems:'center',
             flexWrap:'wrap',
-            padding:10
+            padding:10,
             }}>
                 <p><b>Order#:</b> {number}</p>
                 <p><b>Order Placed:</b> {date_placed}</p>

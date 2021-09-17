@@ -8,12 +8,25 @@ import {Form, Formik, useFormik} from 'formik';
 import apiClient from '../../utils/api-client';
 import { useRouter } from 'next/dist/client/router';
 import BillingForm from '../../components/Shipping/BillingForm';
+import { useCartContext } from '../../components/context/CartProvider';
 
 const api = apiClient();
 
 function ShippingPage(props){
 
     const router = useRouter();
+    const [shippingMethods,setShippingMethods] = useState([]);
+    const [cart, setCart] = useCartContext();
+
+
+    useEffect(()=>{
+        api.ajax.shippingMethods.list()
+        .then(({status, json})=>{
+            setShippingMethods(json);
+            
+        })
+        .catch(e=>{console.log(e)})
+    },[])
 
     const formik = useFormik({
         initialValues: {
@@ -38,7 +51,8 @@ function ShippingPage(props){
             password: '',
             confirm_password:'',
             create_account: false,
-            different_billing: false
+            different_billing: false,
+            shipping_method_id: null
         },
         onSubmit: async (values) => {
             try{
@@ -51,6 +65,7 @@ function ShippingPage(props){
                     password: values.password,
                     confirm_password: values.password,
                     different_billing: values.different_billing,
+                    shipping_method_id: values.shipping_method_id,
                     shipping_address:{
                         address1: values.address_line_1,
                         address2: values.address_line_2,
@@ -71,7 +86,11 @@ function ShippingPage(props){
                     }
                 });
 
+                setCart(response.json.json)
                 router.push('/checkout/payment');
+
+                
+
     
             }
             catch(e){
@@ -86,20 +105,20 @@ function ShippingPage(props){
 
     return (
         <>
-    
+        <Container spacing={100}>
         <form onSubmit={formik.handleSubmit}>
 
-        <Grid container spacing={2} m={5}>
+        <Grid container spacing="3">
 
             <Grid item xs={12}> 
                 <br></br>
-                <CartStepper activeStep={1}></CartStepper>
+                <CartStepper step={2}></CartStepper>
                 <br></br>
             </Grid>
 
 
             <Grid item xs={12} sm={12} md={8} style={{marginBottom:30}}> 
-                <Box style={{marginBottom:40, background:"#fff", padding:0}}>
+                <Box style={{marginBottom:20, background:"#fff", padding:15}}>
                     <Typography variant="body1" style={{color:"#333"}}>
                             SHIPPING INFORMATION
                     </Typography>
@@ -107,10 +126,10 @@ function ShippingPage(props){
                 </Box>
                 
 
-                <div style={{maxWidth:'730px'}}>
+                <div style={{background:"#fff", padding:20}}>
 
-                    <ShippingForm formik={formik} ></ShippingForm>
-
+                    <ShippingForm formik={formik} data={{shippingMethods}} ></ShippingForm>
+                    <br></br>
                     <Grid item xs={12}>
 
                         <FormControlLabel
@@ -137,7 +156,7 @@ function ShippingPage(props){
             </Grid>
 
             <Grid item xs={12} sm={12} md={4}>
-                <Box style={{marginBottom:20, background:"#fff", padding:0}}>
+                <Box style={{marginBottom:20, background:"#fff", padding:15}}>
                     <Typography variant="body1" style={{color:"#333"}}>
                             ORDER SUMMARY
                     </Typography>
@@ -146,7 +165,7 @@ function ShippingPage(props){
 
                 <OrderSummary></OrderSummary>
 
-                <div style={{display:'flex', flexDirection:'column', padding:'0',gap:"10px"}}>
+                <div style={{display:'flex', flexDirection:'column', padding:'20px',gap:"10px", background:"#fff"}}>
                     <Button
                     size="large"
                     variant="contained"
@@ -163,6 +182,7 @@ function ShippingPage(props){
 
         </Grid>
         </form>
+        </Container>
 
         </>
     )

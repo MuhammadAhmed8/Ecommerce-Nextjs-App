@@ -45,20 +45,20 @@ export default function PaymentPage(props){
 
     return (
         <>
-    
+        <Container spacing={100}>
         <form onSubmit={placeOrder}>
 
         <Grid container spacing={2} m={5}>
 
             <Grid item xs={12}> 
                 <br></br>
-                <CartStepper activeStep={1}></CartStepper>
+                <CartStepper step={3}></CartStepper>
                 <br></br>
             </Grid>
 
 
             <Grid item xs={12} sm={12} md={8} style={{marginBottom:30}}> 
-                <Box style={{marginBottom:40, background:"#fff", padding:0}}>
+                <Box style={{marginBottom:20, background:"#fff", padding:15}}>
                     <Typography variant="body1" style={{color:"#333"}}>
                             PAYMENT METHODS
                     </Typography>
@@ -66,7 +66,7 @@ export default function PaymentPage(props){
                 </Box>
                 
 
-                <div style={{maxWidth:'730px'}}>
+                <div style={{background:"#fff", padding:20}}>
 
                     <PaymentForm handleChange={handlePaymentMethod} value={paymentMethod}></PaymentForm>
                 </div>
@@ -74,7 +74,7 @@ export default function PaymentPage(props){
             </Grid>
 
             <Grid item xs={12} sm={12} md={4}>
-                <Box style={{marginBottom:20, background:"#fff", padding:0}}>
+                <Box style={{marginBottom:20, background:"#fff", padding:15}}>
                     <Typography variant="body1" style={{color:"#333"}}>
                             ORDER SUMMARY
                     </Typography>
@@ -83,7 +83,7 @@ export default function PaymentPage(props){
 
                 <OrderSummary></OrderSummary>
 
-                <div style={{display:'flex', flexDirection:'column', padding:'0',gap:"10px"}}>
+                <div style={{display:'flex', flexDirection:'column', padding:'20px',gap:"10px", background:"#fff"}}>
                     <Button
                     size="large"
                     variant="contained"
@@ -100,7 +100,7 @@ export default function PaymentPage(props){
 
         </Grid>
         </form>
-
+        </Container>
         </>
     )
 

@@ -1,4 +1,4 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { Container, Grid, makeStyles } from "@material-ui/core";
 import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
 import YourPoints from "../../components/Customer/points/YourPoints";
 import { useAuth } from "../../components/context/AuthProvider";
@@ -17,7 +17,7 @@ export default function MyAccount(props){
     const [auth, authDispatch] = useAuth();
 
     return (
-        <div>
+        <Container spacing={100} style={{marginTop:60}}>
             <Grid container spacing={5}>
                 <Grid item xs={12} sm={4} md={3}>
                     <ProfileSidebar></ProfileSidebar>
@@ -28,6 +28,6 @@ export default function MyAccount(props){
             </Grid>
                 
                 
-        </div>
+        </Container>
     )    
 }
