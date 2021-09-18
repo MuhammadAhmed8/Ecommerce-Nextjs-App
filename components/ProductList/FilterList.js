@@ -9,7 +9,7 @@ function FilterList({categories, ...props}){
     return (
       <>
         <div className="headerimg" />
-        <div className="filtertab">
+        <div className="filtertab" style={{background:"#fff"}}>
           <Container maxWidth="md">
             <Box>
               <MenuList name="Category" list={categories} filterField="slug" param="/category/"/>

@@ -59,7 +59,7 @@ export default function ContactSection(){
         <div className={classes.background}>
             <div className={classes.textCard}>
                 <h2 className={classes.heading}>Ask Us Anything</h2>
-                <p className={classes.text}>Whether you're seeking skincare advice, need help tracking an order, or just have a quick question,
+                <p className={classes.text}>Whether you are seeking skincare advice, need help tracking an order, or just have a quick question,
                     our Team is here to help!
                 </p>
                 <ColorButton className={classes.button}

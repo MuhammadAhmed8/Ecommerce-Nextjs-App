@@ -15,10 +15,12 @@ export default function Products(props){
     console.log(categories, "Cat")
     return (
       <>
+        <Container spacing={100} style={{marginTop: 50}}>  
+        
         <FilterList categories={categories}/>
-        <Box mb={4} />
-        <Container maxWidth="md">  
-          <ProductList products={products}></ProductList>   
+        <div style={{background:"#fff", marginTop:50, padding:35}}>
+        <ProductList products={products}></ProductList>   
+        </div>
         </Container>
         <Box mb={3} />
       </>

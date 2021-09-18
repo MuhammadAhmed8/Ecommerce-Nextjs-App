@@ -21,7 +21,7 @@ export default function Header(props){
 
     return(
         <header className={classes.root}>
-            <div class={classes.headerImage}> 
+            <div className={classes.headerImage}> 
                 <img src='img/header_bg.png'></img>
             </div>
 
@@ -29,3 +29,6 @@ export default function Header(props){
         </header>
     )
 }
+
+
+

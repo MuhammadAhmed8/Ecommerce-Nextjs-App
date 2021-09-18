@@ -2,6 +2,10 @@ import React from 'react';
 import NextLink from 'next/link';
 import { Link } from '@material-ui/core';
 import { useAuth } from '../context/AuthProvider';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 export default function Navbar(props){
 
@@ -15,20 +19,23 @@ export default function Navbar(props){
 
             <div className="navTop__search">
                 <input type="text" name="search" id="search"/>
-                <label htmlFor="search"><i className="uil uil-search"></i></label>
+                <label htmlFor="search"><i><SearchOutlinedIcon style={{top:4, left: -10, position:'relative'}}>
+                    </SearchOutlinedIcon></i></label>
             </div>
 
             <div className="navTop__logo">
-                <NextLink href="index.html">
-                    <img src="img/logo_header.png" alt="LOGO"/>
-                </NextLink>
+                <a href="index.html">
+                    <img src="/img/logo_header.png" alt="LOGO"/>
+                </a>
             </div>
 
             <div className="navTop__item">
 
                 <button>
                     <a href="my_accout.html">
-                        <i className="uil uil-heart"></i>
+                        <i className="uil uil-heart">
+                        <FavoriteBorderOutlinedIcon></FavoriteBorderOutlinedIcon>
+                        </i>
                         <span>Wishlist</span>
                     </a>
                 </button>
@@ -38,7 +45,9 @@ export default function Navbar(props){
                     <button className="cartBtn">
                         <NextLink href="/cart">
                             <Link>
-                                <i className="uil uil-shopping-basket"></i>
+                                <i className="uil uil-shopping-basket">
+                                    <ShoppingCartOutlinedIcon></ShoppingCartOutlinedIcon>
+                                </i>
                                 <span>Cart</span>
                             </Link>
                             
@@ -112,14 +121,18 @@ export default function Navbar(props){
                     {auth.user === null ? (
                     <NextLink href="/login">
                         <Link>
-                            <i className="uil uil-user-circle"></i>
+                            <i className="uil uil-user-circle">
+                                <AccountCircleOutlinedIcon></AccountCircleOutlinedIcon>
+                            </i>
                             <span>Login</span>
                         </Link>
                     </NextLink>)
                     :
                     (<NextLink href="/customer/my-account">
                         <Link>
-                            <i className="uil uil-user-circle"></i>
+                            <i className="uil uil-user-circle">
+                                <AccountCircleOutlinedIcon></AccountCircleOutlinedIcon>
+                            </i>
                             <span>Account</span>
                         </Link>
                     </NextLink>)

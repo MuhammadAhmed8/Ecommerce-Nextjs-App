@@ -160,9 +160,9 @@ img {
 
 .nav {
   background: #fff;
-  height: 13rem;
   width: 100%;
-  padding: 1rem 7.6rem;
+  height: 160px;
+  padding: 20px 50px 0 50px;
 }
 
 .navTop {
@@ -181,8 +181,8 @@ img {
 }
 
 .navTop__search input {
-  height: 4rem;
-  width: 24rem;
+  height: 40px;
+  width: 250px;
   border: 1px solid #333;
   border-radius: 50px;
   background-color: transparent;
@@ -199,7 +199,7 @@ img {
   top: 50%;
   left: 1.5rem;
   transform: translateY(-50%);
-  font-size: 2rem;
+  font-size: 16px;
 }
 
 .navTop__logo a {
@@ -222,7 +222,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4.7rem;
+  gap: 50px;
 }
 
 .navTop__item .cartBox > button a,
@@ -1143,9 +1143,9 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 10rem;
+    height: 50px;
     width: 100%;
-    padding: 5rem 2rem;
+    padding: 20px;
     background: #fff;
     top: 100%;
     left: 0;

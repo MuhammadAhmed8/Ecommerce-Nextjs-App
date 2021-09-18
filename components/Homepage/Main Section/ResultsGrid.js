@@ -48,7 +48,7 @@ export default function ResultsGrid(props){
                         {props.paragraph}
                     </p>
                     <ul className={classes.ingredients}>
-                        {props.advantages && props.advantages.map((a)=> <li>{a}</li>)}
+                        {props.advantages && props.advantages.map((a, i)=> <li key={i}>{a}</li>)}
                     </ul>
 
                 </Grid>

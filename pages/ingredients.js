@@ -31,7 +31,7 @@ export default function Ingredients() {
               description='Plant extracts that calm, protect and moisture-perfect'
               image='img/plant-based-1.png' 
             > 
-                <ul class="card__detail-list">
+                <ul className="card__detail-list">
                     <li>ALOE</li>
                     <li>ARNICA</li>
                     <li>AVOCADO</li>
@@ -42,7 +42,7 @@ export default function Ingredients() {
                     <li>MACADAMIA</li>
                     <li>FIELD MINT</li>
                 </ul>
-                <ul class="card__detail-list">
+                <ul className="card__detail-list">
                     <li>HAZELNUT</li>
                     <li>OLIVE TREE</li>
                     <li>BLUE ORCHID</li>
@@ -53,7 +53,7 @@ export default function Ingredients() {
                     <li>RASPBERRY</li>
                     <li>MIMOSA TENUIFLORA</li>
                 </ul>
-                <ul class="card__detail-list">
+                <ul className="card__detail-list">
                     <li>JOJOBA</li>
                     <li>SHEA</li>
                     <li>MANGO</li>
@@ -75,7 +75,7 @@ export default function Ingredients() {
               description='Botanical extracts that visibly firm, tone and fight wrinkles'
               image='img/plant-based-2.png' 
             > 
-                <ul class="card__detail-list">
+                <ul className="card__detail-list">
                     <li>BANANA</li>
                     <li>BOCOA</li>
                     <li>
@@ -88,7 +88,7 @@ export default function Ingredients() {
                     <li>SOURWOOD</li>
                     <li>MARITIME PINE</li>
                 </ul>
-                <ul class="card__detail-list">
+                <ul className="card__detail-list">
                     <li>WHITE TEA</li>
                     <li>LEMON THYME</li>
                     <li>
@@ -101,7 +101,7 @@ export default function Ingredients() {
                     <li>NARROW-LEAF PLANTAIN</li>
                     <li>GUARANA</li>
                 </ul>
-                <ul class="card__detail-list">
+                <ul className="card__detail-list">
                     <li>ZERUMBET GINGER</li>
 
                 </ul>
@@ -117,7 +117,7 @@ export default function Ingredients() {
               description='Nature’s secrets for a visibly firm, toned, steamlined silhouette'
               image='img/plant-based-3.png' 
             > 
-                <ul class="card__detail-list center ">
+                <ul className="card__detail-list center ">
                     <li>OATS </li>
                     <li>CANG ZHU </li>
                     <li>
@@ -140,7 +140,7 @@ export default function Ingredients() {
               description='Plants that promote even, radiant, youthful-looking skin'
               image='img/plant-based-4.png' 
             > 
-                <ul class="card__detail-list ">
+                <ul className="card__detail-list ">
                     <li>ACEROLA</li>
                     <li>ALBIZIA BAMBOO</li>
                     <li>
@@ -154,7 +154,7 @@ export default function Ingredients() {
                         CORNFLOWER</li>
                     <li>GINKGO BILOBA</li>
                 </ul>
-                <ul class="card__detail-list ">
+                <ul className="card__detail-list ">
                     <li>IRIS</li>
                     <li>PARSLEY</li>
                     <li>
