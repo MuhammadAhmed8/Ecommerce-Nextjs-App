@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthProvider';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import SearchBar from "../Search/SearchBar";
 
 export default function Navbar(props){
 
@@ -17,10 +17,8 @@ export default function Navbar(props){
 
         <div className="navTop">
 
-            <div className="navTop__search">
-                <input type="text" name="search" id="search"/>
-                <label htmlFor="search"><i><SearchOutlinedIcon style={{top:4, left: -10, position:'relative'}}>
-                    </SearchOutlinedIcon></i></label>
+            <div>
+                <SearchBar></SearchBar>
             </div>
 
             <div className="navTop__logo">
