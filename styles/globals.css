@@ -1,6 +1,4 @@
-@import url("/fonts/Helvetica/stylesheet.css");
-@import url("/fonts/times/stylesheet.css");
-@import url("/fonts/times-1/stylesheet.css");
+
 *,
 *::before,
 *::after {
@@ -1630,12 +1628,6 @@ img {
     border-color: #cbcfe2 #c8cee7 #c4c7d7;
     border-radius: 3px;
     background-color: #fff;
-    /* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdfdfd), color-stop(100%, #eceef4));
-    background-image: -webkit-linear-gradient(top, #fdfdfd, #eceef4);
-    background-image: -moz-linear-gradient(top, #fdfdfd, #eceef4);
-    background-image: -ms-linear-gradient(top, #fdfdfd, #eceef4);
-    background-image: -o-linear-gradient(top, #fdfdfd, #eceef4);
-    background-image: linear-gradient(top, #fdfdfd, #eceef4); */
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);

@@ -6,6 +6,7 @@ import axios from 'axios';
 import config from '../utils/config';
 import NextLink from 'next/link';
 import ProductList from "../components/ProductList/ProductList";
+import Header from "../components/Homepage/Header";
 
 const api = apiClient();
 
@@ -15,7 +16,8 @@ export default function Products(props){
     console.log(categories, "Cat")
     return (
       <>
-        <Container spacing={100} style={{marginTop: 50}}>  
+        <Header image="/img/products_banner.png"></Header>
+        <Container spacing={100} style={{marginTop: 30}}>  
         
         <FilterList categories={categories}/>
         <div style={{background:"#fff", marginTop:50, padding:35}}>

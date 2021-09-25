@@ -10,7 +10,7 @@ function FilterList({categories, ...props}){
       <>
         <div className="headerimg" />
         <div className="filtertab" style={{background:"#fff"}}>
-          <Container maxWidth="md">
+          <Container>
             <Box>
               <MenuList name="Category" list={categories} filterField="slug" param="/category/"/>
               <MenuList name="Skin Type" list={[
@@ -26,9 +26,9 @@ function FilterList({categories, ...props}){
               param="/products?attributes.Type=" 
               filterField="name"/>
             
-              <MenuList name="Age" type="slider" value={[0,100]} label="yrs"/>
+              {/* <MenuList name="Age" type="slider" value={[0,100]} label="yrs"/>
               <MenuList name="Price" list={categories} type="slider" 
-              value={[0,500]} min={0} max={500} label='$' query={["price_from"],["price_to"]} />
+              value={[0,500]} min={0} max={500} label='$' query={["price_from"],["price_to"]} /> */}
             </Box>
           </Container>
         </div>

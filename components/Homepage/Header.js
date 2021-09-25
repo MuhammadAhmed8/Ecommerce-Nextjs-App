@@ -22,7 +22,7 @@ export default function Header(props){
     return(
         <header className={classes.root}>
             <div className={classes.headerImage}> 
-                <img src='img/header_bg.png'></img>
+                <img src={props.image}></img>
             </div>
 
             <br></br>
