@@ -1,4 +1,6 @@
-
+@import url("./fonts/Helvetica/stylesheet.css");
+@import url("./fonts/times/stylesheet.css");
+@import url("./fonts/times-1/stylesheet.css");
 *,
 *::before,
 *::after {
@@ -1406,7 +1408,7 @@ img {
   line-height: 2rem;
   text-align: center;
   width: 60%;
-  font-weight: 300;
+  font-weight: 400;
   margin: auto;
 }
 
@@ -1435,7 +1437,7 @@ img {
   text-align: center;
   padding-bottom: 5rem;
   margin: auto;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .ind_gallery__content--img {
@@ -1719,3 +1721,41 @@ img {
 }
 
 .lt-ie9 .search input { line-height: 26px }
+
+@media only screen and (max-width: 960px){
+  .plant-based__text h1{
+    font-size: 2rem !important;
+    line-height: 2.7rem !important
+  }
+
+  .anti_aging__header{
+    font-size: 2rem !important;
+    line-height: 2.7rem;
+    
+  }
+
+  .plant-based__text p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+
+  .anti_aging__text {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    width: 85%;
+  }
+
+  .ind_gallery__content--img{
+    height: 340px !important;
+  }
+
+  .ind_gallery__content--img img{
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card__detail ul{
+  text-align: center;
+  margin: auto;
+}

@@ -155,14 +155,35 @@ export default function Navbar(props){
         <div className="navList">
 
             <ul>
-                <li><a href="trustRB.html">why trust us</a></li>
+                <li>
+                    <NextLink href="/trust">
+                        <Link>
+                            why trust us
+                        </Link>
+                    </NextLink>
+                </li>
                 <li>
                     <NextLink href="/products">
                     <Link>products</Link>
                     </NextLink>
-                    </li>
-                <li><a href="ingredients.html">ingredients</a></li>
-                <li><a href="contact.html">contact us</a></li>
+                </li>
+                    
+                <li>
+                    <NextLink href="/ingredients">
+                        <Link>
+                            Ingredients
+                        </Link>
+                    </NextLink>
+                </li>
+
+                <li>
+                    <NextLink href="/contact">
+                        <Link>
+                            contact
+                        </Link>
+                    </NextLink>
+                </li>
+
             </ul>
 
         </div>
