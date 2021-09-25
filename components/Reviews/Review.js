@@ -40,7 +40,7 @@ export default function Review(props){
         <div>
             <div className={classes.reviewBox}>
                 <div className={classes.reviewMeta}>
-                    <p style={{fontSize:"1.2rem"}}> John Doe</p>
+                    <Typography variant="h4" style={{fontSize:"1.4rem"}}> John Doe</Typography>
                     <Typography>
                     
                     {[...Array(4)].map((el, index) => {
@@ -77,9 +77,9 @@ export default function Review(props){
                 <div className={classes.reviewContent}>
                     
                     <div>
-                        <p>
+                        <Typography variant="body1">
                         Results with this moisturizer are almost immediate! Instant hydration and plumpness and better skin texture overnight. $70 is a lot to spend but it would be 5 stats otherwise
-                        </p>
+                        </Typography>
                     </div>
                 </div>
             </div>

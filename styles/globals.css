@@ -862,7 +862,6 @@ img {
 }
 
 .footer {
-  padding: 5rem 0;
   background: #E9E3E1;
 }
 
@@ -884,7 +883,7 @@ img {
 .footer a {
   font-size: 14px;
   font-weight: 400;
-  line-height: 2.5rem;
+  line-height: 1.7;
 }
 
 .footer__about p {

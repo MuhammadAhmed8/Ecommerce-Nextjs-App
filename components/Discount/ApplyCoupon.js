@@ -56,7 +56,7 @@ export default function ApplyCoupon(props){
         <div>
         <InputField
         name="couponCode"
-        style={{width:'66%', marginRight:"10px"}}
+        style={{width:'250px', marginRight:"10px"}}
         variant="outlined"
         placeholder="RB20OFF"
         label="Promo Code"
@@ -70,10 +70,10 @@ export default function ApplyCoupon(props){
         color="secondary"
         onClick={handleClick}
         style={{
-            width:'30%',
+            width:'110px',
             maxWidth: 150,
             height:54,
-            letterSpacing: 3
+            letterSpacing: 1.5
            
         }}>
         {loading ? <CircularProgress style={{color:"white", width:20, height:20}} /> : "Apply" }

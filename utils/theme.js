@@ -17,6 +17,30 @@ const theme = createTheme({
       default: '#fff',
     },
   },
+  props: {
+    MuiButton: {
+      disableElevation: true
+   }
+  },
+  typography: {
+    fontFamily: [
+      '"Helvetica"',
+      'sans-serif',
+    ].join(','),
+    allVariants: {
+      color: '#333'
+    }
+  }
 });
+
+theme.typography.h3 = {
+  fontSize: '2.5rem',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '1.8rem',
+ },
+  [theme.breakpoints.up('md')]: {
+     fontSize: '2.4rem',
+  },
+};
 
 export default theme;

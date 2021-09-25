@@ -5,7 +5,7 @@ export default function MoreProductsContainer(){
     return (
         <MoreProducts>
                 <MoreProducts.Title>
-                  RELATED PRODUCTS
+                  Related Products
                 </MoreProducts.Title>
                 
                 <MoreProducts.Body>

@@ -8,7 +8,6 @@ const useStyles = makeStyles(()=>(
             color:'#CA0303',
             margin: "40px 0",
             marginTop:"10px",
-            fontSize:"2.6rem"
         },
         detail: {
             fontSize: '1rem',

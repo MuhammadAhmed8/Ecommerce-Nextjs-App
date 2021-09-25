@@ -44,6 +44,7 @@
     color: #333 !important;
     margin-top: 8px !important;
     margin-bottom: 10px !important;
+    font-family: "Helvetica", sans-serif !important;
   }
 
 .cartBagItemText p {
@@ -67,6 +68,12 @@
   border-bottom-style: hidden;
   background-color:transparent;
   text-align: center;
+}
+
+.price{
+  font-weight: 700;
+  font-family: "Helvetica", sans-serif !important;
+  font-size: 1rem;
 }
 
 

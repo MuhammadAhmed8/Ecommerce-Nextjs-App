@@ -74,13 +74,13 @@ function CartItem({item}){
                <div className={styles.cartItemActions}>
                 <div className={styles.cartBagItemCount}>
                 
-                    <ExpandMoreIcon onClick={decrementItem} style={{cursor:'pointer'}}></ExpandMoreIcon>
-                    <input value={quantity} readOnly ></input>
-                    <ExpandLessIcon onClick={incrementItem} style={{cursor:'pointer'}}></ExpandLessIcon>
+                    <ExpandMoreIcon onClick={decrementItem} style={{cursor:'pointer'}} iconstyle={{fontSize:'1.7rem'}}></ExpandMoreIcon>
+                    <input value={quantity} readOnly style={{fontSize:"1rem"}}></input>
+                    <ExpandLessIcon onClick={incrementItem} style={{cursor:'pointer'}} iconstyle={{fontSize:'1rem'}}></ExpandLessIcon>
                     
                 </div>
 
-                 <Typography>{`$${item.price_total}`}</Typography>   
+                 <h2 className={styles.price}>{`$${item.price_total}`}</h2>   
                  <ClearIcon onClick={deleteCartItem} style={{cursor:'pointer'}}></ClearIcon>
 
                </div>

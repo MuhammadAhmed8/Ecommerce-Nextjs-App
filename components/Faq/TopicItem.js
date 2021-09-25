@@ -35,7 +35,7 @@ export default function TopicItem(props){
     return(
             <Grid item xs={12} sm={6} md={4}>
             <input style={{display: 'none'}} type="radio" name="selection"  />
-                    <label className={classes.label} for="radio-box">
+                    <label className={classes.label} htmlFor="radio-box">
                         <img className={classes.img} src={"img/" +  props.img} alt="icon" />
                         {props.title}
                     </label>

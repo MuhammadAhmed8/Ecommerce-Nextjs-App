@@ -31,7 +31,7 @@ function OrderSummary(){
             <CardContent className={styles.orderSummary} style={{padding: "20px 15px"}}>
                 
                 <div className={styles.orderSummaryItem}>
-                    <Typography variant="h5">Items</Typography>
+                    <Typography variant="h5" style={{fontWeight: 700}}>Items</Typography>
                     <Typography variant="h5">
                         {`$${getTotalItemsPrice()}`}
                         
@@ -58,7 +58,7 @@ function OrderSummary(){
                 </div>
 
                 <div className={styles.orderSummaryItem}>
-                    <Typography variant="h5">Estimated Total:</Typography>
+                    <Typography variant="h5" style={{fontWeight: 700}}>Estimated Total:</Typography>
                     <Typography variant="h5">$140.00</Typography>
                 </div>
 

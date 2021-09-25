@@ -29,7 +29,7 @@ function Cart(props){
         <>
     
         <Container spacing={100}>
-        <Grid container spacing={2} m={5}>
+        <Grid container spacing={2} m={5} style={{paddingBottom:50}}>
 
             <Grid item xs={12}> 
                 <br></br>
@@ -90,11 +90,16 @@ function Cart(props){
 
             </Grid>
 
-            <Grid item xs={12}>
-                <PopularProductsContainer></PopularProductsContainer>
-            </Grid>
         </Grid>
         </Container>
+                    
+        <div style={{background:"#fff", padding:"40px 0"}}>
+            <Container spacing={100}>
+            <PopularProductsContainer></PopularProductsContainer>
+            </Container>
+
+        </div>
+
         </>
     )
 

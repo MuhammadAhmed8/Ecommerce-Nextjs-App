@@ -99,7 +99,7 @@ export default function ProductView({product}){
               <Box mb={5} />
 
               <Grid container spacing={2}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={5}>
                   <FormControl
                     variant="outlined"
                     margin="normal"
@@ -131,7 +131,7 @@ export default function ProductView({product}){
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={2}>
                   <TextField
                     type="number"
                     name="qty"
@@ -147,7 +147,8 @@ export default function ProductView({product}){
                 </Grid>
               </Grid>
               <Box mb={5} />
-                  <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained"></AddToCart>
+                  <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained"
+                   style={{width:"230px", height:"54px", fontSize:19}}/>
                   <AddToWishlist productId={product.id} style={{marginLeft:12}}></AddToWishlist>
               <Box mb={5} />
                 <Button color="secondary" startIcon={<EqualizerIcon />}>
@@ -182,9 +183,9 @@ export default function ProductView({product}){
                  {
                    product.attributes.map((attr, index)=>{
                      return <Attribute active={currentAttributeTab === attr.name} key={index}>
-                              <p>
+                              <Typography variant="body1">
                                 {attr.value}
-                              </p>
+                              </Typography>
                             </Attribute>
                    })
                    

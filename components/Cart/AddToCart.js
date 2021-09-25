@@ -41,7 +41,7 @@ export default function AddToCart({productId, variantId, quantity, ...props}){
         <Button 
             variant="outlined"
             color= {props.color? props.color: "primary"} 
-            style={{ boxShadow:'none', width:140}}
+            style={{ boxShadow:'none', borderRadius:5}}
             onClick= {cartHandler}
             {...props}
             >

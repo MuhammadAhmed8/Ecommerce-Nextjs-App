@@ -15,7 +15,7 @@ MoreProducts.Title = function({children, ...props}){
     return (
         <h2 style={{textAlign:'center', 
                     margin:"30px", 
-                    fontSize:"2rem", 
+                    fontSize:"2.8rem", 
                     fontWeight: '300', 
                     fontFamily: 'Times'}} 
             {...props}>

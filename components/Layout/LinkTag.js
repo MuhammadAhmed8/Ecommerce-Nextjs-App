@@ -8,7 +8,7 @@ export default function LinkTag(props){
             <div style={{padding: '3px 0px'}}>
             <NextLink href={props.link}>
                 <Link>
-                    <span style={{color: '#000'}}>{props.title}</span>
+                    <span style={{color: 'rgba(0, 0, 0, 0.87)'}}>{props.title}</span>
                 </Link>
             </NextLink>
             </div>
