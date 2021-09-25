@@ -1,9 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import {Container, Grid, Paper, Card, Box, CardContent} from '@material-ui/core';
+import {Container, Grid, Box, makeStyles} from '@material-ui/core';
 import IngredientsCard from '../components/Ingredients/IngredientsCard';
 
+const useStyles = makeStyles((theme)=>({
+    space: {
+      padding: '20px 10%',
+        [theme.breakpoints.down('sm')]: {
+          padding: '20px 20px',
+        }
+    }
+}),
+{index:1})
 
 export default function Ingredients() {
+  const classes = useStyles(); 
+
     return (
       <div className='ingBody'> 
         <Box className='anti_aging' maxwidth="sm">
@@ -13,6 +23,7 @@ export default function Ingredients() {
           </p>
         </Box>
 
+        <div className={classes.space} >
         <Box className='plant-based__text' maxwidth="md">
           <h1 >Plant-Based Formulas<br></br> for Naturally Born Leaders</h1>
           <p>
@@ -31,7 +42,7 @@ export default function Ingredients() {
               description='Plant extracts that calm, protect and moisture-perfect'
               image='img/plant-based-1.png' 
             > 
-                <ul className="card__detail-list">
+                <ul >
                     <li>ALOE</li>
                     <li>ARNICA</li>
                     <li>AVOCADO</li>
@@ -42,7 +53,7 @@ export default function Ingredients() {
                     <li>MACADAMIA</li>
                     <li>FIELD MINT</li>
                 </ul>
-                <ul className="card__detail-list">
+                <ul >
                     <li>HAZELNUT</li>
                     <li>OLIVE TREE</li>
                     <li>BLUE ORCHID</li>
@@ -53,7 +64,7 @@ export default function Ingredients() {
                     <li>RASPBERRY</li>
                     <li>MIMOSA TENUIFLORA</li>
                 </ul>
-                <ul className="card__detail-list">
+                <ul >
                     <li>JOJOBA</li>
                     <li>SHEA</li>
                     <li>MANGO</li>
@@ -75,7 +86,7 @@ export default function Ingredients() {
               description='Botanical extracts that visibly firm, tone and fight wrinkles'
               image='img/plant-based-2.png' 
             > 
-                <ul className="card__detail-list">
+                <ul >
                     <li>BANANA</li>
                     <li>BOCOA</li>
                     <li>
@@ -88,7 +99,7 @@ export default function Ingredients() {
                     <li>SOURWOOD</li>
                     <li>MARITIME PINE</li>
                 </ul>
-                <ul className="card__detail-list">
+                <ul >
                     <li>WHITE TEA</li>
                     <li>LEMON THYME</li>
                     <li>
@@ -101,7 +112,7 @@ export default function Ingredients() {
                     <li>NARROW-LEAF PLANTAIN</li>
                     <li>GUARANA</li>
                 </ul>
-                <ul className="card__detail-list">
+                <ul >
                     <li>ZERUMBET GINGER</li>
 
                 </ul>
@@ -117,7 +128,7 @@ export default function Ingredients() {
               description='Nature’s secrets for a visibly firm, toned, steamlined silhouette'
               image='img/plant-based-3.png' 
             > 
-                <ul className="card__detail-list center ">
+                <ul >
                     <li>OATS </li>
                     <li>CANG ZHU </li>
                     <li>
@@ -140,7 +151,7 @@ export default function Ingredients() {
               description='Plants that promote even, radiant, youthful-looking skin'
               image='img/plant-based-4.png' 
             > 
-                <ul className="card__detail-list ">
+                <ul >
                     <li>ACEROLA</li>
                     <li>ALBIZIA BAMBOO</li>
                     <li>
@@ -154,7 +165,7 @@ export default function Ingredients() {
                         CORNFLOWER</li>
                     <li>GINKGO BILOBA</li>
                 </ul>
-                <ul className="card__detail-list ">
+                <ul >
                     <li>IRIS</li>
                     <li>PARSLEY</li>
                     <li>
@@ -169,6 +180,7 @@ export default function Ingredients() {
           </Grid>
 
         </Grid>
+        </div>
 
       </div>  
     )
