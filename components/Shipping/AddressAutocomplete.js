@@ -16,7 +16,7 @@ export default function AddressAutocomplete() {
   return (
     <div>
       <Head>
-        <script src={"https://maps.googleapis.com/maps/api/js?key="+{GOOGLE_MAP_API}+"&libraries=places"}></script>
+        {/* <script src={"https://maps.googleapis.com/maps/api/js?key="+{GOOGLE_MAP_API}+"&libraries=places"}></script> */}
       </Head>
       <PlacesAutocomplete
         value={address}
