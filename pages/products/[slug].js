@@ -29,11 +29,11 @@ import ReviewsContainer from "../../components/Reviews/ReviewsContainer";
 import MoreProducts from "../../components/MoreProducts/MoreProducts";
 import MoreProductsContainer from "../../components/MoreProducts/MoreProductsContainer";
 import AddToWishlist from "../../components/Customer/Wishlist/AddtoWishlist";
-
-const ProductDescription = dynamic(
-  () => import("../../components/SingleProduct/ProductDescription"),
-  { ssr: false }
-)
+import ProductDescription from "../../components/SingleProduct/ProductDescription";
+// const ProductDescription = dynamic(
+//   () => import("../../components/SingleProduct/ProductDescription"),
+//   { ssr: false }
+// )
 
 const api = apiClient();
 
