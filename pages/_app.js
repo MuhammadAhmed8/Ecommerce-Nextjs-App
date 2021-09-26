@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../utils/theme';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import '../styles/globals.css';
 import {CartProvider} from '../components/context/CartProvider';
 import { AuthProvider } from '../components/context/AuthProvider';

@@ -1,7 +1,8 @@
 import { Box, Container } from '@material-ui/core';
 import React from 'react';
-// import Navbar from './Navbar';
-// import Footer from './Footer';
+
+import Footer from './Footer';
+import Navbar from './Navbar';
 
 export default function Layout({children, ...props}){
     return (
@@ -9,9 +10,9 @@ export default function Layout({children, ...props}){
             <Box style={{textAlign:"center", padding:15}}>
             Free 2-3 Day Shipping With Any $50+ Order | Save 20% On 3 Items With Code: RENOVA20
             </Box>
-            {/* <Navbar/> */}
+            <Navbar></Navbar>
                 {children}
-            {/* <Footer /> */}
+            <Footer></Footer>
         </Container>
             
     )
