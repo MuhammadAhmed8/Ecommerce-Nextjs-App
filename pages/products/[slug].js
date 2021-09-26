@@ -17,7 +17,6 @@ import EqualizerIcon from "@material-ui/icons/Equalizer";
 import React, { useState, useEffect } from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Gallery from "../../components/SingleProduct/Gallery";
-// import ProductDescription from "../../components/singleProduct/productDescription";
 import apiClient from "../../utils/api-client";
 import axios from 'axios';
 import config from '../../utils/config';
@@ -29,7 +28,7 @@ import ReviewsContainer from "../../components/Reviews/ReviewsContainer";
 import MoreProducts from "../../components/MoreProducts/MoreProducts";
 import MoreProductsContainer from "../../components/MoreProducts/MoreProductsContainer";
 import AddToWishlist from "../../components/Customer/Wishlist/AddtoWishlist";
-import ProductDescription from "../../components/SingleProduct/ProductDescription";
+// import ProductDescription from "../../components/SingleProduct/ProductDescription";
 // const ProductDescription = dynamic(
 //   () => import("../../components/SingleProduct/ProductDescription"),
 //   { ssr: false }
@@ -95,7 +94,7 @@ export default function ProductView({product}){
 
             <Grid item xs={12} sm={6}>
 
-              <ProductDescription product={product}/>
+              {/* <ProductDescription product={product}/> */}
               <Box mb={5} />
 
               <Grid container spacing={2}>
