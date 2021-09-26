@@ -1,7 +1,7 @@
 import HistoryItem from "../../components/Customer/OrderHistory/HistoryItem";
 import OrderItem from "../../components/Customer/OrderHistory/OrderItem";
 import { Box, CircularProgress, Container, Grid, makeStyles } from "@material-ui/core";
-import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
+// import ProfileSidebar from "../../components/Customer/Profile/ProfileSidebar";
 import axios from "axios";
 import config from "../../utils/config";
 import { useEffect, useState } from "react";
@@ -34,7 +34,7 @@ export default function History(props){
         <Container spacing={100} style={{marginTop:60}}>
             <Grid container spacing={5}>
                 <Grid item xs={12} sm={4} md={3}>
-                    <ProfileSidebar></ProfileSidebar>
+                    {/* <ProfileSidebar></ProfileSidebar> */}
                 </Grid>
                 <Grid item xs={12} sm={8} md={9} style={{minHeight:400}}>
                 
