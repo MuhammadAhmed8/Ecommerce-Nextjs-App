@@ -31,7 +31,7 @@ import MoreProductsContainer from "../../components/MoreProducts/MoreProductsCon
 import AddToWishlist from "../../components/Customer/Wishlist/AddtoWishlist";
 
 const ProductDescription = dynamic(
-  () => import("../../components/singleProduct/productDescription"),
+  () => import("../../components/SingleProduct/ProductDescription"),
   { ssr: false }
 )
 
