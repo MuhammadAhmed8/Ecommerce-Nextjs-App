@@ -1,7 +1,7 @@
 import { Box, Container } from '@material-ui/core';
 import React from 'react';
 import Navbar from './Navbar';
-import Footer from './Footer';
+// import Footer from './Footer';
 
 export default function Layout({children, ...props}){
     return (
@@ -11,7 +11,7 @@ export default function Layout({children, ...props}){
             </Box>
             <Navbar/>
                 {children}
-            <Footer />
+            {/* <Footer /> */}
         </Container>
             
     )
