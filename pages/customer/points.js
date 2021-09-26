@@ -1,5 +1,5 @@
 import { Box, Container, Grid, makeStyles } from "@material-ui/core";
-// import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
+import ProfileSidebar from "../../components/Customer/Profile/ProfileSidebar";
 import YourPoints from "../../components/Customer/Points/YourPoints";
 import PointsHistory from "../../components/Customer/Points/PointsHistory";
 
@@ -19,7 +19,7 @@ export default function Points(props){
         <Container spacing={100} style={{marginTop:60}}>
             <Grid container spacing={5}>
                 <Grid item xs={12} sm={4} md={3}>
-                    {/* <ProfileSidebar></ProfileSidebar> */}
+                    <ProfileSidebar></ProfileSidebar>
                 </Grid>
                 <Grid item xs={12} sm={8} md={9}>
                     <Box style={{padding:10, marginBottom: 20, background:"#fff"}}>

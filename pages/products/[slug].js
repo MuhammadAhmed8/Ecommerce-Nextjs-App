@@ -29,10 +29,10 @@ import MoreProducts from "../../components/MoreProducts/MoreProducts";
 import MoreProductsContainer from "../../components/MoreProducts/MoreProductsContainer";
 import AddToWishlist from "../../components/Customer/Wishlist/AddtoWishlist";
 // import ProductDescription from "../../components/SingleProduct/ProductDescription";
-// const ProductDescription = dynamic(
-//   () => import("../../components/SingleProduct/ProductDescription"),
-//   { ssr: false }
-// )
+const ProductDescription = dynamic(
+  () => import("../../components/SingleProduct/ProductDescription"),
+  { ssr: false }
+)
 
 const api = apiClient();
 
@@ -94,7 +94,7 @@ export default function ProductView({product}){
 
             <Grid item xs={12} sm={6}>
 
-              {/* <ProductDescription product={product}/> */}
+              <ProductDescription product={product}/>
               <Box mb={5} />
 
               <Grid container spacing={2}>

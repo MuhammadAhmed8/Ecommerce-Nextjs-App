@@ -4,7 +4,7 @@ module.exports = (phase, { defaultConfig }) => {
      */
     const nextConfig = {
       /* config options here */
-      webpack5: false 
+      webpack5: true 
     }
     return nextConfig
   }

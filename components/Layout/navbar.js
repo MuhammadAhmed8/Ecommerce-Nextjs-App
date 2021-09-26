@@ -143,10 +143,10 @@ export default function Navbar(props){
                     <i className="uil uil-times cross"></i>
                 </button>
 
-                <button className="navToggle">
+                {/* <button className="navToggle">
                     <i className="uil uil-bars menu"></i>
                     <i className="uil uil-times cross"></i>
-                </button>
+                </button> */}
 
             </div>
 
