@@ -1,6 +1,6 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
 // import ProfileSidebar from "../../components/Customer/profile/ProfileSidebar";
-import YourPoints from "../../components/Customer/points/YourPoints";
+import YourPoints from "../../components/Customer/Points/YourPoints";
 import { useAuth } from "../../components/context/AuthProvider";
 
 
