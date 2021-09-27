@@ -88,7 +88,7 @@ export default function MainSection(props){
                 <br></br>
                 <br></br>
 
-            <Grid className={classes.resultGrid} container spacing={5}>
+            <Grid className={classes.resultGrid} container spacing={2}>
                 <Grid item xs={12} sm={6} >
                 <ResultsGrid 
                     img = 'img/result_ (1).png'
@@ -149,7 +149,7 @@ export default function MainSection(props){
             </ColorButton>
 
             <br></br><br></br>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
                 <ImageGrid img='fav_1.png' />
                 <ImageGrid img='fav_2.png' />
                 <ImageGrid img='fav_3.png' />
