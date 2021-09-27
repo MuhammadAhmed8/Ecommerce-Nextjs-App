@@ -15,7 +15,7 @@ export default function ServiceGridContainer(){
     const classes = useStyles(); 
 
     return(
-        <Grid className={classes.serviceGrid} container spacing={3}>
+        <Grid className={classes.serviceGrid} container spacing={2}>
                 <ServiceGrid 
                     img='check_icon.svg'
                     text='30 Days Guarantee'
