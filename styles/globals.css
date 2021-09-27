@@ -1759,7 +1759,12 @@ img {
   margin: auto;
 }
 
-.MuiGrid-spacing-xs-2{
+.MuiGrid-spacing-xs-1,
+.MuiGrid-spacing-xs-2,
+.MuiGrid-spacing-xs-3,
+.MuiGrid-spacing-xs-4,
+.MuiGrid-spacing-xs-5,
+.MuiGrid-spacing-xs-10{
   margin: 0px !important;
   width: auto !important;
 }
