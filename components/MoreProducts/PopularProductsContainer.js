@@ -5,7 +5,7 @@ export default function PopularProductsContainer(){
     return (
         <MoreProducts>
                 <MoreProducts.Title>
-                  Looking for more?
+                  Looking For More?
                 </MoreProducts.Title>
                 
                 <MoreProducts.Body>

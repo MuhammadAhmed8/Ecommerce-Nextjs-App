@@ -8,6 +8,7 @@ import ShippingForm from '../components/Shipping/ShippingForm';
 import { useCartContext } from '../components/context/CartProvider';
 import { useRouter } from 'next/dist/client/router';
 import PopularProductsContainer from '../components/MoreProducts/PopularProductsContainer';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function Cart(props){
 
@@ -25,11 +26,14 @@ function Cart(props){
 
     }
 
+    const largeScreen = useMediaQuery(theme => theme.breakpoints.up('md'));
+
+
     return (
         <>
     
-        <Container spacing={100}>
-        <Grid container spacing={2} m={5} style={{paddingBottom:50}}>
+        <Container disableGutters={true}>
+        <Grid container direction={largeScreen ? "row": "column"} spacing={2} style={{paddingBottom:50}}>
 
             <Grid item xs={12}> 
                 <br></br>

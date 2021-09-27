@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import MoreProducts from "./MoreProducts";
 
 export default function MoreProductsContainer(){
@@ -9,7 +9,8 @@ export default function MoreProductsContainer(){
                 </MoreProducts.Title>
                 
                 <MoreProducts.Body>
-                  <Grid container spacing={3}>
+                  <Container>
+                  <Grid spacing={3} container>
                     <Grid item xs={12} sm={6} md={3}>
                       <MoreProducts.Item/>
                     </Grid>
@@ -23,6 +24,7 @@ export default function MoreProductsContainer(){
                       <MoreProducts.Item/>
                     </Grid>
                   </Grid>
+                  </Container>
                   
                 </MoreProducts.Body>
 

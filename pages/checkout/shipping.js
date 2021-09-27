@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Grid, Paper, Card, Box, CardContent, Checkbox, FormControlLabel} from '@material-ui/core';
+import {Container, Grid, Paper, Card, Box, CardContent, Checkbox, FormControlLabel, useMediaQuery} from '@material-ui/core';
 import { IconButton, Typography, Button } from '@material-ui/core';
 import OrderSummary from '../../components/Cart/OrderSummary/OrderSummary';
 import CartStepper from '../../components/Cart/CartStepper';
@@ -17,6 +17,7 @@ function ShippingPage(props){
     const router = useRouter();
     const [shippingMethods,setShippingMethods] = useState([]);
     const [cart, setCart] = useCartContext();
+    const largeScreen = useMediaQuery(theme => theme.breakpoints.up('md'));
 
 
     useEffect(()=>{
@@ -105,10 +106,10 @@ function ShippingPage(props){
 
     return (
         <>
-        <Container spacing={100}>
+        <Container  disableGutters={true}>
         <form onSubmit={formik.handleSubmit}>
 
-        <Grid container spacing="3">
+        <Grid container spacing={2} direction={largeScreen ? "row": "column"}>
 
             <Grid item xs={12}> 
                 <br></br>

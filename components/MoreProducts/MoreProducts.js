@@ -1,5 +1,7 @@
 /* eslint-disable react/display-name */
 
+import { Typography } from "@material-ui/core"
+
 export default function MoreProducts(props){
 
     return (
@@ -13,14 +15,15 @@ export default function MoreProducts(props){
 
 MoreProducts.Title = function({children, ...props}){
     return (
-        <h2 style={{textAlign:'center', 
+        <Typography variant="h3" 
+                    style={{textAlign:'center', 
                     margin:"30px", 
-                    fontSize:"2.8rem", 
                     fontWeight: '300', 
-                    fontFamily: 'Times'}} 
+                    fontFamily: 'Times'}}
+
             {...props}>
             {children}
-        </h2>
+       </Typography>
     )
 }
 

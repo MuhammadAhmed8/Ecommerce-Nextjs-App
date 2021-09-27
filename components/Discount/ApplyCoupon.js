@@ -53,10 +53,10 @@ export default function ApplyCoupon(props){
     return (
         <>
         {!(cart && cart.coupon !== "") ? 
-        <div>
+        <div style={{flexGrow:1}}>
         <InputField
         name="couponCode"
-        style={{width:'250px', marginRight:"10px"}}
+        style={{width:"65%", marginRight:"10px"}}
         variant="outlined"
         placeholder="RB20OFF"
         label="Promo Code"
@@ -70,7 +70,7 @@ export default function ApplyCoupon(props){
         color="secondary"
         onClick={handleClick}
         style={{
-            width:'110px',
+            width:"30%",
             maxWidth: 150,
             height:54,
             letterSpacing: 1.5

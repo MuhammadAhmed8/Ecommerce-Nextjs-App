@@ -10,8 +10,11 @@ import {
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import { useMediaQuery } from 'react-responsive'
 
 export default function ProductCard(props){
+
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
     const {product} = props;
 
@@ -23,19 +26,19 @@ export default function ProductCard(props){
           <div className={styles.rectangle}>Earn 39.95 Reward Points</div>
           <CardMedia image={product.images[0].url} className={styles.productimg}/>
           <CardContent>
-            <Typography variant="subtitle1" className={styles.producttitle}>
+            <h3 className={styles.producttitle}>
               {product.name}
-            </Typography>
-            <Typography variant="body1" className={styles.productprice} component="p">
+            </h3>
+            <p className={styles.productprice}>
               ${product.price}
-            </Typography>
+            </p>
             {[...Array(rate)].map((el, index) => {
               return (
                 <>
                   <StarIcon
                     className={styles.starcolor}
                     key={index}
-                    fontSize="small"
+                    fontSize={isTabletOrMobile ? "small": "medium"}
                   />
                 </>
               );
@@ -46,7 +49,7 @@ export default function ProductCard(props){
                   <StarBorderIcon
                     className={styles.starcolor}
                     key={index}
-                    fontSize="small"
+                    fontSize={isTabletOrMobile ? "small": "medium"}
                   />
                 </>
               );

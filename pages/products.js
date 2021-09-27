@@ -20,11 +20,12 @@ export default function Products(props){
         <Container spacing={100} style={{marginTop: 30}}>  
         
         <FilterList categories={categories}/>
-        <div style={{background:"#fff", marginTop:50, padding:35}}>
-        <ProductList products={products}></ProductList>   
-        </div>
         </Container>
-        <Box mb={3} />
+        <div style={{background:"#fff", marginTop:50, padding: "50px 0"}}>
+        <Container>
+        <ProductList products={products}></ProductList>   
+        </Container>
+        </div>
       </>
     );
   

@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Select, InputLabel, MenuItem, FormControl } from "@material-ui/core";
+import { Grid, makeStyles, Select, InputLabel, MenuItem, FormControl, Container } from "@material-ui/core";
 import { useState } from "react";
 import InputField from "../components/Ui/InputField";
 import RedButton from "../components/Ui/RedButton";
@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     root: {
         backgroundColor: '#fff',
         textAlign: 'center',
-        padding: '0% 15%'
+        padding: '30px 0'
     },
 }),
 {index:1})
@@ -28,6 +28,7 @@ export default function Contact(){
         <>
         <Video src='img/contact video.mp4' type='video/mp4' />
         <div className={classes.root}>
+            <Container maxWidth="md">
             <TitleHeading>
                 Contact Us
             </TitleHeading>
@@ -125,6 +126,7 @@ export default function Contact(){
                 </RedButton>
             </div>
             <br />
+            </Container>
         </div>
         </>
     )

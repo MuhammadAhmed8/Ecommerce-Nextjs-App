@@ -33,6 +33,16 @@ const theme = createTheme({
   }
 });
 
+theme.typography.h2 = {
+  fontSize: '3rem',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '2.4rem',
+ },
+  [theme.breakpoints.up('md')]: {
+     fontSize: '3rem',
+  },
+};
+
 theme.typography.h3 = {
   fontSize: '2.5rem',
   [theme.breakpoints.up('xs')]: {
@@ -40,6 +50,16 @@ theme.typography.h3 = {
  },
   [theme.breakpoints.up('md')]: {
      fontSize: '2.4rem',
+  },
+};
+
+theme.typography.h5 = {
+  fontSize: '1.4rem',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '1.2rem',
+ },
+  [theme.breakpoints.up('md')]: {
+     fontSize: '1.4rem',
   },
 };
 

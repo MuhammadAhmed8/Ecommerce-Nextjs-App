@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 export default function ProductList({products}){
 
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={5}>
         {
             products.data.map((item,index)=>(
                <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
@@ -17,6 +17,7 @@ export default function ProductList({products}){
                  </NextLink>
                 </Grid>
             ))
+            
         }
         </Grid>
 
