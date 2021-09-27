@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from '../components/Ui/InputField';
-import { Grid, makeStyles, Typography, Button} from '@material-ui/core';
+import { Grid, makeStyles, Typography, Button, Container} from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
 import { useFormik } from 'formik';
 import LoginForm from '../components/Auth/LoginForm';
@@ -30,13 +30,14 @@ export default function Login(){
 
     
     return (
-        <>
+        <Container style={{padding:"50px 0"}}>
         <h1 className={classes.title}>My Account Log In</h1>
         <br></br>
         <br></br>
-        <Grid container spacing={10}>
+        
+        <Grid container>
             
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} style={{padding:30}}>
                 <h3 className={classes.heading}>Returning Customer</h3>
                 <Typography variant="body2">If you already have an account, please enter
                 your email and password below</Typography>
@@ -45,13 +46,13 @@ export default function Login(){
                 <LoginForm></LoginForm>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} style={{padding:30}}>
                 <NewCustomer></NewCustomer>
             </Grid>
 
         </Grid>
-
-        </>
+        </Container>
+        
         
 
     )

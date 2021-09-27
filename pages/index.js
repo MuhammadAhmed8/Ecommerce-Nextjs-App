@@ -1,4 +1,4 @@
-import { Typography, makeStyles } from '@material-ui/core'
+import { Typography, makeStyles, useMediaQuery } from '@material-ui/core'
 import { CallMissedSharp } from '@material-ui/icons'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Home() {
-  
+  const largeScreen = useMediaQuery(theme => theme.breakpoints.up('md'));
+
   const classes = useStyles(); 
 
   return (

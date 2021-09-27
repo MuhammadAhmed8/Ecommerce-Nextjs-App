@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthProvider';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import SearchIcon from '@material-ui/icons/Search';
+import TocIcon from '@material-ui/icons/Toc';
 import SearchBar from "../Search/SearchBar";
 
 export default function Navbar(props){
@@ -139,14 +141,15 @@ export default function Navbar(props){
                 </button>
 
                 <button className="searchToggle">
-                    <i className="uil uil-search menu"></i>
-                    <i className="uil uil-times cross"></i>
+                        <SearchIcon></SearchIcon>
+                  
                 </button>
 
-                {/* <button className="navToggle">
-                    <i className="uil uil-bars menu"></i>
-                    <i className="uil uil-times cross"></i>
-                </button> */}
+                <button className="navToggle">
+                <TocIcon></TocIcon>
+
+                   
+                </button>
 
             </div>
 
@@ -157,20 +160,20 @@ export default function Navbar(props){
             <ul>
                 <li>
                     <NextLink href="/trust">
-                        <Link>
+                        <Link color="secondary">
                             why trust us
                         </Link>
                     </NextLink>
                 </li>
                 <li>
                     <NextLink href="/products">
-                    <Link>products</Link>
+                    <Link color="secondary">products</Link>
                     </NextLink>
                 </li>
                     
                 <li>
                     <NextLink href="/ingredients">
-                        <Link>
+                        <Link color="secondary">
                             Ingredients
                         </Link>
                     </NextLink>
@@ -178,7 +181,7 @@ export default function Navbar(props){
 
                 <li>
                     <NextLink href="/contact">
-                        <Link>
+                        <Link color="secondary">
                             contact
                         </Link>
                     </NextLink>

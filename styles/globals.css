@@ -1122,8 +1122,8 @@ img {
     display: none;
   }
   .nav {
-    padding: 1rem 2rem;
-    height: 7rem;
+    padding: 16px;
+    height: 75px;
     position: relative;
     z-index: 100;
   }

@@ -17,7 +17,7 @@ export default function MyAccount(props){
     const [auth, authDispatch] = useAuth();
 
     return (
-        <Container spacing={100} style={{marginTop:60}}>
+        <Container style={{marginTop:60}}>
             <Grid container spacing={5}>
                 <Grid item xs={12} sm={4} md={3}>
                     <ProfileSidebar></ProfileSidebar>
@@ -26,7 +26,7 @@ export default function MyAccount(props){
                     <YourPoints></YourPoints>
                 </Grid>
             </Grid>
-                
+            <br></br> <br></br>   
                 
         </Container>
     )    
