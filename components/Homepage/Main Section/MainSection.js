@@ -1,12 +1,12 @@
 import React from 'react';
-import { Grid, makeStyles, Button} from "@material-ui/core";
+import { Grid, makeStyles} from "@material-ui/core";
 
 import ResultsGrid from './ResultsGrid';
 import BeautyGrid from './BeautyGrid';
 import FavouriteProductsContainer from './FavouriteProductsContainer';
 import ServiceGridContainer from './ServiceGridContainer';
-import ContactSection from './ContactSection';
 import ImageGrid from './ImageGrid';
+import BackImageCard from './BackImageCard';
 
 import RedButton from '../../Ui/RedButton';
 import TitleHeading from '../../Ui/TitleHeading';
@@ -98,6 +98,12 @@ export default function MainSection(props){
 
             </Grid>
 
+            <BackImageCard 
+                image = "img/why_trust.png"
+                heading = {["Why Trust", <br></br>, "RÉNOVA BELLE"]}
+                buttonText = "Read More"
+            />
+
             <ServiceGridContainer />
 
             <div className={classes.beautyContainer}>
@@ -127,7 +133,12 @@ export default function MainSection(props){
 
             <FavouriteProductsContainer />
 
-            <ContactSection />
+            <BackImageCard 
+                image = "img/ask_anything.png"
+                heading = "Ask Us Anything"
+                text= "Whether you're seeking skincare advice, need help tracking an order, or just have a quick question, our Team is here to help!"
+                buttonText = "Contact Us"
+            />
 
             <TitleHeading>
                 Follow Us On Instragram
