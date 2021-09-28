@@ -4,7 +4,6 @@ import RedButton from "../../Ui/RedButton";
 
 const useStyles = makeStyles((theme) => ({
     background: {
-        background: `url('img/ask_anything.png')`,
         height: '400px',
         margin: '40px 0px',
         backgroundPosition: 'center',
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     textCard: {
         padding: '20px 35px',
         backgroundColor: "#fff",
-        maxWidth: '36rem',
+        maxWidth: '500px',
         width: '100%',
         textAlign: 'left',
             [theme.breakpoints.down('sm')]: {
@@ -52,18 +51,19 @@ const useStyles = makeStyles((theme) => ({
 }),
 {index:1})
 
-export default function ContactSection(){
+export default function BackImageCard(props){
     const classes = useStyles(); 
 
     return(
-        <div className={classes.background}>
+        <div style={{ backgroundImage: `url(${props.image})` }} className={classes.background}>
             <div className={classes.textCard}>
-                <h2 className={classes.heading}>Ask Us Anything</h2>
-                <p className={classes.text}>Whether you are seeking skincare advice, need help tracking an order, or just have a quick question,
-                    our Team is here to help!
+                <h2 className={classes.heading}>{props.heading}</h2>
+                <p className={classes.text}>
+                    
+                    {props.text && props.text}
                 </p>
                 <RedButton>
-                    Contact Us
+                    {props.buttonText}
                 </RedButton>
             </div>
         </div>
