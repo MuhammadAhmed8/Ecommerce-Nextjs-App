@@ -16,8 +16,7 @@ export default function Products(props){
     console.log(categories, "Cat")
     return (
       <>
-        <Header image="/img/products_banner.png"></Header>
-        <Container spacing={100} style={{marginTop: 30}}>  
+        <Container spacing={50} style={{marginTop: 30}}>  
         
         <FilterList categories={categories}/>
         </Container>

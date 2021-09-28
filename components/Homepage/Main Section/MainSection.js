@@ -100,7 +100,7 @@ export default function MainSection(props){
 
             <BackImageCard 
                 image = "img/why_trust.png"
-                heading = {["Why Trust", <br></br>, "RÉNOVA BELLE"]}
+                heading = {<>Why Trust <br></br>RÉNOVA BELLE </>}
                 buttonText = "Read More"
             />
 
