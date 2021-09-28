@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
         padding: '40px 40px',
         margin: '0px',
             [theme.breakpoints.down("sm")]: {
-                textAlign: 'center'
+                textAlign: 'center',
+                padding: '40px 20px',
             }
     },
     heading: {
@@ -72,7 +73,7 @@ export default function Footer(){
                     </p>
                 </Grid>
 
-                <Grid item xs={6} sm={3} md={2} >
+                <Grid item xs={5} sm={3} md={2} >
                     <h3 className={classes.heading} >
                         CUSTOMER SERVICE
                     </h3>
@@ -80,7 +81,7 @@ export default function Footer(){
                     
                 </Grid>
 
-                <Grid item xs={6} sm={3} md={1} >
+                <Grid item xs={5} sm={3} md={1} >
                     <h3 className={classes.heading} >
                         ACCOUNT
                     </h3>

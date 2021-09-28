@@ -1,39 +1,44 @@
 import React from 'react';
-import { Grid, makeStyles, withStyles, Button} from "@material-ui/core";
-import { red } from '@material-ui/core/colors';
+import { Grid, makeStyles, Button} from "@material-ui/core";
+
 import ResultsGrid from './ResultsGrid';
-import ServiceGrid from './ServiceGrid';
 import BeautyGrid from './BeautyGrid';
 import FavouriteProductsContainer from './FavouriteProductsContainer';
 import ServiceGridContainer from './ServiceGridContainer';
 import ContactSection from './ContactSection';
 import ImageGrid from './ImageGrid';
 
+import RedButton from '../../Ui/RedButton';
+import TitleHeading from '../../Ui/TitleHeading';
 
-const useStyles = makeStyles(() => ({
+
+
+const useStyles = makeStyles((theme) => ({
     root: {
         margin: '0px',
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: '20px 0px'
     },
     text: {
         margin: '20px 5px',
-        fontSize: '1.2rem',
+        fontSize: '1.4rem',
         fontFamily: 'Helvetica',
-        lineHeight: '1.8rem',
+        lineHeight: '2rem',
         textAlign: 'center',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '1rem',
+                lineHeight: '1.4rem',
+            }
     },
     button: {
         padding: '10px 50px',
     },
     resultGrid: {
-        padding: '30px 0px',
+        padding: '10px 0px',
         textAlign: 'left',
     },
-    heading: {
-        fontSize: '2.4rem',
-        fontFamily: 'Times',
-        fontWeight: '300',
-        marginBottom: '20px'
+    beautyContainer: {
+        margin: '30px 0px'
     },
     beautybtn: {
         padding: '10px 20px',
@@ -47,21 +52,6 @@ const useStyles = makeStyles(() => ({
     }
 }),
 {index:1})
-
-
-const ColorButton = withStyles((theme) => ({
-    root: {
-      color: theme.palette.getContrastText(red[900]),
-      backgroundColor: red[900],
-      '&:hover': {
-        backgroundColor: '#ccc',
-        color: '#222'
-      },
-      fontSize: '1.2rem',
-      fontWeight: '600',
-      fontFamily: 'Helvetica'
-    },
-  }))(Button);
 
 export default function MainSection(props){
 
@@ -79,12 +69,11 @@ export default function MainSection(props){
                 </p>
                 <br></br>
 
-                <ColorButton className={classes.button}
-                    variant="contained"
-                    color='primary'
-                    value='Shop Now'
-                > Shop Now
-                </ColorButton>
+                <RedButton 
+                    style= {{ fontSize: '1.5rem', padding: '10px 40px', fontWeight: 'bold'}}
+                >
+                    Shop Now 
+                </RedButton>
                 <br></br>
                 <br></br>
 
@@ -111,42 +100,44 @@ export default function MainSection(props){
 
             <ServiceGridContainer />
 
-            <h1 className={classes.heading}>Our Beauty Lines</h1>
-            
-            <Grid container spacing={2}>
-                <BeautyGrid 
-                    img='beauty_1.png'
-                    heading='Face'                
-                >
-                    <ColorButton className={classes.beautybtn}
-                        variant="contained"
-                        color='primary'
-                        value='Explore'
-                    > Explore
-                    </ColorButton>
+            <div className={classes.beautyContainer}>
+                <TitleHeading>
+                    Our Beauty Lines
+                </TitleHeading>
+                <Grid container spacing={2}>
+                    <BeautyGrid 
+                        img='beauty_1.png'
+                        heading='Face'                
+                    >
+                        <RedButton>
+                            Explore
+                        </RedButton>
 
-                </BeautyGrid>
+                    </BeautyGrid>
 
-                <BeautyGrid 
-                    img='beauty_2.png'
-                    heading='Hair'                
-                >
-                    <p>Coming Soon</p>
-                </BeautyGrid>
-            </Grid>
+                    <BeautyGrid 
+                        img='beauty_2.png'
+                        heading='Hair'                
+                    >
+                        <p>Coming Soon</p>
+                    </BeautyGrid>
+                </Grid>
+
+            </div>
 
             <FavouriteProductsContainer />
 
             <ContactSection />
 
-            <h1 className={classes.heading}>Follow Us On Instragram</h1>
-
-            <ColorButton className={classes.instabtn}
-                    variant="contained"
-                    color='primary'
-                    value= '@renovabelle'
-                > @renovabelle
-            </ColorButton>
+            <TitleHeading>
+                Follow Us On Instragram
+            </TitleHeading>
+            
+            <RedButton 
+                style={{ textTransform: 'lowercase', fontSize: '1.2rem', padding: '8px 20px' }}
+            >
+                @renovabelle
+            </RedButton>
 
             <br></br><br></br>
             <Grid container spacing={2}>

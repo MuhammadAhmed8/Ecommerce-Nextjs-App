@@ -1,11 +1,10 @@
 import { withStyles, Button } from "@material-ui/core";
-import { red } from '@material-ui/core/colors';
 
 const ColorButton = withStyles((theme) => ({
     root: {
-      color: theme.palette.getContrastText(red[900]),
+      color: '#fff',
       textTransform: 'Capitalize',
-      backgroundColor: red[900],
+      backgroundColor: '#ca0303',
       '&:hover': {
         backgroundColor: '#ccc',
         color: '#222',

@@ -1,8 +1,8 @@
-import { Grid, makeStyles, withStyles, Button } from "@material-ui/core";
-import { red } from '@material-ui/core/colors';
+import { Grid, makeStyles } from "@material-ui/core";
+import RedButton from "../../Ui/RedButton";
 
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     background: {
         background: `url('img/ask_anything.png')`,
         height: '400px',
@@ -13,44 +13,44 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: '0px 40px'
+        padding: '0px 40px',
+            [theme.breakpoints.down('sm')]: {
+                padding: '0px 20px',
+                height: '360px'
+            }
     },
     textCard: {
         padding: '20px 35px',
         backgroundColor: "#fff",
         maxWidth: '36rem',
         width: '100%',
-        textAlign: 'left'
+        textAlign: 'left',
+            [theme.breakpoints.down('sm')]: {
+                padding: '10px 20px',
+            }
     },
     heading: {
         fontSize: '2rem',
         fontFamily: 'Times',
         fontWeight: '300',
-        marginBottom: '20px'
+        marginBottom: '20px',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '1.7rem',
+                marginBottom: '13px'
+            }
     },
     text: {
         margin: '20px 5px',
         fontSize: '1.2rem',
         fontFamily: 'Helvetica',
         lineHeight: '1.8rem',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '0.9rem',
+                lineHeight: '1.4rem'
+            }
     },
 }),
 {index:1})
-
-const ColorButton = withStyles((theme) => ({
-    root: {
-      color: theme.palette.getContrastText(red[900]),
-      textTransform: 'Capitalize',
-      backgroundColor: red[900],
-      '&:hover': {
-        backgroundColor: '#ccc',
-        color: '#222',
-      },
-      fontSize: '0.9rem',
-      fontWeight: '400',
-      fontFamily: 'Helvetica',
-    },
-  }))(Button);
 
 export default function ContactSection(){
     const classes = useStyles(); 
@@ -62,10 +62,9 @@ export default function ContactSection(){
                 <p className={classes.text}>Whether you are seeking skincare advice, need help tracking an order, or just have a quick question,
                     our Team is here to help!
                 </p>
-                <ColorButton className={classes.button}
-                    variant="contained"
-                    color='primary'
-                    value='Contact Us' >Contact Us</ColorButton>
+                <RedButton>
+                    Contact Us
+                </RedButton>
             </div>
         </div>
     )
