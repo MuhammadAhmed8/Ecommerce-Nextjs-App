@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
     },
     grid: {
         maxWidth: '800px',
-        margin: 'auto',
+        margin: 'auto !important',
     }
 }),
 {index:1})

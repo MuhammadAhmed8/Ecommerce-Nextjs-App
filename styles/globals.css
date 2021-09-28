@@ -169,7 +169,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 5px !important;
 }
 
 .navTop > div {
@@ -1182,7 +1182,7 @@ img {
   .navTop__item .navToggle {
     position: relative !important;
     overflow: hidden;
-    width: 3rem;
+    width: 20px;
     height: 3rem;
   }
   .navTop__item .navToggle .cross,
@@ -1757,4 +1757,14 @@ img {
 .card__detail ul{
   text-align: center;
   margin: auto;
+}
+
+.MuiGrid-spacing-xs-1,
+.MuiGrid-spacing-xs-2,
+.MuiGrid-spacing-xs-3,
+.MuiGrid-spacing-xs-4,
+.MuiGrid-spacing-xs-5,
+.MuiGrid-spacing-xs-10{
+  margin: 0px !important;
+  width: auto !important;
 }

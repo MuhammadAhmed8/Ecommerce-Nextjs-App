@@ -1,20 +1,17 @@
 import axios from 'axios';
 import StripePay from 'react-stripe-checkout';
 import config from "../../../utils/config";
+import { useAuth } from '../../context/AuthProvider';
 
 export default function StripeCheckout(props){
 
+    const [auth, dispatch] = useAuth();
+
     const makePayment = async (token)=>{
-        try{
-            const response = await axios.post(config.ajaxBase + "cart/charge", {
-                token
-            },{
-                withCredentials: true
-            })
-        }
-        catch(e){
-            console.log("stripe payment error");
-        }
+        dispatch({
+            type: "setPaymentToken",
+            payload: token
+        })
         
 
 

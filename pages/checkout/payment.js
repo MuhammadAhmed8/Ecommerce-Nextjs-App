@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import {Container, Grid, Paper, Card, Box, CardContent} from '@material-ui/core';
 import { IconButton, Typography, Button } from '@material-ui/core';
 import OrderSummary from '../../components/Cart/OrderSummary/OrderSummary';
@@ -7,14 +8,14 @@ import PaymentForm from '../../components/Payment/PaymentForm';
 import apiClient from '../../utils/api-client';
 import config from '../../utils/config';
 import { useRouter } from 'next/dist/client/router';
-import axios from 'axios';
+import { useAuth } from '../../components/context/AuthProvider';
 
 const api = apiClient();
 
 export default function PaymentPage(props){
 
     const router = useRouter();
-
+    const [auth, authDispatch] = useAuth();
     const [paymentMethod, setPaymentMethod] = useState('612239f9105516c1947cd1f6');
 
     const handlePaymentMethod = (event) => {
@@ -24,22 +25,53 @@ export default function PaymentPage(props){
     const placeOrder = async (e)=>{
         e.preventDefault();
         axios.defaults.withCredentials = true;
-        const response = await axios.put(config.ajaxBase + 'cart/checkout',null, {
-            headers:{
-                "Content-type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem("rht")}`,
-            },
+        // const response = await axios.put(config.ajaxBase + 'cart/checkout',null, {
+        //     headers:{
+        //         "Content-type": "application/json",
+        //         "Authorization": `Bearer ${localStorage.getItem("rht")}`,
+        //     },
            
-        });
+        // });
 
-        console.log(response, "thanks ")
-        
-        const order = response.data;
+        if(auth.paymentToken){
+            try{
+                const response = await axios.post(config.ajaxBase + "cart/charge", {
+                    token: auth.paymentToken
+                },{
+                    withCredentials: true
+                })
 
-        if(!order.draft){
-            alert("thanks for ur order")
-           // router.push('/checkout/checkout-success');
+            }
+            catch(err){
+                alert(err.message);
+                return;
+            }
         }
+
+        fetch('http://localhost:3001/ajax/cart/checkout', {
+            method: 'PUT', // or 'PUT'
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${localStorage.getItem("rht")}`
+            },
+            
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => {
+            console.log(err, "order failed")
+        })
+
+        
+        // const order = response.data;
+
+        // if(!order.draft){
+        //     alert("thanks for ur order")
+        //    // router.push('/checkout/checkout-success');
+        // }
     }
 
 

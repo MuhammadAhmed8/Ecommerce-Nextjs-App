@@ -35,7 +35,7 @@ const CustomForm = ({ status, message, onValidated }) => {
                 padding: '8px', 
                 width: '60%', 
                 border: '1px solid #333',
-                margin: '0px 5px'
+                margin: '2px 5px'
              }}
         ref={node => (email = node)}
         type="email"

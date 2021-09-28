@@ -4,7 +4,7 @@ import React, { useReducer, useContext, useEffect } from "react"
 export const AuthStateContext = React.createContext([{}, ()=>{}])
 
 // set up initial state which is used in the below `AuthProvider` function
-const initialState = { user: null }
+const initialState = { user: null, paymentToken: null }
 
 // set up the reducer - same as Redux, allows us to process more complex changes
 // to the state within the context API
@@ -17,6 +17,10 @@ const reducer = (state, action) => {
     case "removeAuthDetails":
       return {
         user: initialState.user
+      }
+    case "setPaymentToken":
+      return {
+        paymentToken: action.payload
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)

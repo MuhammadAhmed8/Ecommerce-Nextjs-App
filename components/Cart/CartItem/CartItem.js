@@ -26,7 +26,8 @@ function CartItem({item}){
         const response = await api.ajax.cart.updateItem(item.id, {
             quantity: value
         });
-        const updatedCartData = response.json;
+        console.log(response);
+        const updatedCartData = response.json.json;
         setCart(updatedCartData);
         setLoading(false);
     }

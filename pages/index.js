@@ -7,7 +7,7 @@ import MainSection from '../components/Homepage/Main Section/MainSection'
 
 const useStyles = makeStyles((theme) => ({
   body: {
-      margin: '0px 100px',
+      margin: '0px 50px',
       [theme.breakpoints.down(960)]: {
         margin: "0px 10px"                   // secondary
       }
@@ -30,7 +30,7 @@ export default function Home() {
       </Head>
 
       <Header image="/img/header_bg.png"/>
-      <br></br>
+      
       <div className={classes.body}>
         <MainSection  />        
       </div>
