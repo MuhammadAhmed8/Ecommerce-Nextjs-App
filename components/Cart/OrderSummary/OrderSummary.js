@@ -49,7 +49,12 @@ function OrderSummary(){
 
                 <div className={styles.orderSummaryItem}>
                     <Typography variant="body1">Tax:</Typography>
-                    <Typography variant="body2" style={{textAlign:'end'}}>Tax will be calculated during checkout</Typography>
+                    <Typography 
+                        variant="body2" 
+                        className = {styles.taxDescription}
+                    >
+                        Tax will be calculated during checkout
+                    </Typography>
 
                 </div>
 

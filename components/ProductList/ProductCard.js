@@ -18,6 +18,8 @@ export default function ProductCard(props){
 
     const {product} = props;
 
+    console.log("Product image: ", product.images);
+
     const [rate,setRate] = useState(4);
 
     return (
