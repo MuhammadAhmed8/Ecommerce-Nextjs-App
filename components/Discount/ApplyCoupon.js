@@ -14,18 +14,29 @@ const useStyles = makeStyles((theme)=>({
     promoInputField: {
         width:"65%",
         marginRight:"10px",
-        height: 54,
+    },
+    promoInput: {
+        padding: '14px 5px',
             [theme.breakpoints.down('sm')]: {
-                height: 40
+                padding: '11px 5px'
+            }
+    },
+    promoInputLabel: {
+        transform: 'translate(8px, 17px) !important',
+            [theme.breakpoints.down('sm')]: {
+                transform: 'translate(8px, 13px) !important',
             }
     },
     promoBtnField: {
         width:"30%",
         maxWidth: 150,
-        height:54,
+        height:48,
         textTransform: 'capitalize',
         fontWeight: '600',
         fontFamily: 'Helvetica',
+            [theme.breakpoints.down('sm')]: {
+                height: 40
+            }
         
     }
 
@@ -87,6 +98,9 @@ export default function ApplyCoupon(props){
             value={coupon}
             onChange={(e)=>setCoupon(e.target.value)}
             helperText={error}
+            inputProps={{ className: classes.promoInput }}
+            InputLabelProps= {{ className: classes.promoInputLabel }}
+
         />
 
         <Button

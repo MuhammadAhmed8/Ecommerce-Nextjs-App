@@ -87,8 +87,8 @@ export default function ProductView({product}){
             Home -- {product.name}
           </Typography>
           <Box mb={5} />
-          <Grid container spacing={4}>
-            <Grid item xs={12} sm={6}>
+          <Grid container spacing={4} style={{ justifyContent: 'space-between' }}>
+            <Grid item xs={12} sm={5}>
               <Gallery images={product.images}></Gallery>
             </Grid>
 
