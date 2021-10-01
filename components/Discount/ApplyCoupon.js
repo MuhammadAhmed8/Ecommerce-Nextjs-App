@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme)=>({
             }
     },
     promoInputLabel: {
-        transform: 'translate(8px, 17px) !important',
+        transform: 'translate(8px, 17px) scale(1)',
             [theme.breakpoints.down('sm')]: {
-                transform: 'translate(8px, 13px) !important',
+                transform: 'translate(8px, 13px) scale(1)',
             }
     },
     promoBtnField: {
@@ -100,7 +100,6 @@ export default function ApplyCoupon(props){
             helperText={error}
             inputProps={{ className: classes.promoInput }}
             InputLabelProps= {{ className: classes.promoInputLabel }}
-
         />
 
         <Button
