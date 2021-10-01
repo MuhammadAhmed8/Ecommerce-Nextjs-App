@@ -56,13 +56,29 @@ export default function ApplyCoupon(props){
         <div style={{flexGrow:1}}>
         <InputField
         name="couponCode"
-        style={{width:"65%", marginRight:"10px"}}
+        style={{width:"65%", marginRight:"10px", height: 40}}
         variant="outlined"
         placeholder="RB20OFF"
         label="Promo Code"
         value={coupon}
         onChange={(e)=>setCoupon(e.target.value)}
         helperText={error}
+          /* styles the wrapper */
+  /* styles the label component */
+  InputLabelProps={{
+    style: {
+      height:10,
+      ...(false && { top: `${10}px` }),
+    },
+  }}
+
+  /* styles the input component */
+  inputProps={{
+      style: {
+        height: 40,
+        padding: '0 14px',
+      },
+  }}
         />
 
         <Button

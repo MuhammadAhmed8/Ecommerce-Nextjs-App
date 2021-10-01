@@ -12,8 +12,6 @@ export default function StripeCheckout(props){
             type: "setPaymentToken",
             payload: token
         })
-        
-
 
     }
 

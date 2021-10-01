@@ -5,7 +5,7 @@ const useStyles = makeStyles(()=>(
     {
         
         price:{
-            color:'#CA0303',
+            color:'#000',
             margin: "40px 0",
             marginTop:"10px",
         },
