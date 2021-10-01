@@ -4,16 +4,19 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme)=>({
     
+    title: {
+        fontSize: '2.3rem',
+        fontWeight: '400'
+    },
     price:{
-        //color:'#CA0303',
-        color: '#000',
-        margin: '30px 0px !important',
-        marginTop: '30px'
+        color:'#CA0303',
+        margin: '30px 0px ',
+        marginTop: '10px'
     },
     detail: {
-        fontSize: '1rem',
+        fontSize: '1.1rem',
         color:"#575757",
-        lineHeight:1.5,
+        lineHeight: '1.8rem',
         fontWeight: 400,
         fontFamily: "'Helvetica', sans-serif"
     }
@@ -28,7 +31,7 @@ export default function ProductDescription({product}){
 
     return (
         <>
-        <Typography variant="h3" style={{fontWeight: 300}}>
+        <Typography variant="h3" className={classes.title}>
                 {product.name}
         </Typography>
         <Typography variant='h3' className={classes.price} >

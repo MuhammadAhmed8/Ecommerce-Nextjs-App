@@ -95,9 +95,9 @@ export default function ProductView({product}){
             <Grid item xs={12} sm={6}>
 
               <ProductDescription product={product}/>
-              <Box mb={5} />
+              <Box mb={2} />
 
-              <Grid container spacing={2}>
+              <Grid container >
                 <Grid item xs={12} md={5}>
                   <FormControl
                     variant="outlined"
@@ -110,6 +110,7 @@ export default function ProductView({product}){
                     <InputLabel>Select</InputLabel>
 
                     <Select
+                      style={{ margin: '0px 5px' }}
                       name="size"
                       id="size"
                       label="Size"
@@ -147,7 +148,7 @@ export default function ProductView({product}){
               </Grid>
               <Box mb={5} />
                   <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained"
-                   style={{width:"200px", height:"54px", fontSize:19}}/>
+                   style={{width:"200px", height:"54px", fontSize:19, textTransform: 'inherit'}}/>
                   <AddToWishlist productId={product.id} style={{marginLeft:12}}></AddToWishlist>
               <Box mb={5} />
                 <Button color="secondary" startIcon={<EqualizerIcon />}>

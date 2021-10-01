@@ -12,7 +12,8 @@ export default function AttributeButton({children, ...props}){
             fontWeight: 700,
             width:202,
             height: 45,
-            borderRadius: "5px !important"
+            borderRadius: "5px !important",
+            textTransform: 'capitalize'
             
         }} 
         variant={props.active ? "contained": "outlined"}
