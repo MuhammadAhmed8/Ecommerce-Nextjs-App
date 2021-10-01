@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Grid, Paper, Card, Box, CardContent} from '@material-ui/core';
+import {Container, Grid,makeStyles , Box} from '@material-ui/core';
 import { IconButton, Typography, Button } from '@material-ui/core';
 import CartItem from '../components/Cart/CartItem/CartItem';
 import OrderSummary from '../components/Cart/OrderSummary/OrderSummary';
@@ -10,7 +10,39 @@ import { useRouter } from 'next/dist/client/router';
 import PopularProductsContainer from '../components/MoreProducts/PopularProductsContainer';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
+
+const useStyles = makeStyles((theme)=>({
+    titleContainer: {
+        marginBottom:20, 
+        background:"#fff", 
+        padding:"10px 15px",
+            [theme.breakpoints.down('sm')]: {
+                padding: '5px 15px'
+            }
+    },
+    title: {
+        color:"#333", 
+        fontSize: '1.1rem',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '0.8rem'
+            }
+    },
+    btnText: {
+        fontWeight: '600', 
+        fontFamily: 'Helvetica', 
+        textTransform: 'capitalize', 
+        padding: '12px',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '0.75rem',
+                padding: '8px',
+            }
+    }
+}),
+{index:1})
+
 function Cart(props){
+
+    const classes = useStyles();
 
     const [cart, setCart] = useCartContext();
     const router = useRouter();
@@ -42,10 +74,10 @@ function Cart(props){
             </Grid>
 
             <Grid item xs={12} sm={12} md={8}> 
-                <Box style={{marginBottom:20, background:"#fff", padding:"8px 15px"}}>
-                    <Typography variant="body1" style={{color:"#333"}}>
+                <Box className={classes.titleContainer}>
+                    <p className={classes.title} >
                             YOUR CART
-                    </Typography>
+                    </p>
                     
                 </Box>
                 <div>
@@ -64,30 +96,32 @@ function Cart(props){
             </Grid>
 
             <Grid item xs={12} sm={12} md={4}>
-                <Box style={{marginBottom:20, background:"#fff", padding:"8px 15px"}}>
-                    <Typography variant="body1" style={{color:"#333"}}>
+                <Box className={classes.titleContainer}>
+                    <p className={classes.title} >
                             ORDER SUMMARY
-                    </Typography>
+                    </p>
                     
                 </Box>
 
                 <OrderSummary></OrderSummary>
                 
-                <div style={{display:'flex', flexDirection:'column', padding:'18px',gap:"10px", background:"#fff"}}>
+                <div style={{display:'flex', flexDirection:'column', padding:'16px',gap:"10px", background:"#fff"}}>
                     <Button
-                    size="large"
-                    variant="contained"
-                    color="secondary"
-                    onClick={proceedToCheckout}
+                        size="large"
+                        variant="contained"
+                        color="secondary"
+                        onClick={proceedToCheckout}
+                        className={classes.btnText}
                     >
-                    CHECKOUT
+                    Checkout
                     </Button>
                     <Button
-                    size="large"
-                    variant="contained"
-                    onClick={handleContinueShopping}
+                        size="large"
+                        variant="contained"
+                        onClick={handleContinueShopping}
+                        className={classes.btnText}
                     >
-                    CONTINUE SHOPPING
+                    Continue Shopping
                     </Button>
                 </div>
                 

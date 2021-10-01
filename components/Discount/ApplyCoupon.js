@@ -1,4 +1,4 @@
-import { Button, CircularProgress } from "@material-ui/core";
+import { Button, CircularProgress, makeStyles } from "@material-ui/core";
 import { useState } from "react";
 import InputField from "../Ui/InputField";
 import axios from 'axios';
@@ -9,7 +9,42 @@ import { useCartContext } from "../context/CartProvider";
 
 const api = apiClient();
 
+const useStyles = makeStyles((theme)=>({
+
+    promoInputField: {
+        width:"65%",
+        marginRight:"10px",
+    },
+    promoInput: {
+        padding: '14px 5px',
+            [theme.breakpoints.down('sm')]: {
+                padding: '11px 5px'
+            }
+    },
+    promoInputLabel: {
+        transform: 'translate(8px, 17px) scale(1)',
+            [theme.breakpoints.down('sm')]: {
+                transform: 'translate(8px, 13px) scale(1)',
+            }
+    },
+    promoBtnField: {
+        width:"30%",
+        maxWidth: 150,
+        height:48,
+        textTransform: 'capitalize',
+        fontWeight: '600',
+        fontFamily: 'Helvetica',
+            [theme.breakpoints.down('sm')]: {
+                height: 40
+            }
+        
+    }
+
+}))
+
 export default function ApplyCoupon(props){
+
+    const classes = useStyles();
 
     const [coupon, setCoupon] = useState(null);
     const [couponApplied, setCouponApplied] = useState(false);
@@ -55,6 +90,7 @@ export default function ApplyCoupon(props){
         {!(cart && cart.coupon !== "") ? 
         <div style={{flexGrow:1}}>
         <InputField
+<<<<<<< HEAD
         name="couponCode"
         style={{width:"65%", marginRight:"10px", height: 40}}
         variant="outlined"
@@ -79,19 +115,26 @@ export default function ApplyCoupon(props){
         padding: '0 14px',
       },
   }}
+=======
+            className= {classes.promoInputField}
+            name="couponCode"
+            variant="outlined"
+            placeholder="RB20OFF"
+            label="Promo Code"
+            value={coupon}
+            onChange={(e)=>setCoupon(e.target.value)}
+            helperText={error}
+            inputProps={{ className: classes.promoInput }}
+            InputLabelProps= {{ className: classes.promoInputLabel }}
+>>>>>>> 93c825b4477d60121158c652a1f09b9d4dc86624
         />
 
         <Button
-        variant="contained"
-        color="secondary"
-        onClick={handleClick}
-        style={{
-            width:"30%",
-            maxWidth: 150,
-            height:54,
-            letterSpacing: 1.5
-           
-        }}>
+            variant="contained"
+            color="secondary"
+            onClick={handleClick}
+            className= {classes.promoBtnField}
+        >
         {loading ? <CircularProgress style={{color:"white", width:20, height:20}} /> : "Apply" }
         </Button>
         </div>:

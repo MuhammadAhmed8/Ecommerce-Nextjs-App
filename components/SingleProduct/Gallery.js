@@ -3,7 +3,7 @@ import { Card, CardMedia, makeStyles } from "@material-ui/core";
 const useStyles = makeStyles(()=>(
     {
         productImg :{
-            height: '400px'
+            height: '500px'
           },
    
     }

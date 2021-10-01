@@ -2,6 +2,7 @@ import React, { Component, useEffect } from "react";
 import { Button, Link, Menu, MenuItem, Slider } from "@material-ui/core";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
+import { KeyboardArrowDown } from "@material-ui/icons";
 
 function MenuList(props){
 
@@ -36,6 +37,9 @@ function MenuList(props){
           style={{marginRight:25}}
         >
           {props.name}
+
+          <KeyboardArrowDown  style={{ marginLeft: '5px', fontSize: '1.2rem' }} />
+
         </Button>
 
         <Menu
@@ -46,6 +50,7 @@ function MenuList(props){
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
+
           
           {
             props.type === 'slider' ? 
@@ -67,7 +72,9 @@ function MenuList(props){
             props.list && props.list.map((item) => {
               return (
                   <MenuItem id={item.id} key={item.id} onClick={()=>handleFilter(item[props.filterField])}>
-                    {item.name}</MenuItem>
+                    {item.name}
+                    
+                    </MenuItem>
               
               )
             })

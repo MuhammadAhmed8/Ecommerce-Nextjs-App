@@ -3,9 +3,9 @@ import IngredientsCard from '../components/Ingredients/IngredientsCard';
 
 const useStyles = makeStyles((theme)=>({
     space: {
-      padding: '20px 10%',
+      padding: '20px 50px',
         [theme.breakpoints.down('sm')]: {
-          padding: '20px 20px',
+          padding: '20px 10px',
         }
     }
 }),

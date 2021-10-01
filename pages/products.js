@@ -13,17 +13,19 @@ const api = apiClient();
 export default function Products(props){
 
     const {categories, products} = props;
-    console.log(categories, "Cat")
+    //console.log(categories, "Cat")
     return (
       <>
-        <Container spacing={50} style={{marginTop: 30}}>  
+        <Container style={{marginTop: 30, padding: '0px'}} fixed>  
         
         <FilterList categories={categories}/>
         </Container>
         <div style={{background:"#fff", marginTop:50, padding: "50px 0"}}>
-        <Container>
-        <ProductList products={products}></ProductList>   
+        
+        <Container fixed style={{ padding: '0px'}}>
+          <ProductList products={products}></ProductList>   
         </Container>
+        
         </div>
       </>
     );

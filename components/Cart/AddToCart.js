@@ -41,14 +41,16 @@ export default function AddToCart({productId, variantId, quantity, ...props}){
         <Button 
             variant="outlined"
             color= {props.color? props.color: "primary"} 
-            style={{ boxShadow:'none', borderRadius:5}}
+            style={{ boxShadow:'none', borderRadius:5, textTransform: 'inherit' }}
             onClick= {cartHandler}
             {...props}
             >
 
             
             {loading ? 
-                <CircularProgress style={{color:"#fff", width:20, height:20}} /> : "Add to cart"}
+                <CircularProgress 
+                    style={{color:"#fff", width:20, height:20}}
+                 /> : "Add to Cart"}
         </Button>
         </>
     )
