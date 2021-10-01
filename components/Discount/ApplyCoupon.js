@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme)=>({
     promoBtnField: {
         width:"30%",
         maxWidth: 150,
-        height:48,
+        height:46,
         textTransform: 'capitalize',
         fontWeight: '600',
         fontFamily: 'Helvetica',
@@ -59,9 +59,14 @@ export default function ApplyCoupon(props){
         setError(null);
         setLoading(true);
         try{
-            const response = await axios.post(config.ajaxBase + 'discounts/check',{
+            const response = await axios.post(config.ajaxBase + 'discounts/check',
+            {
                 couponCode: coupon,
-            },{
+            },
+            {
+                headers: {
+                    Authorization: "Bearer "+localStorage.getItem("rht")
+                },
                 withCredentials:true
             });
 
@@ -78,7 +83,13 @@ export default function ApplyCoupon(props){
 
         }
         catch(e){
-            setError("Sorry, the coupon is invalid,or your order doesn't qualify for the discounts.");
+            if(e.response.data.code && e.response.status < 500){
+                setError(e.response.data.message)
+            }
+            else{
+                setError("Error: Invalid coupon");
+
+            }
         }
         finally{
             setLoading(false)
@@ -90,32 +101,6 @@ export default function ApplyCoupon(props){
         {!(cart && cart.coupon !== "") ? 
         <div style={{flexGrow:1}}>
         <InputField
-<<<<<<< HEAD
-        name="couponCode"
-        style={{width:"65%", marginRight:"10px", height: 40}}
-        variant="outlined"
-        placeholder="RB20OFF"
-        label="Promo Code"
-        value={coupon}
-        onChange={(e)=>setCoupon(e.target.value)}
-        helperText={error}
-          /* styles the wrapper */
-  /* styles the label component */
-  InputLabelProps={{
-    style: {
-      height:10,
-      ...(false && { top: `${10}px` }),
-    },
-  }}
-
-  /* styles the input component */
-  inputProps={{
-      style: {
-        height: 40,
-        padding: '0 14px',
-      },
-  }}
-=======
             className= {classes.promoInputField}
             name="couponCode"
             variant="outlined"
@@ -123,10 +108,10 @@ export default function ApplyCoupon(props){
             label="Promo Code"
             value={coupon}
             onChange={(e)=>setCoupon(e.target.value)}
+            error={error ? true: false}
             helperText={error}
             inputProps={{ className: classes.promoInput }}
             InputLabelProps= {{ className: classes.promoInputLabel }}
->>>>>>> 93c825b4477d60121158c652a1f09b9d4dc86624
         />
 
         <Button
