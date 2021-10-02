@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme)=>({
     promoBtnField: {
         width:"30%",
         maxWidth: 150,
-        height:48,
+        height:46,
         textTransform: 'capitalize',
         fontWeight: '600',
         fontFamily: 'Helvetica',
@@ -59,9 +59,14 @@ export default function ApplyCoupon(props){
         setError(null);
         setLoading(true);
         try{
-            const response = await axios.post(config.ajaxBase + 'discounts/check',{
+            const response = await axios.post(config.ajaxBase + 'discounts/check',
+            {
                 couponCode: coupon,
-            },{
+            },
+            {
+                headers: {
+                    Authorization: "Bearer "+localStorage.getItem("rht")
+                },
                 withCredentials:true
             });
 
@@ -78,7 +83,13 @@ export default function ApplyCoupon(props){
 
         }
         catch(e){
-            setError("Sorry, the coupon is invalid,or your order doesn't qualify for the discounts.");
+            if(e.response.data.code && e.response.status < 500){
+                setError(e.response.data.message)
+            }
+            else{
+                setError("Error: Invalid coupon");
+
+            }
         }
         finally{
             setLoading(false)
@@ -97,6 +108,7 @@ export default function ApplyCoupon(props){
             label="Promo Code"
             value={coupon}
             onChange={(e)=>setCoupon(e.target.value)}
+            error={error ? true: false}
             helperText={error}
             inputProps={{ className: classes.promoInput }}
             InputLabelProps= {{ className: classes.promoInputLabel }}
