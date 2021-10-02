@@ -1,14 +1,27 @@
 import React from 'react';
 import { Grid, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     imgicon:{
-        width: '60px',
-        height: '50px',
+        width: '50px',
+        height: '46px',
+            [theme.breakpoints.down('sm')]: {
+                width: '40px',
+                height: '32px'
+            }
     },
     btext:{
-        fontSize: '1.1rem'
+        fontSize: '1rem',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '0.85rem'
+        },
     },
+    text: {
+        fontSize: '0.9rem',
+            [theme.breakpoints.down('sm')]:{
+                fontSize: '0.7rem'
+            }
+    }
 }),
 {index:1})
 
@@ -19,13 +32,13 @@ export default function NewCustomerGrid(props){
 
     return(
         <>
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ padding: '10px 0px', textAlign: 'center' }}>
                 <img className={classes.imgicon} src={'img/'+props.img}></img>
             </Grid>
 
-            <Grid item xs={10}>
+            <Grid item xs={10} >
                 <b className={classes.btext}>{props.btext}</b>
-                <p>{props.text}</p>
+                <p className={classes.text}>{props.text}</p>
             </Grid>
 
         </>

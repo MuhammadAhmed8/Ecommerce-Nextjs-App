@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme)=>({
     root: {
         padding: '40px 10%',
             [theme.breakpoints.down('sm')]: {
-                padding: '40px 20px',
+                padding: '40px 14px',
             }
     },
     reverseColumn: {
@@ -28,7 +28,7 @@ export default function Login(){
     return (
         <div className={classes.root}>
 
-            <TitleHeading style={{ fontWeight: '600', fontSize: '2.3rem' }}>
+            <TitleHeading style={{ fontWeight: '600', margin: '24px 0px' }}>
                 Why Trust Rénova Belle
             </TitleHeading>
             <br />

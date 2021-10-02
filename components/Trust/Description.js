@@ -5,7 +5,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         padding: '20px 10%',
         backgroundColor: '#fff',
-        height: '100%'
+        height: '100%',
+            [theme.breakpoints.down('sm')]: {
+                padding:'20px 16px'
+            }
     },
     upperSection: {
         display: 'flex',
@@ -43,16 +46,21 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         fontSize: '2.7rem',
         fontFamily: 'Times',
+        lineHeight: '3.2rem',
             [theme.breakpoints.down('sm')]: {
-                fontSize: '1.6rem'
+                fontSize: '1.6rem',
+                lineHeight: '2rem'
             }
     },
     description: {
-        padding: '5px 0px',
+        padding: '14px 0px',
         fontFamily: 'helvetica',
-        fontSize: '1.1rem',
+        fontSize: '1.05rem',
         fontWeight: '300',
-        color: '#333'
+        color: '#333',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '0.9rem',
+            }
     }
 }),
 {index:1})
