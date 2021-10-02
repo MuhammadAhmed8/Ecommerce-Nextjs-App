@@ -82,17 +82,20 @@ export default function Contact(){
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
-                    <FormControl fullWidth>
-                    <InputLabel id='demo-simple-select-label' 
-                            style={{padding: '0px 0px 0px 10px'}}>
-                        Issue
+                    <FormControl 
+                        fullWidth
+                    >
+                    <InputLabel 
+                        id='demo-simple-select-label' 
+                        variant='outlined'
+                    >
+                        Select Issue
                     </InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        label="Issue"
+                        label="Select Issue"
                         onChange={setIssueHandler}
-                        
                         value={issue}
                         variant='outlined'
                     >
