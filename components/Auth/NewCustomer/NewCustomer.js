@@ -55,6 +55,7 @@ export default function NewCustomer(){
                 color="secondary"
                 value="Create an account"
                 variant="contained"
+                style={{ padding: '8px 20px', borderRadius: '0px' }}
             >
                 Create an account
             </Button>

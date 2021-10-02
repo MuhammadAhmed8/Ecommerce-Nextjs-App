@@ -35,13 +35,15 @@ export default function Login(){
         <br></br>
         <br></br>
         
-        <Grid container>
+        <Grid container style={{ justifyContent: 'space-between' }}>
             
-            <Grid item xs={12} md={6} style={{padding:30}}>
+            <Grid item xs={12} md={4} style={{padding:30}}>
                 <h3 className={classes.heading}>Returning Customer</h3>
                 <Typography variant="body2">If you already have an account, please enter
                 your email and password below</Typography>
                 <br></br> <br></br>
+
+                <p>Required*</p>
 
                 <LoginForm></LoginForm>
             </Grid>

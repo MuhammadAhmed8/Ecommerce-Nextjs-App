@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from '../Ui/InputField';
-import { Button, Grid, makeStyles} from '@material-ui/core';
+import { Button, Grid, Input, makeStyles} from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
 import { useFormik } from 'formik';
 import config from "../../utils/config";
@@ -16,7 +16,12 @@ const useStyles = makeStyles(()=>({
     },
 
     textField:{
-        marginBottom:"14px",
+        marginBottom:"10px",
+        padding: '0px'
+    },
+    btn: {
+        padding: '8px 20px',
+        borderRadius: '0px'
     }
 }),
 {index:1})
@@ -43,7 +48,6 @@ export default function LoginForm(){
                 })
                 .then(({data})=>{
                     if(data.authenticated){
-                        
                         AuthService.saveToken(data.jwtToken);
                         authDispatch({
                             type:"setAuthDetails",
@@ -51,54 +55,94 @@ export default function LoginForm(){
                                 ...data.customer_settings
                             }
                         })
-
                         router.push('/customer/my-account');
-
                     }
-                    console.log(data)
                 })
-                
-    
             }
             catch(e){
                 console.log('Login Error!',e)
             }
-            
-            
-
         },
     });
-
     return (
         <>
     
         <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={2}>
+        <Grid container>
             <Grid item xs={12}>
-                <InputField
+                <br/>
+                <Input 
+                    placeholder="*Email"
+                    name="email"
+                    id="email" 
+                    disableUnderline
+                    type='email'
+                    fullWidth
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                    style={{ 
+                        backgroundColor: '#fff',
+                        padding: '8px 10px',
+                        marginBottom: '10px',
+                    }}
+                />
+
+                {/* <InputField
                     className={classes.textField} 
                     fullWidth
-                    label="Email"
+                    label="*Email"
                     name="email"
                     id="email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
                     helperText={formik.touched.email && formik.errors.email}
-                />
+                    style={{ 
+                        backgroundColor: '#fff',
+                    }}
+                    InputProps={{
+                        //disableUnderline: true
+                    }}
+                />   */}
             </Grid>
             
             <Grid item xs={12}>
-                <InputField 
+                {/* <InputField 
                     className={classes.textField}
                     fullWidth
-                    label="Password"
+                    label="*Password"
                     name="password"
                     id="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     error={formik.touched.password && Boolean(formik.errors.password)}
                     helperText={formik.touched.password && formik.errors.password}
+                    style={{ 
+                        backgroundColor: '#fff',
+                    }}
+                    InputProps={{
+                        //disableUnderline: true
+                    }}
+                /> */}
+
+                <Input 
+                    placeholder="*Password"
+                    name="password"
+                    id="password"
+                    disableUnderline
+                    type='password'
+                    fullWidth
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    error={formik.touched.password && Boolean(formik.errors.password)}
+                    helperText={formik.touched.password && formik.errors.password}
+                    style={{ 
+                        backgroundColor: '#fff',
+                        padding: '8px 10px',
+                        marginBottom: '10px',
+                    }}
                 />
             </Grid>
 
@@ -108,6 +152,7 @@ export default function LoginForm(){
                     color="secondary"
                     value="Login"
                     variant="contained"
+                    className= { classes.btn }
                 >
                     Login
                 </Button>
@@ -115,12 +160,7 @@ export default function LoginForm(){
 
         </Grid>
         </form>
-
-        
-
         </>
-        
 
     )
-
 }
