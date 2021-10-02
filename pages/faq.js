@@ -9,7 +9,8 @@ import TitleHeading from "../components/Ui/TitleHeading";
 const useStyles = makeStyles(() => ({
     root: {
         backgroundColor: '#fff',
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingBottom: '40px'
     },
     btnContact: {
         fontSize: '1.3rem',
@@ -42,6 +43,8 @@ export default function Faq(){
             <RedButton className={classes.btnContact}>
                 Contact Us
             </RedButton>
+            <br></br>
+            <br></br>
         </div>
     )
 }

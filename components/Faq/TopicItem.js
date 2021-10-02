@@ -1,7 +1,7 @@
 import { Grid, makeStyles } from "@material-ui/core";
 
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     label: {
         border: '3px solid #C4C4C4',
         width: '100%',
@@ -15,7 +15,10 @@ const useStyles = makeStyles(() => ({
         '&:hover': {
             color: 'red'
         },
-        padding: '30px 0px'
+        padding: '30px 5px',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '0.65rem'
+            }
     },
     img: {
         marginBottom: '10px',
@@ -25,6 +28,9 @@ const useStyles = makeStyles(() => ({
         filter: 'brightness(20%)',
         opacity: '0.3',
         display: 'block',
+            [theme.breakpoints.down('sm')]: {
+                width: '32px'
+            }
     },
 }),
 {index:1})
@@ -33,7 +39,7 @@ export default function TopicItem(props){
     const classes = useStyles();
 
     return(
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={6} md={4}>
             <input style={{display: 'none'}} type="radio" name="selection"  />
                     <label className={classes.label} htmlFor="radio-box">
                         <img className={classes.img} src={"img/" +  props.img} alt="icon" />

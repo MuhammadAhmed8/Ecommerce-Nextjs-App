@@ -3,12 +3,15 @@ import TitleHeading from "../Ui/TitleHeading";
 import TopicItem from "./TopicItem";
 
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         textAlign: 'center',
         backgroundColor: '#fff',
         margin: '0px',
-        padding: '40px'
+        padding: '40px 10%',
+            [theme.breakpoints.down('sm')]: {
+                padding: '20px 10px',
+            }
     },
     label: {
         border: '3px solid #C4C4C4',

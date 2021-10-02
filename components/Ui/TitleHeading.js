@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '10px 0px 20px 0px',
         textAlign: 'center',
             [theme.breakpoints.down('sm')]: {
-                fontSize: '1.9rem',
+                fontSize: '1.8rem',
                 lineHeight: '2.3rem'
             }
     }
