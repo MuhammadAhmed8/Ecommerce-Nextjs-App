@@ -25,7 +25,6 @@ export default function PopularProductsContainer(){
                   </Grid>
                   
                 </MoreProducts.Body>
-
               </MoreProducts> 
     )
 }
