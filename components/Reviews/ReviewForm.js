@@ -46,7 +46,7 @@ export default function ReviewForm(props){
     return (
         <div className={classes.root}>
             <p className={classes.text}>
-                You're reviewing:
+                You&apos;re reviewing:
             </p>
             <b className= {classes.title}>{props.name}</b>
             <br></br>
