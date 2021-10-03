@@ -28,6 +28,7 @@ import ReviewsContainer from "../../components/Reviews/ReviewsContainer";
 import MoreProducts from "../../components/MoreProducts/MoreProducts";
 import MoreProductsContainer from "../../components/MoreProducts/MoreProductsContainer";
 import AddToWishlist from "../../components/Customer/Wishlist/AddtoWishlist";
+import ReviewForm from "../../components/Reviews/ReviewForm";
 // import ProductDescription from "../../components/SingleProduct/ProductDescription";
 const ProductDescription = dynamic(
   () => import("../../components/SingleProduct/ProductDescription"),
@@ -194,11 +195,13 @@ export default function ProductView({product}){
                 }
 
                 <Attribute active={currentAttributeTab === TABS.REVIEWS}>
-                  <ReviewsContainer/>
+                  <ReviewsContainer
+                    name= {product.name}
+                  />
+                  <ReviewForm 
+                  name = {product.name}
+                />
                 </Attribute>
-              
-
-
               </div>
               
             </Grid>

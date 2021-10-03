@@ -5,6 +5,7 @@ import { useRouter } from 'next/dist/client/router';
 import { useFormik } from 'formik';
 import LoginForm from '../components/Auth/LoginForm';
 import NewCustomer from '../components/Auth/NewCustomer/NewCustomer';
+import { Facebook, FaceOutlined } from '@material-ui/icons'
 
 const useStyles = makeStyles(()=>({
 
@@ -38,6 +39,9 @@ export default function Login(){
         <Grid container style={{ justifyContent: 'space-between' }}>
             
             <Grid item xs={12} md={4} style={{padding:30}}>
+                <h3 className={classes.heading}>Log in with 1 Click</h3>
+                <FaceOutlined />
+
                 <h3 className={classes.heading}>Returning Customer</h3>
                 <Typography variant="body2">If you already have an account, please enter
                 your email and password below</Typography>

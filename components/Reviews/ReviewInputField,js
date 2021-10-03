@@ -1,0 +1,52 @@
+import React from 'react';
+import { makeStyles} from '@material-ui/core';
+import InputField from '../Ui/InputField';
+
+const useStyles = makeStyles(()=>({
+    redAsterisk: {
+        color: 'red'
+    },
+    btext: {
+        padding: '5px 0px',
+        fontWeight: '600',
+        display: 'block'
+    }
+}),
+{index:1})
+
+export default function ReviewInputField(props){
+
+    const classes = useStyles(); 
+
+    return (
+            <div>
+                <span className={classes.btext}>
+                    {props.title}
+                    <span className={classes.redAsterisk}> *</span>
+                </span>
+
+                <InputField 
+                    name={props.title}
+                    id={props.title}
+                    type='string'
+                    
+                    // value={formik.values.email}
+                    // onChange={formik.handleChange}
+                    // error={formik.touched.email && Boolean(formik.errors.email)}
+                    // helperText={formik.touched.email && formik.errors.email}
+                    style={{ 
+                        marginBottom: '10px',
+                    }}
+                    inputProps= {{
+                        style: {
+                            padding: '12px 5px',
+                            width: '290px'
+                        }
+                    }}
+                    variant='outlined'
+                />
+            </div>
+    )
+
+}
+
