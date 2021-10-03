@@ -37,7 +37,7 @@ const ProductDescription = dynamic(
 
 const api = apiClient();
 
-const useStyles = makeStyles(()=>(
+const useStyles = makeStyles((theme)=>(
     {
         
         fullHeight: {
@@ -51,6 +51,12 @@ const useStyles = makeStyles(()=>(
         },
         detailClass: {
             fontSize: '18px'
+        },
+        selectMargin: {
+          margin: '0px 5px',
+            [theme.breakpoints.down('sm')]: {
+              margin: '0px'
+            }
         }
     }
 ))
@@ -111,7 +117,7 @@ export default function ProductView({product}){
                     <InputLabel>Select</InputLabel>
 
                     <Select
-                      style={{ margin: '0px 5px' }}
+                      className={classes.selectMargin}
                       name="size"
                       id="size"
                       label="Size"
@@ -150,7 +156,10 @@ export default function ProductView({product}){
               <Box mb={5} />
                   <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained"
                    style={{width:"200px", height:"54px", fontSize:19, textTransform: 'inherit'}}/>
-                  <AddToWishlist productId={product.id} style={{marginLeft:12}}></AddToWishlist>
+                   
+                  <AddToWishlist productId={product.id} style={{marginLeft:12}}>
+
+                  </AddToWishlist>
               <Box mb={5} />
                 <Button color="secondary" startIcon={<EqualizerIcon />}>
                   ADD TO COMPARE
@@ -206,7 +215,7 @@ export default function ProductView({product}){
               
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item xs={12} p={0}>
               
               <MoreProductsContainer></MoreProductsContainer>
 
