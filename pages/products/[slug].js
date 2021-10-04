@@ -155,7 +155,7 @@ export default function ProductView({product}){
               </Grid>
               <Box mb={5} />
                   <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained"
-                   style={{width:"200px", height:"54px", fontSize:19, textTransform: 'inherit'}}/>
+                   style={{width:"180px", height:"50px", fontSize:19, textTransform: 'inherit'}}/>
                    
                   <AddToWishlist productId={product.id} style={{marginLeft:12}}>
 

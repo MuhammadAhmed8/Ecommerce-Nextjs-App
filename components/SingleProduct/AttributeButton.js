@@ -12,13 +12,11 @@ const useStyles = makeStyles((theme)=>({
         borderRadius: "5px !important",
         textTransform: 'capitalize',
             [theme.breakpoints.down('sm')]: {
-                width: '140px',
+                width: '130px',
                 fontSize: 13,
                 height: 40
-            },
-            [theme.breakpoints.down('sm')]: {
-                width: '110px'
             }
+           
     }
 }),
 {index:1})
