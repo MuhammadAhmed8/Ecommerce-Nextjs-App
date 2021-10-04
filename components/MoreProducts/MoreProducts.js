@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 
-import { Typography } from "@material-ui/core"
+import { Typography } from "@material-ui/core";
+import AddToCart from '../Cart/AddToCart';
 
 export default function MoreProducts(props){
 
@@ -48,6 +49,7 @@ MoreProducts.Item = function({children, ...props}){
     style={{
         display:'flex',
         flexDirection:'column', 
+        textAlign: 'left'
     }}
     >
         <div>
@@ -63,6 +65,9 @@ MoreProducts.Item = function({children, ...props}){
                Cell Renewal Award-Winning Anti-Aging Treatment for Timeless Skin.
                </p>
            </div>
+
+            <br></br>
+           <AddToCart style={{ backgroundColor: '#ca0303', color: '#fff' }} />
 
         </div>
         

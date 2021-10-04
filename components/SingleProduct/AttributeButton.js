@@ -1,24 +1,38 @@
 
-import { Button } from "@material-ui/core"
+import { Button } from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme)=>({
+    button: {
+        border: "1px solid #333 !important",
+        fontSize: 14,
+        fontWeight: 700,
+        width:202,
+        height: 45,
+        borderRadius: "5px !important",
+        textTransform: 'capitalize',
+            [theme.breakpoints.down('sm')]: {
+                width: '140px',
+                fontSize: 13,
+                height: 40
+            },
+            [theme.breakpoints.down('sm')]: {
+                width: '110px'
+            }
+    }
+}),
+{index:1})
 
 export default function AttributeButton({children, ...props}){
+
+    const classes = useStyles();
     
     return (
         <Button 
-        style={{
-            border: "1px solid #333 !important",
-            fontSize: 14,
-            fontWeight: 700,
-            width:202,
-            height: 45,
-            borderRadius: "5px !important",
-            textTransform: 'capitalize'
-            
-        }} 
-        variant={props.active ? "contained": "outlined"}
-        color="secondary"
-        {...props}
+            className={classes.button}
+            variant={props.active ? "contained": "outlined"}
+            color="secondary"
+            {...props}
         >
         
         {children}

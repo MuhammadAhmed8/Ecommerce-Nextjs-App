@@ -5,7 +5,10 @@ const useStyles = makeStyles((theme)=>({
     
     title: {
         fontSize: '2.3rem',
-        fontWeight: '400'
+        fontWeight: '400',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '1.9rem'
+            }
     },
     price:{
         color:'#CA0303',
@@ -17,7 +20,11 @@ const useStyles = makeStyles((theme)=>({
         color:"#575757",
         lineHeight: '1.8rem',
         fontWeight: 400,
-        fontFamily: "'Helvetica', sans-serif"
+        fontFamily: "'Helvetica', sans-serif",
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '0.9rem',
+                lineHeight: '1.5rem'
+            }
     }
 }),
 {index:1})
