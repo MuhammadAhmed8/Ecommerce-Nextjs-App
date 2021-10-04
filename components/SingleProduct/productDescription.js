@@ -1,10 +1,6 @@
 import { Typography } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> fdc16faa3c7ad928548df74c17f7b9a8010247ca
 const useStyles = makeStyles((theme)=>({
     
     title: {
