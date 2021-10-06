@@ -13,6 +13,7 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
+import Chip from '@material-ui/core/Chip';
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import React, { useState, useEffect } from "react";
 import {makeStyles} from "@material-ui/core/styles";
@@ -29,11 +30,11 @@ import MoreProducts from "../../components/MoreProducts/MoreProducts";
 import MoreProductsContainer from "../../components/MoreProducts/MoreProductsContainer";
 import AddToWishlist from "../../components/Customer/Wishlist/AddtoWishlist";
 import ReviewForm from "../../components/Reviews/ReviewForm";
-// import ProductDescription from "../../components/SingleProduct/ProductDescription";
-const ProductDescription = dynamic(
-  () => import("../../components/SingleProduct/ProductDescription"),
-  { ssr: false }
-)
+import ProductDescription from "../../components/SingleProduct/ProductDescription";
+// const ProductDescription = dynamic(
+//   () => import("../../components/SingleProduct/ProductDescription"),
+//   { ssr: false }
+// )
 
 const api = apiClient();
 
@@ -75,7 +76,8 @@ export default function ProductView({product}){
   const [quantity, setQuantity] = useState(1);
   const [currentAttributeTab, setCurrentAttributeTab] = useState(TABS.INGREDIENTS)
   const [size, setSize] = useState(null);
-  
+  const [error, setError] = useState(null);
+
   const onChange = (e) => {
     //this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
@@ -100,10 +102,18 @@ export default function ProductView({product}){
             </Grid>
 
             <Grid item xs={12} sm={6}>
+              {
+                product.on_sale &&
+                <Chip 
+                style={{marginBottom:20}}
+                label={`${ ((product.regular_price- product.price)*100/product.regular_price).toFixed(0)}% OFF`} 
+                color="primary" />
+
+              }
 
               <ProductDescription product={product}/>
               <Box mb={2} />
-
+              <form onSubmit={(e)=>{e.preventDefault()}}>
               <Grid container >
                 <Grid item xs={12} md={5}>
                   <FormControl
@@ -123,12 +133,20 @@ export default function ProductView({product}){
                       label="Size"
                       value={size}
                       required
-                      onChange={(e) => setSize(e.target.value)}
+                      onChange={(e) => {setSize(e.target.value); setError(null)}}
+                      error={error && error.size}
+
                     >
                       {
                         product.variants.map(variant => {
-                            return <MenuItem key={variant.id} value={variant.id}>
-                              {product.options[0].values.find(v => v.id === variant.options[0].value_id).name}
+                            return <MenuItem 
+                                key={variant.id} 
+                                value={variant.id} 
+                                disabled={!product.stock_backorder && !product.stock_preorder && variant.stock_quantity < 1}>
+                                {product.options[0].values.find(v => v.id === variant.options[0].value_id).name}
+                                {!product.stock_backorder && !product.stock_preorder && 
+                                  variant.stock_quantity < 1 && " - out of stock" }
+
                               </MenuItem>
                         })
                         
@@ -147,25 +165,30 @@ export default function ProductView({product}){
                     label="Qty"
                     variant="outlined"
                     color="secondary"
+                    required
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)}
                     inputProps={{ min: 1, style: { textAlign: "center" } }}
                   />
+
+                </Grid>
+                <Grid item xs={12}>
+                  <Box mb={5} />
+                  <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained" setError={(v)=>setError(v)}
+                    style={{width:"180px", height:"50px", fontSize:19, textTransform: 'inherit'}}/>
+                  <AddToWishlist productId={product.id} style={{marginLeft:12}} />
+
                 </Grid>
               </Grid>
-              <Box mb={5} />
-                  <AddToCart productId={product.id} variantId={size} quantity={quantity} variant="contained"
-                   style={{width:"180px", height:"50px", fontSize:19, textTransform: 'inherit'}}/>
-                   
-                  <AddToWishlist productId={product.id} style={{marginLeft:12}}>
+              </form>
 
-                  </AddToWishlist>
               <Box mb={5} />
                 <Button color="secondary" startIcon={<EqualizerIcon />}>
                   ADD TO COMPARE
                 </Button>
               <Box mb={5} />
             </Grid>
+            
           </Grid>
 
           <Grid container spacing={5}>
@@ -241,7 +264,6 @@ export async function getStaticProps(context){
 
     const product = productResponse.json;
 
-    console.log(product, "Hii")
 
     if(product.data.length < 1){
       return {

@@ -11,9 +11,20 @@ export default function AddToCart({productId, variantId, quantity, ...props}){
     const [loading, setLoading] = useState(false);
 
     const cartHandler = async (e) => {
-        
+                try{
+
+        if(!variantId){
+            props.setError({
+               size: true
+            });
+            return;
+        }
+        if(quantity < 1){
+            quantity = 1
+        }
+
         setLoading(true);
-        try{
+
         const cartResponse = await api.ajax.cart.addItem({
             product_id: productId,
             variant_id: variantId,
@@ -24,12 +35,15 @@ export default function AddToCart({productId, variantId, quantity, ...props}){
 
         console.log(cartResponse, "reso")
 
-        let cartJson = cartResponse.json.json;
+        let cartJson = cartResponse.json;
         console.log(cartJson)
         setCart(cartJson);
+
+        
         }
         catch(e){
-            console.log("Error: Failed to add to cart")
+            setLoading(false);
+            setError("Failed to add to cart");
         }
 
     }
@@ -39,6 +53,7 @@ export default function AddToCart({productId, variantId, quantity, ...props}){
         
 
         <Button 
+            type="submit"
             variant="outlined"
             color= {props.color? props.color: "primary"} 
             style={{ boxShadow:'none', borderRadius:5, textTransform: 'inherit' }}

@@ -20,16 +20,16 @@ function CartStepper({step = 0}){
 
             <ul>
 
-                <li className={step===1 && "active"}>
+                <li className={step===1 ? "active": ""}>
                     <span className="count">1</span>
                     <span className="text">CART</span>
                 </li>
 
-                <li className={step===2 && "active"}>
+                <li className={step===2 ? "active" :""}>
                     <span className="count">2</span>
                     <span className="text">SHIPPING</span>
                 </li>
-                <li className={step===3 && "active"}>
+                <li className={step===3 ? "active": ""}>
                     <span className="count">3</span>
                     <span className="text">PAYMENT</span>
                 </li>
