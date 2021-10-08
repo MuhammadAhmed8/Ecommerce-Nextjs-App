@@ -58,6 +58,12 @@ const useStyles = makeStyles((theme)=>(
             [theme.breakpoints.down('sm')]: {
               margin: '0px'
             }
+        },
+        container: {
+          padding: 15,
+          [theme.breakpoints.down('sm')]: {
+            padding: "15px 0"
+          }
         }
     }
 ))
@@ -74,7 +80,7 @@ export default function ProductView({product}){
   const classes = useStyles();
 
   const [quantity, setQuantity] = useState(1);
-  const [currentAttributeTab, setCurrentAttributeTab] = useState(TABS.INGREDIENTS)
+  const [currentAttributeTab, setCurrentAttributeTab] = useState(TABS.REVIEWS)
   const [size, setSize] = useState(null);
   const [error, setError] = useState(null);
 
@@ -86,6 +92,21 @@ export default function ProductView({product}){
     setCurrentAttributeTab(tab);
   }
 
+  const [reviews, setReviews] = useState(null);
+
+  useEffect(()=>{
+      axios.get(config.ajaxBase + `products/${product.id}/reviews`, {
+          params: {
+              limit: 10,
+              offset: 0
+          }
+      })
+      .then(({data})=>{
+          setReviews(data);
+      })
+      .catch()
+  },[])
+    
   
   console.log(product)
 
@@ -96,12 +117,12 @@ export default function ProductView({product}){
             Home -- {product.name}
           </Typography>
           <Box mb={5} />
-          <Grid container spacing={4} style={{ justifyContent: 'space-between' }}>
-            <Grid item xs={12} sm={5}>
+          <Grid container style={{ justifyContent: 'space-between' }}>
+            <Grid item xs={12} sm={5}  className={classes.container}>
               <Gallery images={product.images}></Gallery>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} className={classes.container}>
               {
                 product.on_sale &&
                 <Chip 
@@ -191,9 +212,9 @@ export default function ProductView({product}){
             
           </Grid>
 
-          <Grid container spacing={5}>
+          <Grid container style={{padding:"20px 0"}}>
             <Grid item xs={12}>
-              <div style={{display:'flex', justifyContent:'center', gap:"20px", alignItems:'center', flexWrap:'wrap'}}>
+              <div style={{display:'flex', justifyContent:'center', gap:"20px", alignItems:'center', flexWrap:'wrap', marginBottom: 60}}>
                 <AttributeButton onClick={()=>changeAttributeTab(TABS.BENEFITS)} active={currentAttributeTab === TABS.BENEFITS}> 
                   Benefits 
               </AttributeButton>
@@ -228,10 +249,11 @@ export default function ProductView({product}){
 
                 <Attribute active={currentAttributeTab === TABS.REVIEWS}>
                   <ReviewsContainer
-                    name= {product.name}
+                   reviews={reviews && reviews.data}
                   />
                   <ReviewForm 
                   name = {product.name}
+                  productId = {product.id}
                 />
                 </Attribute>
               </div>

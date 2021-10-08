@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from '../Ui/InputField';
-import { Button, Grid, Input, makeStyles} from '@material-ui/core';
+import { Button, Grid, Input, Link, makeStyles} from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
 import { useFormik } from 'formik';
 import config from "../../utils/config";
@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
 import AuthService from './auth.service';
 
-const useStyles = makeStyles(()=>({
+const useStyles = makeStyles((theme)=>({
 
     textFieldContainer:{
         display: 'flex',
@@ -20,8 +20,16 @@ const useStyles = makeStyles(()=>({
         padding: '0px'
     },
     btn: {
-        padding: '8px 20px',
-        borderRadius: '0px'
+        padding: '8px 30px',
+        width:150,
+        height: 50,
+        borderRadius: '0px',
+        fontSize: 18,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '14px',
+            width:130,
+            height: 40
+          }
     }
 }),
 {index:1})
@@ -71,7 +79,7 @@ export default function LoginForm(){
         <Grid container>
             <Grid item xs={12}>
                 <br/>
-                <Input 
+                <InputField 
                     placeholder="*Email"
                     name="email"
                     id="email" 
@@ -84,7 +92,7 @@ export default function LoginForm(){
                     helperText={formik.touched.email && formik.errors.email}
                     style={{ 
                         backgroundColor: '#fff',
-                        padding: '8px 10px',
+                       
                         marginBottom: '10px',
                     }}
                 />
@@ -127,7 +135,7 @@ export default function LoginForm(){
                     }}
                 /> */}
 
-                <Input 
+                <InputField 
                     placeholder="*Password"
                     name="password"
                     id="password"
@@ -140,10 +148,16 @@ export default function LoginForm(){
                     helperText={formik.touched.password && formik.errors.password}
                     style={{ 
                         backgroundColor: '#fff',
-                        padding: '8px 10px',
-                        marginBottom: '10px',
+                        marginBottom: '20px',
+                        marginTop: '10px'
                     }}
                 />
+            </Grid>
+
+            <Grid item xs={12}>
+                <div style={{marginBottom: 20, paddingLeft: 3}}>
+                <Link>Forget Password?</Link>
+                </div>
             </Grid>
 
             <Grid item xs={12}>
@@ -154,7 +168,7 @@ export default function LoginForm(){
                     variant="contained"
                     className= { classes.btn }
                 >
-                    Login
+                    Log in
                 </Button>
             </Grid>
 

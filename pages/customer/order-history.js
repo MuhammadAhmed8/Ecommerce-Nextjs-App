@@ -6,7 +6,22 @@ import axios from "axios";
 import config from "../../utils/config";
 import { useEffect, useState } from "react";
 
+
+const useStyles = makeStyles((theme)=>(
+{
+    container: {
+        padding: "14px",
+        [theme.breakpoints.down('sm')]:{
+            padding: "14px 0"
+        }
+    }  
+}), {
+    index: 1
+})
+
 export default function History(props){
+
+    const classes = useStyles();
 
     const [orderHistory, setOrderHistory] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -31,12 +46,12 @@ export default function History(props){
     }, [])
 
     return (
-        <Container spacing={100} style={{marginTop:60}}>
-            <Grid container spacing={5}>
-                <Grid item xs={12} sm={4} md={3}>
+        <Container style={{marginTop:60}}>
+            <Grid container>
+                <Grid item xs={12} sm={4} md={3} className={classes.container}>
                     <ProfileSidebar></ProfileSidebar>
                 </Grid>
-                <Grid item xs={12} sm={8} md={9} style={{minHeight:400}}>
+                <Grid item xs={12} sm={8} md={9} style={{minHeight:400}} className={classes.container}>
                 
                 <Box style={{padding:10, marginBottom: 20, background:"#fff"}}>
                         <h2 style={{padding:"0 5px"}}>Your Orders</h2>

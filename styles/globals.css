@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+.bar-of-progress {
+  z-index: 50;
+}
+
 body,
 a,
 input,

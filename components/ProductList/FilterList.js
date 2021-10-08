@@ -11,7 +11,8 @@ function FilterList({categories, ...props}){
         <div className="headerimg" />
         <div className="filtertab" style={{background:"#fff", padding: '5px'}}>
           <Container>
-            <Box>
+            <Box style={{display:'flex', justifyContent:'space-between', flexWrap:'wrap'}}>
+              <div>
               <MenuList name="Category" list={categories} filterField="slug" param="/category/"/>
               <MenuList name="Skin Type" list={[
                 {
@@ -25,10 +26,25 @@ function FilterList({categories, ...props}){
               ]} 
               param="/products?attributes.Type=" 
               filterField="name"/>
-            
-              {/* <MenuList name="Age" type="slider" value={[0,100]} label="yrs"/>
-              <MenuList name="Price" list={categories} type="slider" 
-              value={[0,500]} min={0} max={500} label='$' query={["price_from"],["price_to"]} /> */}
+            </div>
+             <div style={{align:"right"}}>
+             <MenuList name="Sort By" list={[
+              {
+                id: 1,
+                name: 'Price'
+              },
+              {
+                id: 2,
+                name: 'Recent'
+              },
+              {
+                id: 3,
+                name: 'Popularity'
+              }
+              ]}/>
+
+             </div>
+              
             </Box>
           </Container>
         </div>

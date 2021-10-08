@@ -2,17 +2,34 @@ import React from 'react';
 import { Grid, Typography, makeStyles, Button } from "@material-ui/core";
 import NewCustomerGrid from './NewCustomerGrid';
 import { red } from '@material-ui/core/colors';
+import { useRouter } from 'next/router';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     heading:{
         fontSize:'1.4rem',
         letterSpacing:'2px',
-        marginBottom:'1rem'
+        marginBottom:'1rem',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '1.2rem',
+          }
     },
     grid:{
         marginTop: '20px',
         marginBottom: '20px'
     },
+
+    btn: {
+        padding: '8px 10px',
+        width:240,
+        height: 50,
+        borderRadius: '0px',
+        fontSize: 18,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '14px',
+            width:200,
+            height: 50
+          }
+    }
 }),
 {index:1})
 
@@ -20,11 +37,12 @@ const useStyles = makeStyles(() => ({
 export default function NewCustomer(){
 
     const classes = useStyles(); 
+    const router = useRouter();
 
     return(
         <div>
             <h3 className={classes.heading}>New Customers</h3>
-            <Typography variant="body2">
+            <Typography variant="body1" style={{marginBottom:20}}>
                 Creating an account is easy. Just fill in the form below and enjoy the benefits of having an account.
             </Typography>
 
@@ -55,7 +73,8 @@ export default function NewCustomer(){
                 color="secondary"
                 value="Create an account"
                 variant="contained"
-                style={{ padding: '8px 20px', borderRadius: '0px' }}
+                className={classes.btn}
+                onClick={()=>router.push('register')}
             >
                 Create an account
             </Button>

@@ -8,7 +8,22 @@ import Layout from '../components/Layout/Layout';
 import '../styles/globals.css';
 import {CartProvider} from '../components/context/CartProvider';
 import { AuthProvider } from '../components/context/AuthProvider';
+import NProgress from 'nprogress';
+import Router from 'next/router'
+import "nprogress/nprogress.css";
 
+const template = '<div class="bar" style="background-color:red;border-color:red" role="bar"><div class="peg" style="background-color:red;border-color:red; box-shadow: 0 0 10px red, 0 0 5px red;-webkit-box-shadow: 0 0 10px red, 0 0 5px red;"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+NProgress.configure({
+  template
+});
+NProgress.configure({ showSpinner: false });
+
+Router.events.on('routeChangeStart', (url) => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;

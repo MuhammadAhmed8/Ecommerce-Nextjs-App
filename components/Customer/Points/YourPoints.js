@@ -27,16 +27,23 @@ const useStyles = makeStyles((theme)=>(
         },
 
         points:{
-            fontSize: '100px',
+            fontSize: '120px',
             color: theme.palette.primary.main,
-            fontWeight: 500
-
+            fontWeight: 500,
+            fontFamily: "'Times', Times, serif",
+            [theme.breakpoints.down('sm')]:{
+                fontSize: '60px',
+            }
         },
 
         amount:{
             fontSize: '70px',
             color: theme.palette.primary.main,
-            fontWeight: 500
+            fontWeight: 500,
+            fontFamily: "'Times', Times, serif",
+            [theme.breakpoints.down('sm')]:{
+                fontSize: '60px',
+            }
         }
 
 
@@ -48,10 +55,13 @@ export default function YourPoints(props){
     const styles = useStyles();
     return(
     <>
-            <Card>
+            <Card style={{boxShadow:"none"}}>
                 
                 <CardContent>
-                    
+                    <p style={{textAlign:'right', paddingBottom: 15}}>
+                    $1 Spent = 1 Point(s) Earned, 250 Points = $25 Reward
+                    </p>
+
                     <div className={styles.pointsContainer}>
                         
                         <div className={styles.pointBox}>

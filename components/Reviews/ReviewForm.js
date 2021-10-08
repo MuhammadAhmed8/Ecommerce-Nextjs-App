@@ -3,6 +3,8 @@ import { Grid, Input, makeStyles, Typography} from '@material-ui/core';
 import { Rating } from 'react-simple-star-rating';
 import InputField from '../Ui/InputField';
 import RedButton from '../Ui/RedButton';
+import axios from 'axios';
+import config from "../../utils/config";
 
 const useStyles = makeStyles((theme)=>({
     root: {
@@ -24,11 +26,9 @@ const useStyles = makeStyles((theme)=>({
         display: 'block'
     },
     input: {
-        padding: '10px 5px',
-        width: '400px',
-            [theme.breakpoints.down('sm')]: {
-                width: '100%'
-            }
+        minHeight: 30,
+        maxWidth: 500
+        
     }
 }),
 {index:1})
@@ -36,15 +36,50 @@ const useStyles = makeStyles((theme)=>({
 export default function ReviewForm(props){
 
     const classes = useStyles(); 
-    const [rating, setRating] = useState(0) // initial rating value
+    const [rating, setRating] = useState(5) // initial rating value
+    const [review, setReview] = useState(null);
     
     const handleRating = (rate) => {
+        if(rate < 1 || rate > 5){
+            rate = 5
+        }
+    
         setRating(rate)
-        // Some logic
-      }
+    }
+
+    const handleReviewChange = (e) => {
+        let v = e.target.value;
+        setReview(v)
+    }
+
+
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+      
+        axios.post(config.ajaxBase + `products/${props.productId}/reviews`,{
+            content: review,
+            rating
+        },
+        {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('rt')
+            },
+            withCredentials: true
+        })
+        .then((res)=>{
+            alert("Your review has been submitted.")
+        })
+        .catch(e => {
+            if(e.response.status === 403 ){
+                alert("Unauthorized")
+            }
+        })
+    }
+
 
     return (
         <div className={classes.root}>
+            <form onSubmit={handleSubmit}>
             <p className={classes.text}>
                 You&apos;re reviewing:
             </p>
@@ -61,7 +96,10 @@ export default function ReviewForm(props){
             <br></br>
 
             <div>
-                <span className={classes.btext}>Quality</span>
+                <span className={classes.btext}>Quality
+                <span className={classes.redAsterisk}> * 
+                </span>
+                </span>
                 <Rating 
                     onClick={handleRating} 
                     ratingValue={rating}
@@ -70,53 +108,10 @@ export default function ReviewForm(props){
             </div>
             
             <div>
-                <span className={classes.btext}>
-                    NickName
-                    <span className={classes.redAsterisk}> *</span>
-                </span>
-
-                <InputField 
-                    name="nickname"
-                    id="nickname" 
-                    type='string'
-                    variant='outlined'
-                    // value={formik.values.email}
-                    // onChange={formik.handleChange}
-                    // error={formik.touched.email && Boolean(formik.errors.email)}
-                    // helperText={formik.touched.email && formik.errors.email}
-                    style={{ 
-                        marginBottom: '10px',
-                    }}
-                    inputProps= {{
-                        className: classes.input
-                    }}
-                />
+                
             </div>
 
-            <div>
-                <span className={classes.btext}>
-                    Summary
-                    <span className={classes.redAsterisk}> *</span>
-                </span>
-
-                <InputField 
-                    name="summary"
-                    id="summary" 
-                    type='string'
-                    variant='outlined'
-                    // value={formik.values.email}
-                    // onChange={formik.handleChange}
-                    // error={formik.touched.email && Boolean(formik.errors.email)}
-                    // helperText={formik.touched.email && formik.errors.email}
-                    style={{ 
-                        marginBottom: '10px',
-                    }}
-                    inputProps= {{
-                        className: classes.input
-                    }}
-                />
-            </div>
-
+            <br></br>
             <div>
                 <span className={classes.btext}>
                     Review
@@ -124,18 +119,19 @@ export default function ReviewForm(props){
                 </span>
 
                 <InputField 
+                    fullWidth
                     name="review"
                     id="review" 
                     type='string'
                     variant='outlined'
-                    rows='3'
+                    rows='6'
                     multiline
-                    // value={formik.values.email}
-                    // onChange={formik.handleChange}
-                    // error={formik.touched.email && Boolean(formik.errors.email)}
-                    // helperText={formik.touched.email && formik.errors.email}
+                    required
+                    value={review}
+                    onChange={handleReviewChange}
                     style={{ 
                         marginBottom: '10px',
+                        maxWidth: 700,
                     }}
                     inputProps= {{
                         className: classes.input
@@ -144,10 +140,10 @@ export default function ReviewForm(props){
             </div>
             <br></br>
 
-            <RedButton>
+            <RedButton type="submit">
                 Submit Review
             </RedButton>
-
+            </form>
         </div>
     )
 

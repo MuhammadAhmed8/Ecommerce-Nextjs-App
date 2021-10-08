@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import NextLink from 'next/link';
 import { Link } from '@material-ui/core';
@@ -8,10 +9,14 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import SearchIcon from '@material-ui/icons/Search';
 import TocIcon from '@material-ui/icons/Toc';
 import SearchBar from "../Search/SearchBar";
+import { useCartContext } from '../context/CartProvider';
 
 export default function Navbar(props){
 
     const [auth, authDispatch] = useAuth();
+    const [cart] = useCartContext();
+
+    const count = cart ? cart.items.reduce((count, item)=>count+item.quantity,0) :0;
 
     return (
     
@@ -60,46 +65,35 @@ export default function Navbar(props){
 
                         <div className="cartOverlay__content">
 
-                            <h2 className="cartOverlay__heading">Items (2)</h2>
+                            <h2 className="cartOverlay__heading">Items ({count})</h2>
 
-                            <div className="cartOverlay__item">
+                            {
+                                cart ? cart.items.map((item)=>(
+                                    <div key={item.id} className="cartOverlay__item">
 
-                                <div className="cartOverlay__item--info">
-                                    <img src="img/fav_1.png" alt=""/>
-                                    <div className="cartOverlay__item--name">
-                                        <h3><a href="#"> Product Name Here</a></h3>
-                                        <p>150ml / 0.5 oz</p>
+                                    <div className="cartOverlay__item--info">
+                                        <img src={item.product_image[0].url} alt=""/>
+                                        <div className="cartOverlay__item--name" >
+                                            <h3 style={{fontSize:14}}>{item.name}</h3>
+                                            <p>{item.variant_name}</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="cartOverlay__item--name">
-                                    <h3>$150.00</h3>
-                                    <p>Q.ty 1</p>
-                                </div>
-                            </div>
-
-
-                            <div className="cartOverlay__item">
-
-                                <div className="cartOverlay__item--info">
-                                    <img src="img/fav_1.png" alt=""/>
-                                    <div className="cartOverlay__item--name">
-                                        <h3><a href="#"> Product Name Here</a></h3>
-                                        <p>150ml / 0.5 oz</p>
+                                    <div className="cartOverlay__item--name" >
+                                        <h3 style={{fontSize:12}}>{item.price_total}</h3>
+                                        <p style={{fontSize:12}}>Q.ty {item.quantity}</p>
                                     </div>
-                                </div>
+                                    </div>
+                                )) 
+                                : "No items"
+                            }
 
-                                <div className="cartOverlay__item--name">
-                                    <h3>$150.00</h3>
-                                    <p>Q.ty 1</p>
-                                </div>
-                            </div>
 
                             <hr/>
 
                             <div className="cartOverlay__total">
                                 <h2>Total</h2>
-                                <h2>$300.00</h2>
+                                <h2>{cart && cart.subtotal}$</h2>
                             </div>
 
                             <div className="cartOverlay__btn">
@@ -109,8 +103,28 @@ export default function Navbar(props){
                         </div>
 
                         <div className="cartOverlay__ship">
-                            <img src="img/car_ship.png" alt=""/>
-                            <p>Your order is available for FREE shipping</p>
+                            <img src="/img/car_ship.png" alt=""/>
+                            <p>
+                                
+                                 {(() => {
+                                    if(count === 0){
+                                        return "Add 3 items to get free shipping."
+                                    }
+                                    else if(count === 1){
+                                        return "Add 2 more items to get free shipping."
+                                    }
+                                    else if(count === 2){
+                                        return "Add 1 more item to get free shipping."
+                                    }
+                                    else{
+                                        return (
+                                            "Your order is available for free shipping."
+                                        )
+                                    }
+                                    
+                                })()}
+                                
+                            </p>
                         </div>
 
                     </div>

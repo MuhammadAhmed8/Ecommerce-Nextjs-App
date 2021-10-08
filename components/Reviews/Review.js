@@ -1,6 +1,7 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import {timeSince} from "../../utils/datetime";
 
 const useStyles = makeStyles((theme)=>({
     reviewBox: {
@@ -32,18 +33,19 @@ const useStyles = makeStyles((theme)=>({
       
 }))
 
-export default function Review(props){
+export default function Review({data, ...props}){
 
     const classes = useStyles();
 
+    if(!data) return null;
     return (
         <div>
             <div className={classes.reviewBox}>
                 <div className={classes.reviewMeta}>
-                    <Typography variant="h4" style={{fontSize:"1.4rem"}}> John Doe</Typography>
+                    <Typography variant="h5">Ken Adams</Typography>
                     <Typography>
                     
-                    {[...Array(4)].map((el, index) => {
+                    {[...Array(data.rating)].map((el, index) => {
                     return (
                         <>
                         <StarIcon
@@ -54,7 +56,7 @@ export default function Review(props){
                         </>
                     );
                     })}
-                    {[...Array(5 - 4)].map((el, index) => {
+                    {[...Array(5 - data.rating)].map((el, index) => {
                     return (
                         <>
                         <StarBorderIcon
@@ -70,7 +72,7 @@ export default function Review(props){
                 </div>
                 <div>
                     <Typography variant="caption">
-                        5 days ago
+                        {timeSince(new Date(data.date_created))}
                     </Typography>
                 </div>
 
@@ -78,7 +80,7 @@ export default function Review(props){
                     
                     <div>
                         <Typography variant="body1">
-                        Results with this moisturizer are almost immediate! Instant hydration and plumpness and better skin texture overnight. $70 is a lot to spend but it would be 5 stats otherwise
+                            {data.content}
                         </Typography>
                     </div>
                 </div>

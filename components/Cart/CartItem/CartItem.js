@@ -27,7 +27,7 @@ function CartItem({item}){
             quantity: value
         });
         console.log(response);
-        const updatedCartData = response.json.json;
+        const updatedCartData = response.json;
         setCart(updatedCartData);
         setLoading(false);
     }
@@ -44,7 +44,7 @@ function CartItem({item}){
     const deleteCartItem = async () => {
         setLoading(true);
         const response = await api.ajax.cart.deleteItem(item.id);
-        const updatedCart = response.json.json;
+        const updatedCart = response.json;
         setCart(updatedCart);
         setLoading(false);
     };

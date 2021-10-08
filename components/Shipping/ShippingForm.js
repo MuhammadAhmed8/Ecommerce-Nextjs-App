@@ -159,8 +159,8 @@ export default function ShippingForm({formik, data}){
                 name="shipping_method_id"
                 value={formik.values.shipping_method_id}
                 onChange={formik.handleChange}
+                required
                 helperText={formik.touched.shipping_method_id && formik.errors.shipping_method_id}
-            
                 >
                 {data.shippingMethods.map((option) => (
                     <MenuItem key={option.id} value={option.id}>

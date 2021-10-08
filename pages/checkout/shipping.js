@@ -9,8 +9,44 @@ import apiClient from '../../utils/api-client';
 import { useRouter } from 'next/dist/client/router';
 import BillingForm from '../../components/Shipping/BillingForm';
 import { useCartContext } from '../../components/context/CartProvider';
+import * as Yup from 'yup';
 
 const api = apiClient();
+
+const shippingSchema = Yup.object({
+    first_name: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    last_name: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    address_line_1: Yup.string()
+    .min(8, 'Too Short!')
+    .max(300, 'Too Long!')
+    .required('Required'),
+    address_line_2: Yup.string()
+    .max(300, 'Too Long!')
+    .optional(),
+    city: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+    state: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+    zip_code: Yup.string()
+    .trim()
+    .matches(/(^\d{5}$)|(^\d{5}-\d{4}$)/, "Invalid Zip/Postal Code")
+    .required(),
+    phone: Yup.string()
+    .trim()
+    .matches(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, "Invalid Phone Number").required('Required')
+  });
+  
 
 function ShippingPage(props){
 
@@ -55,8 +91,10 @@ function ShippingPage(props){
             different_billing: false,
             shipping_method_id: null
         },
+        validationSchema:shippingSchema,
         onSubmit: async (values) => {
             try{
+                console.log("submittitn")
                 const response = await api.ajax.cart.update({
                     email: values.email,
                     first_name: values.first_name,
@@ -87,7 +125,7 @@ function ShippingPage(props){
                     }
                 });
 
-                setCart(response.json.json)
+                setCart(response.json)
                 router.push('/checkout/payment');
 
                 

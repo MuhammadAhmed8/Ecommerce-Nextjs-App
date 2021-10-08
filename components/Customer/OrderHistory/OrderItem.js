@@ -25,6 +25,13 @@ function OrderItem({item}){
                         className={styles.cartBagItemTextHeading}>
                             {item.name}
                         </Typography>
+                        
+                        <p>
+                        Cell Renewal Award-Winning Anti-Aging
+                        </p>
+                        <p>
+                        Treatment for Timeless Skin
+                        </p>
                         <p>
                             {item.variant_name}
                         </p>
@@ -36,9 +43,12 @@ function OrderItem({item}){
 
                <div className={styles.cartItemActions}>
                 
-                <AddToCart color="secondary" productId={item.product_id} variantId={item.variant_id} quantity={item.quantity}/>
-                <ClearIcon  style={{cursor:'pointer'}}></ClearIcon>
-
+                <p><b>Q.Ty</b> <br></br> 1</p>
+                <AddToCart
+                style={{background: "#333", color: '#fff', border:'none', padding: "11px 36px"}}
+                productId={item.product_id} variantId={item.variant_id} quantity={item.quantity}>
+                    Order Again
+                </AddToCart>
                </div>
 
 

@@ -54,13 +54,20 @@ theme.typography.h3 = {
 };
 
 theme.typography.h5 = {
-  fontSize: '1.4rem',
+  fontSize: '1.3rem',
   [theme.breakpoints.up('xs')]: {
-    fontSize: '1.2rem',
+    fontSize: '1.1rem',
  },
   [theme.breakpoints.up('md')]: {
-     fontSize: '1.4rem',
+     fontSize: '1.3rem',
   },
+};
+
+theme.typography.body1 = {
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.9rem',
+ },
+  
 };
 
 export default theme;
