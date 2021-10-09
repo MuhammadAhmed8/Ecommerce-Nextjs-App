@@ -44,7 +44,8 @@ const shippingSchema = Yup.object({
     .required(),
     phone: Yup.string()
     .trim()
-    .matches(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, "Invalid Phone Number").required('Required')
+    .matches(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, "Invalid Phone Number")
+    .required('Required')
   });
   
 
@@ -180,6 +181,7 @@ function ShippingPage(props){
                         helperText={formik.touched.different_billing && formik.errors.different_billing}
                         name="different_billing"
                         color="primary"
+                    
                         />
                         }
                         label="Use a different billing address"

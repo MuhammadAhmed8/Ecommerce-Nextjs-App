@@ -10,6 +10,7 @@ import BackImageCard from './BackImageCard';
 
 import RedButton from '../../Ui/RedButton';
 import TitleHeading from '../../Ui/TitleHeading';
+import { useRouter } from 'next/dist/client/router';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,11 +56,13 @@ const useStyles = makeStyles((theme) => ({
 export default function MainSection(props){
 
     const classes = useStyles(); 
+    const router = useRouter();
     const advantages =  ['Stem Cell + EGF', 
                         'Collagen + Polypeptides', 
                         'Vitamin C Refreshers',
                         'Revved Up Retinol'
                         ]
+
 
     return(
             <div className={classes.root} >
@@ -69,6 +72,7 @@ export default function MainSection(props){
                 <br></br>
 
                 <RedButton 
+                    onClick={()=>router.push('/products')}
                     style= {{ fontSize: '1.5rem', padding: '10px 40px', fontWeight: 'bold'}}
                 >
                     Shop Now 
@@ -101,6 +105,7 @@ export default function MainSection(props){
                 image = "img/why_trust.png"
                 heading = {<>Why Trust <br></br>RÉNOVA BELLE </>}
                 buttonText = "Read More"
+                url="/trust"
             />
 
             <ServiceGridContainer />
@@ -129,7 +134,9 @@ export default function MainSection(props){
                 </Grid>
 
             </div>
-
+            <TitleHeading>
+                   Our Favourite Products
+            </TitleHeading>
             <FavouriteProductsContainer />
 
             <BackImageCard 
@@ -137,6 +144,7 @@ export default function MainSection(props){
                 heading = "Ask Us Anything"
                 text= "Whether you're seeking skincare advice, need help tracking an order, or just have a quick question, our Team is here to help!"
                 buttonText = "Contact Us"
+                url="/contact"
             />
 
             <TitleHeading>

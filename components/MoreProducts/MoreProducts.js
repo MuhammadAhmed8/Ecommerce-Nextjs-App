@@ -2,6 +2,7 @@
 
 import { Typography } from "@material-ui/core";
 import AddToCart from '../Cart/AddToCart';
+import RedButton from "../Ui/RedButton";
 
 export default function MoreProducts(props){
 
@@ -53,7 +54,7 @@ MoreProducts.Item = function({children, ...props}){
     }}
     >
         <div>
-            <img src="https://www.renovabele.com/img/fav_2.png" style={{width:"100%", objectFit:'cover'}}/>
+            <img src={props.image} style={{width:"100%", objectFit:'cover', height:400}}/>
         </div>
 
         <div style={{padding: "15px 0"}}>
@@ -67,7 +68,9 @@ MoreProducts.Item = function({children, ...props}){
            </div>
 
             <br></br>
-           <AddToCart style={{ backgroundColor: '#ca0303', color: '#fff' }} />
+           <RedButton style={{ backgroundColor: '#ca0303', color: '#fff' }}>
+               Shop now
+           </RedButton>
 
         </div>
         

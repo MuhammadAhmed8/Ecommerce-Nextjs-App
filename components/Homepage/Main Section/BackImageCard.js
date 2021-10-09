@@ -1,4 +1,5 @@
 import { Grid, makeStyles } from "@material-ui/core";
+import { useRouter } from "next/dist/client/router";
 import RedButton from "../../Ui/RedButton";
 
 
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BackImageCard(props){
     const classes = useStyles(); 
+    const router = useRouter();
 
     return(
         <div style={{ backgroundImage: `url(${props.image})` }} className={classes.background}>
@@ -62,7 +64,7 @@ export default function BackImageCard(props){
                     
                     {props.text && props.text}
                 </p>
-                <RedButton>
+                <RedButton onClick={()=>router.push(props.url)}>
                     {props.buttonText}
                 </RedButton>
             </div>
