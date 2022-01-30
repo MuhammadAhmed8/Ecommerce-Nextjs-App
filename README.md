@@ -1,6 +1,6 @@
 ## Ecommerce Frontend with Nextjs
 
-This is a ecommerce frontend built with nextjs. The project includes:
+This is a ecommerce frontend built with nextjs and material-ui. The project includes:
 
 - **Products page with filters**
 - **Product description page with variants**
